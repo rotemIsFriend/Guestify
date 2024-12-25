@@ -13,7 +13,7 @@
     <color name="surface">#c3c3e0</color>
 
     <!-- Text colors -->
-    <color name="text_primary">#212121</color>
+    <color name="text_primary">#282828</color>
     <color name="text_secondary">#757575</color>
 
     <!-- Error colors -->
