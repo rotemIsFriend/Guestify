@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".InvitationFragment"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".InvitationFragment"
     android:paddingHorizontal="10dp"
     android:fillViewport="true">
 
@@ -41,7 +41,18 @@
             app:cornerRadius="5dp"
             android:layout_gravity="center"
             android:backgroundTint="@color/primary"
+            app:icon="@drawable/upload_icon"
+            android:padding="10dp"
             />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Or, just let us do it for you:"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:textSize="15sp"
+            android:textColor="@color/text_primary"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -185,8 +196,9 @@
             android:id="@+id/btn_submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Submit"
+            android:text="Create Invitation"
             android:layout_marginTop="16dp"
+            android:backgroundTint="@color/primary"
             style="@style/Widget.MaterialComponents.Button" />
 
     </LinearLayout>
