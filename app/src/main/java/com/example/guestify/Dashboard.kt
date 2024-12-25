@@ -11,6 +11,5 @@ class Dashboard : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.dashboard)
-
     }
 }
