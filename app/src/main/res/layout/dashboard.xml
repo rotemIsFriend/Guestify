@@ -18,4 +18,15 @@
         android:layout_gravity="bottom|center"
         />
 
+    <Button
+        android:id="@+id/viewEventDetailsBtn"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:backgroundTint="@color/primary"
+        android:background="@drawable/info"
+        android:contentDescription="View Event Details"
+        android:elevation="4dp"
+        android:layout_margin="8dp"
+        android:layout_gravity="center" />
+
 </LinearLayout>

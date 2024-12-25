@@ -24,6 +24,10 @@ class DashboardFragment : Fragment() {
             findNavController().navigate(R.id.action_dashboardFragment_to_invitationFragment)
         }
 
+        binding.viewEventDetailsBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_dashboardFragment_to_eventDetailsFragment)
+        }
+
         return binding.root
 
     }

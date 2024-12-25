@@ -1,4 +1,4 @@
-package com.example.guestify.ui
+package com.example.guestify
 
 import android.os.Bundle
 import android.view.LayoutInflater
