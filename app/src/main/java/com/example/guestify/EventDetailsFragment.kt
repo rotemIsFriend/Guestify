@@ -9,7 +9,7 @@ import com.example.guestify.databinding.EventDetailsBinding
 
 class EventDetailsFragment : Fragment() {
 
-    // View Binding
+
     private var _binding: EventDetailsBinding? = null
     private val binding get() = _binding!!
 
