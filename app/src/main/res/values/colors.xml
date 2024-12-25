@@ -2,4 +2,20 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Primary colors -->
+    <color name="primary">#0098df</color>
+    <color name="primary_variant">#007AAF</color>
+    <color name="secondary">#03DAC6</color>
+
+    <!-- Background colors -->
+    <color name="background">#d3d3ea</color>
+    <color name="surface">#c3c3e0</color>
+
+    <!-- Text colors -->
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+
+    <!-- Error colors -->
+    <color name="error">#B00020</color>
 </resources>
