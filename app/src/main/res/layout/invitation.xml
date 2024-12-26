@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingHorizontal="10dp"
+    android:paddingVertical="25dp"
     android:fillViewport="true">
 
     <LinearLayout
@@ -43,12 +44,13 @@
             android:backgroundTint="@color/primary"
             app:icon="@drawable/upload_icon"
             android:padding="10dp"
+            android:layout_marginTop="5dp"
             />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Or, just let us do it for you:"
+            android:text="Or, just let us do it for you!"
             android:textStyle="bold"
             android:layout_marginTop="20dp"
             android:textSize="15sp"
@@ -98,51 +100,7 @@
                 android:inputType="textPersonName" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Event Date:"
-            android:textStyle="bold"
-            />
 
-        <!-- Event Date -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_event_date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:focusable="false"
-                android:clickable="true"
-                android:inputType="none"
-                android:hint="MM/DD/YYYY" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-        <!-- Event Time -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Event Time:"
-            android:textStyle="bold"
-            android:layout_marginTop="10dp"
-            />
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_event_time"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:focusable="false"
-                android:clickable="true"
-                android:inputType="none"
-                android:hint="HH:MM" />
-        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:layout_width="wrap_content"
@@ -166,6 +124,29 @@
                 android:inputType="textPostalAddress" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_select_date"
+            style="@style/Widget.Material3.Button.IconButton.Outlined"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select your event date &amp; time"
+            app:icon="@drawable/date_icon"
+            app:iconGravity="start"
+            app:iconTint="@color/black"
+            android:padding="10dp"
+            android:textColor="@color/text_primary"
+            app:cornerRadius="10dp"
+            app:iconPadding="10dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_date_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_secondary"
+            android:layout_marginStart="5dp"
+            android:textStyle="bold"
+            android:text="17/12/24  - 17:00"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
