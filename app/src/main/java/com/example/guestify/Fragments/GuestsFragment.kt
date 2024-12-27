@@ -1,16 +1,15 @@
-package com.example.guestify
+package com.example.guestify.Fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.guestify.databinding.EventDetailsBinding
+import com.example.guestify.databinding.GuestsBinding
 
-class EventDetailsFragment : Fragment() {
+class GuestsFragment : Fragment() {
 
-
-    private var _binding: EventDetailsBinding? = null
+    private var _binding : GuestsBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -18,14 +17,12 @@ class EventDetailsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        _binding = EventDetailsBinding.inflate(inflater, container, false)
+        _binding = GuestsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
     }
 
     override fun onDestroyView() {
