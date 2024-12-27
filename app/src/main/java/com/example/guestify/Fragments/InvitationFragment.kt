@@ -1,4 +1,4 @@
-package com.example.guestify
+package com.example.guestify.Fragments
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
@@ -9,10 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ScrollView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.guestify.databinding.InvitationBinding
+import com.example.guestify.viewModels.InvitationViewModel
 
 class InvitationFragment: Fragment() {
 

@@ -1,4 +1,4 @@
-package com.example.guestify
+package com.example.guestify.viewModels
 
 import androidx.lifecycle.ViewModel
 
@@ -15,7 +15,7 @@ data class InvitationData(
 
 class InvitationViewModel : ViewModel() {
 
-    var invitationData : InvitationData ? = null
+    var invitationData : InvitationData? = null
         private set
 
     fun submitInvitation(groomName: String,
