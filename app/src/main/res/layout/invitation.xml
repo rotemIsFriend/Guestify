@@ -25,44 +25,15 @@
             android:textSize="20sp"
             android:textColor="@color/text_primary"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Already got your own invitation?"
-            android:textStyle="bold"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:textSize="15sp"
-            android:textColor="@color/text_primary"/>
-
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Upload Custom Invite"
-            app:cornerRadius="5dp"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/primary"
-            app:icon="@drawable/upload_icon"
-            android:padding="10dp"
-            android:layout_marginTop="5dp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Or, just let us do it for you!"
-            android:textStyle="bold"
-            android:layout_marginTop="20dp"
-            android:textSize="15sp"
-            android:textColor="@color/text_primary"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Groom's Name:"
             android:textStyle="bold"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="25dp"
             />
+
         <!-- Groom's Name -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -74,6 +45,28 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_groom_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Groom's Parents:"
+            android:textStyle="bold"
+            />
+
+        <!-- Groom's Parents Name -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Example: Rotem and Roei Haver"
+            app:counterEnabled="true"
+            app:counterMaxLength="50">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_groom_p_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName" />
@@ -100,7 +93,27 @@
                 android:inputType="textPersonName" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Brides's Parents:"
+            android:textStyle="bold"
+            />
 
+        <!-- Bride's Parents Name -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Example: Hannan and Yohevet Fridman"
+            app:counterEnabled="true"
+            app:counterMaxLength="50">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_bride_p_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:layout_width="wrap_content"
@@ -119,6 +132,30 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_event_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPostalAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Venue Name -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Venue Name:"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Example: Gan Havradim"
+            app:counterEnabled="true"
+            app:counterMaxLength="100">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_venue_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPostalAddress" />
@@ -177,7 +214,7 @@
             android:id="@+id/btn_submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Create Invitation"
+            android:text="Pick A Template"
             android:layout_marginTop="16dp"
             android:backgroundTint="@color/primary"
             style="@style/Widget.MaterialComponents.Button" />

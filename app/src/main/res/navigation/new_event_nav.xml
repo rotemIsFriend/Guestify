@@ -9,7 +9,17 @@
         android:id="@+id/invitationFragment"
         android:name="com.example.guestify.Fragments.InvitationFragment"
         android:label="invitation"
-        tools:layout="@layout/invitation" />
+        tools:layout="@layout/invitation" >
+        <action
+            android:id="@+id/action_invitationFragment_to_chooseTemplateFragment"
+            app:destination="@id/chooseTemplateFragment"
+            app:popUpTo="@id/new_event_nav"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left"
+            />
+    </fragment>
 
     <fragment
         android:id="@+id/dashboardFragment"
@@ -43,4 +53,9 @@
         android:name="com.example.guestify.Fragments.EventDetailsFragment"
         android:label="Event Details"
         tools:layout="@layout/event_details" />
+    <fragment
+        android:id="@+id/chooseTemplateFragment"
+        android:name="com.example.guestify.Fragments.ChooseTemplateFragment"
+        android:label="choose_template"
+        tools:layout="@layout/choose_template" />
 </navigation>

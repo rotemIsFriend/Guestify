@@ -11,6 +11,8 @@ import android.widget.ScrollView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.example.guestify.R
 import com.example.guestify.databinding.InvitationBinding
 import com.example.guestify.viewModels.InvitationViewModel
 
@@ -71,16 +73,22 @@ class InvitationFragment: Fragment() {
         binding.btnSubmit.setOnClickListener {
             val groomName = binding.etGroomName.text.toString().trim()
             val brideName = binding.etBrideName.text.toString().trim()
+            val groomParents = binding.etGroomPName.text.toString().trim()
+            val brideParents = binding.etBridePName.text.toString().trim()
             val eventLocation = binding.etEventLocation.text.toString().trim()
+            val venue = binding.etVenueName.text.toString().trim()
             val invitationText = binding.etInvitationText.text.toString().trim()
 
             // Validate form inputs
             val isValid = validateForm(
                 groomName,
                 brideName,
+                groomParents,
+                brideParents,
                 eventDate,
                 eventTime,
                 eventLocation,
+                venue,
                 invitationText
             )
 
@@ -89,12 +97,15 @@ class InvitationFragment: Fragment() {
                 invitationViewModel.submitInvitation(
                     groomName,
                     brideName,
+                    groomParents,
+                    brideParents,
                     eventDate,
                     eventTime,
                     eventLocation,
+                    venue,
                     invitationText
                 )
-                Toast.makeText(requireContext(), "Invitation created!", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.action_invitationFragment_to_chooseTemplateFragment)
             } else {
                 Toast.makeText(requireContext(), "Please fix the errors above.", Toast.LENGTH_SHORT).show()
             }
@@ -105,9 +116,12 @@ class InvitationFragment: Fragment() {
     private fun validateForm(
         groomName: String,
         brideName: String,
+        groomParents: String,
+        brideParents: String,
         eventDate: String,
         eventTime: String,
         eventLocation: String,
+        venue: String,
         invitationText: String
     ): Boolean {
         var isValid = true
@@ -121,6 +135,24 @@ class InvitationFragment: Fragment() {
         // Bride Name
         if (brideName.isEmpty()) {
             binding.etBrideName.error = "Please enter Bride's name"
+            isValid = false
+        }
+
+        // Groom Parents Name
+        if (groomParents.isEmpty()) {
+            binding.etGroomPName.error = "Please enter Groom's parents name"
+            isValid = false
+        }
+
+        // Bride Parents Name
+        if (brideParents.isEmpty()) {
+            binding.etBridePName.error = "Please enter Bride's parents name"
+            isValid = false
+        }
+
+        // Venue Name
+        if (venue.isEmpty()) {
+            binding.etVenueName.error = "Please enter Venue name"
             isValid = false
         }
 
