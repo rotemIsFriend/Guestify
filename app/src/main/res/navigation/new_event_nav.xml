@@ -43,4 +43,8 @@
         android:name="com.example.guestify.Fragments.EventDetailsFragment"
         android:label="Event Details"
         tools:layout="@layout/event_details" />
+    <fragment
+        android:id="@+id/guestsFragment"
+        android:name="com.example.guestify.ui.guests.GuestsFragment"
+        android:label="GuestsFragment" />
 </navigation>
