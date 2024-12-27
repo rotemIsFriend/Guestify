@@ -28,6 +28,7 @@ class DashboardFragment : Fragment() {
             findNavController().navigate(R.id.action_dashboardFragment_to_eventDetailsFragment)
         }
 
+
         return binding.root
 
     }
