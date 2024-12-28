@@ -41,6 +41,9 @@
             android:hint="Enter the groom's name"
             app:counterEnabled="true"
             app:counterMaxLength="50"
+            app:boxStrokeColor="@color/primary"
+            app:hintTextColor="@color/primary"
+            app:placeholderTextColor="@color/primary"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -63,13 +66,18 @@
             android:layout_height="wrap_content"
             android:hint="Example: Rotem and Roei Haver"
             app:counterEnabled="true"
-            app:counterMaxLength="50">
+            app:counterMaxLength="50"
+            app:boxStrokeColor="@color/primary"
+            app:hintTextColor="@color/primary"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_groom_p_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textColorHint="@color/primary"
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -84,7 +92,9 @@
             android:layout_height="wrap_content"
             android:hint="Enter the bride's name"
             app:counterEnabled="true"
-            app:counterMaxLength="50">
+            app:counterMaxLength="50"
+            app:boxStrokeColor="@color/primary"
+            app:hintTextColor="@color/primary">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_bride_name"
@@ -106,7 +116,9 @@
             android:layout_height="wrap_content"
             android:hint="Example: Hannan and Yohevet Fridman"
             app:counterEnabled="true"
-            app:counterMaxLength="50">
+            app:counterMaxLength="50"
+            app:boxStrokeColor="@color/primary"
+            app:hintTextColor="@color/primary">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_bride_p_name"
@@ -128,7 +140,9 @@
             android:layout_height="wrap_content"
             android:hint="Enter the event location"
             app:counterEnabled="true"
-            app:counterMaxLength="100">
+            app:counterMaxLength="100"
+            app:boxStrokeColor="@color/primary"
+            app:hintTextColor="@color/primary">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_event_location"
@@ -152,7 +166,9 @@
             android:layout_height="wrap_content"
             android:hint="Example: Gan Havradim"
             app:counterEnabled="true"
-            app:counterMaxLength="100">
+            app:counterMaxLength="100"
+            app:boxStrokeColor="@color/primary"
+            app:hintTextColor="@color/primary">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_venue_name"
@@ -198,7 +214,9 @@
             android:layout_height="wrap_content"
             android:hint="This is the main text of your invitation."
             app:counterEnabled="true"
-            app:counterMaxLength="250">
+            app:counterMaxLength="250"
+            app:boxStrokeColor="@color/primary"
+            app:hintTextColor="@color/primary">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_invitation_text"
