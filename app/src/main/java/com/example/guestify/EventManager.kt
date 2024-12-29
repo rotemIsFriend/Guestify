@@ -14,4 +14,9 @@ object EventManager {
     fun getById(id: Int): Event{
         return events.find { it.eventId == id }!! // can't be null
     }
+
+    fun getEventList(): List<Event>{
+        return events
+    }
+
 }
