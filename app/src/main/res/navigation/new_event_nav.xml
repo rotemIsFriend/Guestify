@@ -52,7 +52,34 @@
         android:id="@+id/eventDetailsFragment"
         android:name="com.example.guestify.Fragments.EventDetailsFragment"
         android:label="Event Details"
-        tools:layout="@layout/event_details" />
+        tools:layout="@layout/event_details">
+
+        <action
+            android:id="@+id/action_eventDetailsFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left"
+            app:popUpTo="@id/new_event_nav" />
+        <action
+            android:id="@+id/action_eventDetailsFragment_to_chooseTemplateFragment"
+            app:destination="@id/chooseTemplateFragment" />
+        <action
+            android:id="@+id/action_eventDetailsFragment_to_guestsFragment"
+            app:destination="@id/guestsFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/guestsFragment"
+        android:name="com.example.guestify.ui.guests.GuestsFragment"
+        android:label="GuestsFragment"
+        tools:layout="@layout/guests" />
+
     <fragment
         android:id="@+id/chooseTemplateFragment"
         android:name="com.example.guestify.Fragments.ChooseTemplateFragment"

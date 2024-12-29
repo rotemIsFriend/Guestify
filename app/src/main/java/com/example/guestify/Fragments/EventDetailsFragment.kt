@@ -6,8 +6,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.example.guestify.R
 import com.example.guestify.databinding.EventDetailsBinding
 import com.example.guestify.viewModels.InvitationViewModel
 import java.util.Calendar
@@ -31,6 +34,13 @@ class EventDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().navigate(R.id.action_eventDetailsFragment_to_dashboardFragment)
+            }
+        })
+
+
         invitationViewModel.invitationData?.let { data ->
             binding.groomsName.setText(data.groomName)
             binding.bridessName.setText(data.brideName)
@@ -43,6 +53,12 @@ class EventDetailsFragment : Fragment() {
             binding.description.setText(data.invitationText)
         }
 
+
+        binding.btnEditGuests.setOnClickListener {
+            findNavController().navigate(R.id.action_eventDetailsFragment_to_guestsFragment)
+        }
+
+
         binding.eventDate.setOnClickListener {
             if (isEditing) {
                 showDatePicker()
@@ -54,6 +70,7 @@ class EventDetailsFragment : Fragment() {
                 showTimePicker()
             }
         }
+
 
         binding.btnEditEvent.setOnClickListener {
             if (isEditing) {
@@ -111,6 +128,9 @@ class EventDetailsFragment : Fragment() {
             venueName,
             invitationText
         )
+
+
+        findNavController().navigate(R.id.action_eventDetailsFragment_to_dashboardFragment)
     }
 
     private fun showDatePicker() {
