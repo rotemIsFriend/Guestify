@@ -44,12 +44,12 @@ class EventDetailsFragment : Fragment() {
         invitationViewModel.invitationData?.let { data ->
             binding.groomsName.setText(data.groomName)
             binding.bridessName.setText(data.brideName)
-            binding.groomsParentsName.setText(data.groomParents)
-            binding.bridessParentsName.setText(data.brideParents)
+            binding.groomsParents.setText(data.groomParents)
+            binding.bridesParents.setText(data.brideParents)
             binding.eventDate.setText(data.eventDate)
             binding.eventTime.setText(data.eventTime)
             binding.location.setText(data.eventLocation)
-            binding.eventHall.setText(data.venueName)
+            binding.eventVenue.setText(data.venueName)
             binding.description.setText(data.invitationText)
         }
 
@@ -97,24 +97,24 @@ class EventDetailsFragment : Fragment() {
     private fun enableEditing(enabled: Boolean) {
         binding.groomsName.isEnabled = enabled
         binding.bridessName.isEnabled = enabled
-        binding.groomsParentsName.isEnabled = enabled
-        binding.bridessParentsName.isEnabled = enabled
+        binding.groomsParents.isEnabled = enabled
+        binding.bridesParents.isEnabled = enabled
         binding.eventDate.isEnabled = enabled
         binding.eventTime.isEnabled = enabled
         binding.location.isEnabled = enabled
-        binding.eventHall.isEnabled = enabled
+        binding.eventVenue.isEnabled = enabled
         binding.description.isEnabled = enabled
     }
 
     private fun saveEventDetails() {
         val groomName = binding.groomsName.text.toString()
         val brideName = binding.bridessName.text.toString()
-        val groomParents = binding.groomsParentsName.text.toString()
-        val brideParents = binding.bridessParentsName.text.toString()
+        val groomParents = binding.groomsParents.text.toString()
+        val brideParents = binding.bridesParents.text.toString()
         val eventDate = binding.eventDate.text.toString()
         val eventTime = binding.eventTime.text.toString()
         val eventLocation = binding.location.text.toString()
-        val venueName = binding.eventHall.text.toString()
+        val venueName = binding.eventVenue.text.toString()
         val invitationText = binding.description.text.toString()
 
         invitationViewModel.submitInvitation(
