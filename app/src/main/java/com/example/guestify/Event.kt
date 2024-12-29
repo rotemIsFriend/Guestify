@@ -6,6 +6,7 @@ open class Event(
     val name: String,
     val date: String,
     val location: String,
+    val imageUri : String,
     val eventId: Int = generateId(),
 
     ) {
@@ -27,8 +28,9 @@ class WeddingEvent(
     eventId: Int,
     name: String,
     date: String,
-    location: String
-) : Event(name, date, location, eventId)
+    location: String,
+    imageUri : String
+) : Event(name, date, location, imageUri, eventId )
 
 class BirthdayEvent(
     val birthdayPerson: String,
@@ -36,8 +38,9 @@ class BirthdayEvent(
     eventId: Int,
     name: String,
     date: String,
-    location: String
-) : Event(name, date, location, eventId)
+    location: String,
+    image: String
+) : Event(name, date, location, image, eventId)
 
 class ConferenceEvent(
     val topic: String,
@@ -45,11 +48,12 @@ class ConferenceEvent(
     eventId: Int,
     name: String,
     date: String,
-    location: String
-) : Event(name, date, location, eventId)
+    location: String,
+    imageUri: String
+) : Event(name, date, location,imageUri ,eventId)
 
 
-data class EventWedding(val groomName:String, val brideName:String, val eventDate:String, val eventTime:String, val eventLocation:String, val inviteText: String, val eventId:Int) {
+data class EventWedding(val groomName:String, val brideName:String, val eventDate:String, val eventTime:String, val eventLocation:String, val inviteText: String, val eventId:Int, val imageUri: String) {
     init {
         eventId
     }
