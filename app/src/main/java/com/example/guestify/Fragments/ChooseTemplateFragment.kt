@@ -10,7 +10,11 @@ import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
+import com.example.guestify.Event
+import com.example.guestify.EventManager
+import com.example.guestify.R
 import com.example.guestify.databinding.ChooseTemplateBinding
 import com.example.guestify.databinding.InviteTemplate1Binding
 import com.example.guestify.databinding.InviteTemplate2Binding
@@ -49,10 +53,21 @@ class ChooseTemplateFragment : Fragment() {
         val bindingT3 = InviteTemplate3Binding.inflate(LayoutInflater.from(requireContext()), null, false)
         val previewBitmap = generateInvitationPreview(invitationData, bindingT1, bindingT2, bindingT3)
 
-        //TODO set the image bitmap in the invitation viewModel, with a set fucntion
         binding.ibtnTemplate1.setImageBitmap(previewBitmap[0])
         binding.ibtnTemplate2.setImageBitmap(previewBitmap[1])
         binding.ibtnTemplate3.setImageBitmap(previewBitmap[2])
+
+        binding.ibtnTemplate1.setOnClickListener {
+            updateTemplateAndNavigate(previewBitmap[0])
+        }
+
+        binding.ibtnTemplate2.setOnClickListener {
+            updateTemplateAndNavigate(previewBitmap[1])
+        }
+
+        binding.ibtnTemplate3.setOnClickListener {
+            updateTemplateAndNavigate(previewBitmap[2])
+        }
 
     }
     private fun generateInvitationPreview(data: InvitationData, bindingT1 : InviteTemplate1Binding, bindingT2 : InviteTemplate2Binding, bindingT3 : InviteTemplate3Binding): List<Bitmap> {
@@ -121,6 +136,15 @@ class ChooseTemplateFragment : Fragment() {
 
     }
 
+    private fun updateTemplateAndNavigate(template: Bitmap){
+        invitationViewModel.updateTemplate(template)
+        val invitationData = invitationViewModel.invitationData!!
+        val event = Event(invitationData.eventName, invitationData.eventDate, invitationData.eventLocation, template)
+        EventManager.add(event)
+        findNavController().navigate(R.id.action_chooseTemplateFragment_to_dashboardFragment)
+
+
+    }
     override fun onDestroyView() {
         super.onDestroyView()
     }

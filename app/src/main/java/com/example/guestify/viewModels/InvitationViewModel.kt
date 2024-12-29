@@ -1,5 +1,6 @@
 package com.example.guestify.viewModels
 
+import android.graphics.Bitmap
 import androidx.lifecycle.ViewModel
 
 
@@ -12,7 +13,9 @@ data class InvitationData(
     val eventTime: String,
     val eventLocation: String,
     val venueName: String,
-    val invitationText: String
+    val invitationText: String,
+    var template : Bitmap ? = null,
+    val eventName:String = groomName + " & " + brideName
 )
 
 
@@ -40,6 +43,10 @@ class InvitationViewModel : ViewModel() {
             eventLocation,
             venueName,
             invitationText)
+    }
+
+    fun updateTemplate(template: Bitmap) {
+        invitationData?.template = template
     }
 
 }

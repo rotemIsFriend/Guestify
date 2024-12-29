@@ -57,5 +57,14 @@
         android:id="@+id/chooseTemplateFragment"
         android:name="com.example.guestify.Fragments.ChooseTemplateFragment"
         android:label="choose_template"
-        tools:layout="@layout/choose_template" />
+        tools:layout="@layout/choose_template" >
+        <action
+            android:id="@+id/action_chooseTemplateFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left"
+            app:popUpTo="@id/new_event_nav" />
+    </fragment>
 </navigation>

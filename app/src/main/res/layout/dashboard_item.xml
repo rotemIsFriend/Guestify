@@ -12,12 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:gravity="center"
         android:padding="8dp">
 
         <ImageView
             android:id="@+id/eventImage"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
             android:scaleType="centerCrop"
             android:contentDescription="Event Image" />
 
@@ -33,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Event Name"
-                android:textSize="16sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -41,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Event Date"
-                android:textSize="14sp" />
+                android:textSize="18sp" />
 
         </LinearLayout>
 

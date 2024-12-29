@@ -29,9 +29,7 @@ class EventAdapter(private val events: List<Event>) : RecyclerView.Adapter<Event
         val event = events[position]
         holder.eventName.text = event.name
         holder.eventDate.text = event.date
-        Glide.with(holder.eventImage.context)
-            .load(Uri.parse(event.imageUri))
-            .into(holder.eventImage)
+        holder.eventImage.setImageBitmap(event.imageBitmap)
     }
 
     override fun getItemCount(): Int {
