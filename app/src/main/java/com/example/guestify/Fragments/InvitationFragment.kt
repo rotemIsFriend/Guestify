@@ -22,6 +22,9 @@ class InvitationFragment: Fragment() {
     private val binding get() = _binding!!
     private val invitationViewModel : InvitationViewModel by activityViewModels()
 
+    private var eventTime = ""
+    private var eventDate = ""
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -34,39 +37,9 @@ class InvitationFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var eventTime = ""
-        var eventDate = ""
 
-
-        // TODO outsource date&time dialog to its own function
         binding.btnSelectDate.setOnClickListener {
-            val cal = Calendar.getInstance()
-            val datePickerListener = DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
-                val selectedDate = "${dayOfMonth}/${month + 1}/${year}"
-                eventDate = selectedDate
-
-                val timePickerListener = TimePickerDialog.OnTimeSetListener { _, hourOfDay, minute ->
-                    eventTime = String.format("%02d:%02d", hourOfDay, minute)
-                    binding.tvDateTime.text = "${eventDate} - ${eventTime}"
-                }
-
-                TimePickerDialog(
-                    requireContext(),
-                    timePickerListener,
-                    cal.get(Calendar.HOUR_OF_DAY),
-                    cal.get(Calendar.MINUTE),
-                    false
-                ).show()
-            }
-
-            val datePickerDialog = DatePickerDialog(
-                requireContext(),
-                datePickerListener,
-                cal.get(Calendar.YEAR),
-                cal.get(Calendar.MONTH),
-                cal.get(Calendar.DAY_OF_MONTH)
-            )
-            datePickerDialog.show()
+            setDateTimePicker()
 
         }
 
@@ -77,6 +50,7 @@ class InvitationFragment: Fragment() {
             val brideParents = binding.etBridePName.text.toString().trim()
             val eventLocation = binding.etEventLocation.text.toString().trim()
             val venue = binding.etVenueName.text.toString().trim()
+            val numOfGuests = binding.etNumOfGuests.text.toString().trim().toInt()
             val invitationText = binding.etInvitationText.text.toString().trim()
 
             // Validate form inputs
@@ -89,7 +63,8 @@ class InvitationFragment: Fragment() {
                 eventTime,
                 eventLocation,
                 venue,
-                invitationText
+                invitationText,
+                numOfGuests,
             )
 
             if (isValid) {
@@ -103,7 +78,8 @@ class InvitationFragment: Fragment() {
                     eventTime,
                     eventLocation,
                     venue,
-                    invitationText
+                    invitationText,
+                    numOfGuests
                 )
                 findNavController().navigate(R.id.action_invitationFragment_to_chooseTemplateFragment)
             } else {
@@ -111,6 +87,41 @@ class InvitationFragment: Fragment() {
             }
         }
 
+    }
+
+    private fun setDateTimePicker() {
+        val cal = Calendar.getInstance()
+
+        cal.add(Calendar.DAY_OF_YEAR, 1)
+        val minDate = cal.timeInMillis
+
+        val datePickerListener = DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
+            val selectedDate = "${dayOfMonth}/${month + 1}/${year}"
+            eventDate = selectedDate
+
+            val timePickerListener = TimePickerDialog.OnTimeSetListener { _, hourOfDay, minute ->
+                eventTime = String.format("%02d:%02d", hourOfDay, minute)
+                binding.tvDateTime.text = "${eventDate} - ${eventTime}"
+            }
+
+            TimePickerDialog(
+                requireContext(),
+                timePickerListener,
+                cal.get(Calendar.HOUR_OF_DAY),
+                cal.get(Calendar.MINUTE),
+                false
+            ).show()
+        }
+
+        val datePickerDialog = DatePickerDialog(
+            requireContext(),
+            datePickerListener,
+            cal.get(Calendar.YEAR),
+            cal.get(Calendar.MONTH),
+            cal.get(Calendar.DAY_OF_MONTH)
+        )
+        datePickerDialog.datePicker.minDate = minDate
+        datePickerDialog.show()
     }
 
     private fun validateForm(
@@ -122,7 +133,8 @@ class InvitationFragment: Fragment() {
         eventTime: String,
         eventLocation: String,
         venue: String,
-        invitationText: String
+        invitationText: String,
+        numOfGuests: Int,
     ): Boolean {
         var isValid = true
 
@@ -153,6 +165,12 @@ class InvitationFragment: Fragment() {
         // Venue Name
         if (venue.isEmpty()) {
             binding.etVenueName.error = "Please enter Venue name"
+            isValid = false
+        }
+
+        // Number of guests
+        if (numOfGuests.toString().isEmpty()) {
+            binding.etNumOfGuests.error = "Please enter number of guests"
             isValid = false
         }
 

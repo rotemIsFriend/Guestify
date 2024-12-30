@@ -13,231 +13,231 @@
 
     <!-- Optional: Some small quote at the top -->
     <TextView
-    android:id="@+id/tvTopQuote"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="“מים רבים לא יוכלו לכבות את האהבה...”"
-    android:textSize="16sp"
+        android:id="@+id/tvTopQuote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="“מים רבים לא יוכלו לכבות את האהבה...”"
+        android:textSize="16sp"
         android:textColor="@color/white"
-    android:layout_marginBottom="8dp"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent" />
+        android:layout_marginBottom="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <!-- Title: Bride and Groom Names -->
+    <!-- Title: Bride and Groom Names -->
     <TextView
-    android:id="@+id/tvBrideAndGroom"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="HILA &amp; NOAM"
+        android:id="@+id/tvBrideAndGroom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HILA &amp; NOAM"
         android:textColor="@color/white"
         android:textSize="35sp"
-    android:textStyle="bold"
-    android:layout_marginTop="16dp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/birthstone_reg"
-    app:layout_constraintTop_toBottomOf="@id/tvTopQuote"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/tvTopQuote"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-        <!-- Subtitle -->
+    <!-- Subtitle -->
     <TextView
-    android:id="@+id/tvSubTitle"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="החתונה שלנו"
-    android:textSize="18sp"
+        android:id="@+id/tvSubTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="החתונה שלנו"
+        android:textSize="18sp"
         android:textColor="@color/white"
 
         android:layout_marginTop="4dp"
-    app:layout_constraintTop_toBottomOf="@id/tvBrideAndGroom"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/tvBrideAndGroom"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <!-- Intro Invitation Text -->
+    <!-- Intro Invitation Text -->
     <TextView
-    android:id="@+id/tvInvitationIntro"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:text="שמחים ונרגשים להזמינכם לחגוג עמנו את היום המאושר בחיינו"
-    android:textAlignment="center"
-    android:gravity="center"
+        android:id="@+id/tvInvitationIntro"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="שמחים ונרגשים להזמינכם לחגוג עמנו את היום המאושר בחיינו"
+        android:textAlignment="center"
+        android:gravity="center"
         android:textColor="@color/white"
         android:layout_marginTop="16dp"
-    app:layout_constraintTop_toBottomOf="@id/tvSubTitle"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/tvSubTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <!-- Date -->
+    <!-- Date -->
     <TextView
-    android:id="@+id/tvDate"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="14.10.2024"
-    android:textSize="24sp"
-    android:textStyle="bold"
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="14.10.2024"
+        android:textSize="24sp"
+        android:textStyle="bold"
         android:textColor="@color/white"
 
         android:layout_marginTop="24dp"
-    app:layout_constraintTop_toBottomOf="@id/tvInvitationIntro"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/tvInvitationIntro"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <!-- Additional Date / Day Info (Optional) -->
+    <!-- Additional Date / Day Info (Optional) -->
     <TextView
-    android:id="@+id/tvAdditionalDateInfo"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="יום שני, י״ב בתשרי"
+        android:id="@+id/tvAdditionalDateInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="יום שני, י״ב בתשרי"
         android:textColor="@color/white"
 
         android:layout_marginTop="8dp"
-    app:layout_constraintTop_toBottomOf="@id/tvDate"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/tvDate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <!-- Venue Name -->
+    <!-- Venue Name -->
     <TextView
-    android:id="@+id/tvVenue"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="גן האירועים הנגלה"
+        android:id="@+id/tvVenue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="גן האירועים הנגלה"
         android:textColor="@color/white"
 
         android:textSize="20sp"
-    android:textStyle="bold"
-    android:layout_marginTop="24dp"
-    app:layout_constraintTop_toBottomOf="@id/tvAdditionalDateInfo"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent" />
+        android:textStyle="bold"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@id/tvAdditionalDateInfo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <!-- Venue Address -->
+    <!-- Venue Address -->
     <TextView
-    android:id="@+id/tvVenueAddress"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="דרך השדות, בית עובד"
+        android:id="@+id/tvVenueAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="דרך השדות, בית עובד"
         android:textColor="@color/white"
 
         android:layout_marginTop="8dp"
-    app:layout_constraintTop_toBottomOf="@id/tvVenue"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/tvVenue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <!-- Times Row (Reception and Ceremony) -->
+    <!-- Times Row (Reception and Ceremony) -->
     <LinearLayout
-    android:id="@+id/llTimesRow"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
+        android:id="@+id/llTimesRow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:textColor="@color/white"
 
         android:gravity="center"
-    android:layout_marginTop="24dp"
-    app:layout_constraintTop_toBottomOf="@id/tvVenueAddress"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent">
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@id/tvVenueAddress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
 
-    <!-- Ceremony -->
-    <LinearLayout
+        <!-- Ceremony -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvTimeCeremony"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20:30"
+                android:textColor="@color/white"
+
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvEventCeremonyLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_marginTop="4dp"
+                android:text="חופה וקידושין" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Closing Note -->
+    <TextView
+        android:id="@+id/tvFooterNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center">
-
-        <TextView
-            android:id="@+id/tvTimeCeremony"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="20:30"
-            android:textColor="@color/white"
-
-            android:textStyle="bold"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/tvEventCeremonyLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:layout_marginTop="4dp"
-            android:text="חופה וקידושין" />
-    </LinearLayout>
-    </LinearLayout>
-
-        <!-- Closing Note -->
-    <TextView
-    android:id="@+id/tvFooterNote"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="נשמח לראותכם"
+        android:text="נשמח לראותכם"
         android:textColor="@color/white"
         android:layout_marginTop="24dp"
-    app:layout_constraintTop_toBottomOf="@id/llTimesRow"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/llTimesRow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <!-- Parents Section -->
+    <!-- Parents Section -->
     <LinearLayout
-    android:id="@+id/llParents"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="16dp"
-    android:orientation="horizontal"
-    android:gravity="center_horizontal"
-    app:layout_constraintTop_toBottomOf="@id/tvFooterNote"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent">
-
-    <!-- Bride's Parents -->
-    <LinearLayout
+        android:id="@+id/llParents"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginEnd="48dp"
-        android:gravity="center">
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toBottomOf="@id/tvFooterNote"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <TextView
-            android:id="@+id/tvBrideParentsLabel"
+        <!-- Bride's Parents -->
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:text="הורי הכלה"
-            android:textStyle="bold" />
+            android:orientation="vertical"
+            android:layout_marginEnd="48dp"
+            android:gravity="center">
 
-        <TextView
-            android:id="@+id/tvBrideParentsNames"
+            <TextView
+                android:id="@+id/tvBrideParentsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="הורי הכלה"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvBrideParentsNames"
+                android:layout_width="wrap_content"
+                android:textColor="@color/white"
+
+                android:layout_height="wrap_content"
+                android:text="מזל ואילון יצחקן" />
+        </LinearLayout>
+
+        <!-- Groom's Parents -->
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:textColor="@color/white"
-
             android:layout_height="wrap_content"
-            android:text="מזל ואילון יצחקן" />
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvGroomParentsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="הורי החתן"
+                android:textColor="@color/white"
+
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvGroomParentsNames"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+
+                android:text="חפציבה וירון אשד" />
+        </LinearLayout>
     </LinearLayout>
 
-    <!-- Groom's Parents -->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center">
-
-        <TextView
-            android:id="@+id/tvGroomParentsLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="הורי החתן"
-            android:textColor="@color/white"
-
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvGroomParentsNames"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-
-            android:text="חפציבה וירון אשד" />
-    </LinearLayout>
-    </LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
