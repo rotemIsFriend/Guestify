@@ -51,6 +51,7 @@ class EventDetailsFragment : Fragment() {
             binding.location.setText(data.eventLocation)
             binding.eventVenue.setText(data.venueName)
             binding.description.setText(data.invitationText)
+            binding.amount.setText(data.numOfGuests)
         }
 
 
@@ -116,6 +117,8 @@ class EventDetailsFragment : Fragment() {
         val eventLocation = binding.location.text.toString()
         val venueName = binding.eventVenue.text.toString()
         val invitationText = binding.description.text.toString()
+        val numOfGuests = binding.amount.text.toString().toInt()
+
 
         invitationViewModel.submitInvitation(
             groomName,
@@ -126,8 +129,8 @@ class EventDetailsFragment : Fragment() {
             eventTime,
             eventLocation,
             venueName,
-            invitationText
-        )
+            invitationText,
+            numOfGuests)
 
 
         findNavController().navigate(R.id.action_eventDetailsFragment_to_dashboardFragment)

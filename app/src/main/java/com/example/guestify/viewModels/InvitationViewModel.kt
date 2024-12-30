@@ -14,6 +14,7 @@ data class InvitationData(
     val eventLocation: String,
     val venueName: String,
     val invitationText: String,
+    val numOfGuests: Int,
     var template : Bitmap ? = null,
     val eventName:String = groomName + " & " + brideName
 )
@@ -32,7 +33,8 @@ class InvitationViewModel : ViewModel() {
                          eventTime: String,
                          eventLocation: String,
                          venueName: String,
-                         invitationText: String) {
+                         invitationText: String,
+                         numOfGuests: Int){
         this.invitationData = InvitationData(
             groomName,
             brideName,
@@ -42,7 +44,8 @@ class InvitationViewModel : ViewModel() {
             eventTime,
             eventLocation,
             venueName,
-            invitationText)
+            invitationText,
+            numOfGuests)
     }
 
     fun updateTemplate(template: Bitmap) {
