@@ -15,7 +15,7 @@ object EventManager {
         return events.find { it.eventId == id }!! // can't be null
     }
 
-    fun getEventList(): List<Event>{
+    fun getEventList(): MutableList<Event>{
         return events
     }
 

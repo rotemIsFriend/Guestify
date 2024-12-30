@@ -41,7 +41,7 @@ class ChooseTemplateFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val invitationData = invitationViewModel.invitationData
+        val invitationData = invitationViewModel.invitationData.value
 
         if (invitationData == null) {
             Toast.makeText(requireContext(), "No invitation data yet!", Toast.LENGTH_SHORT).show()
@@ -58,15 +58,15 @@ class ChooseTemplateFragment : Fragment() {
         binding.ibtnTemplate3.setImageBitmap(previewBitmap[2])
 
         binding.ibtnTemplate1.setOnClickListener {
-            updateTemplateAndNavigate(previewBitmap[0])
+            updateTemplateAndNavigate(previewBitmap[0], invitationData)
         }
 
         binding.ibtnTemplate2.setOnClickListener {
-            updateTemplateAndNavigate(previewBitmap[1])
+            updateTemplateAndNavigate(previewBitmap[1], invitationData)
         }
 
         binding.ibtnTemplate3.setOnClickListener {
-            updateTemplateAndNavigate(previewBitmap[2])
+            updateTemplateAndNavigate(previewBitmap[2], invitationData)
         }
 
     }
@@ -136,10 +136,20 @@ class ChooseTemplateFragment : Fragment() {
 
     }
 
-    private fun updateTemplateAndNavigate(template: Bitmap){
+    private fun updateTemplateAndNavigate(template: Bitmap, invitationData: InvitationData){
         invitationViewModel.updateTemplate(template)
-        val invitationData = invitationViewModel.invitationData!!
-        val event = Event(invitationData.eventName, invitationData.eventDate, invitationData.eventLocation, template)
+        val event = Event(invitationData.eventName,
+            invitationData.eventDate,
+            invitationData.eventLocation,template,
+            invitationData.groomName,
+            invitationData.brideName,
+            invitationData.groomParents,
+            invitationData.brideParents,
+            invitationData.eventTime,
+            invitationData.venueName,
+            invitationData.invitationText,
+            invitationData.numOfGuests
+            )
         EventManager.add(event)
         findNavController().navigate(R.id.action_chooseTemplateFragment_to_dashboardFragment)
 

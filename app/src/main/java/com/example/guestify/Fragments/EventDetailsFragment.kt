@@ -3,6 +3,7 @@ package com.example.guestify.Fragments
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,8 +11,10 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.example.guestify.EventManager
 import com.example.guestify.R
 import com.example.guestify.databinding.EventDetailsBinding
+import com.example.guestify.viewModels.InvitationData
 import com.example.guestify.viewModels.InvitationViewModel
 import java.util.Calendar
 
@@ -33,32 +36,24 @@ class EventDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val eventId = arguments?.getInt("eventId") ?: -1
+        val event = EventManager.getById(eventId)
+        invitationViewModel.invitationData.value = event.toInvitationData()
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 findNavController().navigate(R.id.action_eventDetailsFragment_to_dashboardFragment)
             }
         })
-
-
-        invitationViewModel.invitationData?.let { data ->
-            binding.groomsName.setText(data.groomName)
-            binding.bridessName.setText(data.brideName)
-            binding.groomsParents.setText(data.groomParents)
-            binding.bridesParents.setText(data.brideParents)
-            binding.eventDate.setText(data.eventDate)
-            binding.eventTime.setText(data.eventTime)
-            binding.location.setText(data.eventLocation)
-            binding.eventVenue.setText(data.venueName)
-            binding.description.setText(data.invitationText)
-            binding.amount.setText(data.numOfGuests)
+        invitationViewModel.invitationData.observe(viewLifecycleOwner) {
+            populateFields(it)
         }
+
 
 
         binding.btnEditGuests.setOnClickListener {
             findNavController().navigate(R.id.action_eventDetailsFragment_to_guestsFragment)
         }
-
 
         binding.eventDate.setOnClickListener {
             if (isEditing) {
@@ -72,7 +67,6 @@ class EventDetailsFragment : Fragment() {
             }
         }
 
-
         binding.btnEditEvent.setOnClickListener {
             if (isEditing) {
                 saveEventDetails()
@@ -81,6 +75,20 @@ class EventDetailsFragment : Fragment() {
         }
 
         enableEditing(false)
+    }
+
+    private fun populateFields(data: InvitationData) {
+        binding.eventName.setText(data.eventName)
+        binding.groomsName.setText(data.groomName)
+        binding.bridessName.setText(data.brideName)
+        binding.groomsParents.setText(data.groomParents)
+        binding.bridesParents.setText(data.brideParents)
+        binding.eventDate.setText(data.eventDate)
+        binding.eventTime.setText(data.eventTime)
+        binding.location.setText(data.eventLocation)
+        binding.eventVenue.setText(data.venueName)
+        binding.description.setText(data.invitationText)
+        binding.amount.setText(data.numOfGuests.toString())
     }
 
     private fun toggleEditMode() {
@@ -108,30 +116,26 @@ class EventDetailsFragment : Fragment() {
     }
 
     private fun saveEventDetails() {
-        val groomName = binding.groomsName.text.toString()
-        val brideName = binding.bridessName.text.toString()
-        val groomParents = binding.groomsParents.text.toString()
-        val brideParents = binding.bridesParents.text.toString()
-        val eventDate = binding.eventDate.text.toString()
-        val eventTime = binding.eventTime.text.toString()
-        val eventLocation = binding.location.text.toString()
-        val venueName = binding.eventVenue.text.toString()
-        val invitationText = binding.description.text.toString()
-        val numOfGuests = binding.amount.text.toString().toInt()
 
+        val invitationData = InvitationData(
+            groomName = binding.groomsName.text.toString(),
+            brideName = binding.bridessName.text.toString(),
+            groomParents = binding.groomsParents.text.toString(),
+            brideParents = binding.bridesParents.text.toString(),
+            eventDate = binding.eventDate.text.toString(),
+            eventTime = binding.eventTime.text.toString(),
+            eventLocation = binding.location.text.toString(),
+            venueName = binding.eventVenue.text.toString(),
+            invitationText = binding.description.text.toString(),
+            numOfGuests = binding.amount.text.toString().toInt()
+        )
+        // Update viewModel
+        invitationViewModel.invitationData.value = invitationData
 
-        invitationViewModel.submitInvitation(
-            groomName,
-            brideName,
-            groomParents,
-            brideParents,
-            eventDate,
-            eventTime,
-            eventLocation,
-            venueName,
-            invitationText,
-            numOfGuests)
-
+        //Update Event
+        val eventId = arguments?.getInt("eventId") ?: -1
+        val event = EventManager.getById(eventId)
+        event.updateFromInvitationData(invitationData)
 
         findNavController().navigate(R.id.action_eventDetailsFragment_to_dashboardFragment)
     }

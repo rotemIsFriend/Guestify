@@ -1,6 +1,7 @@
 package com.example.guestify.viewModels
 
 import android.graphics.Bitmap
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 
@@ -22,7 +23,7 @@ data class InvitationData(
 
 class InvitationViewModel : ViewModel() {
 
-    var invitationData : InvitationData? = null
+    var invitationData = MutableLiveData<InvitationData>()
         private set
 
     fun submitInvitation(groomName: String,
@@ -35,7 +36,7 @@ class InvitationViewModel : ViewModel() {
                          venueName: String,
                          invitationText: String,
                          numOfGuests: Int){
-        this.invitationData = InvitationData(
+        this.invitationData.value = InvitationData(
             groomName,
             brideName,
             groomParents,
@@ -49,7 +50,7 @@ class InvitationViewModel : ViewModel() {
     }
 
     fun updateTemplate(template: Bitmap) {
-        invitationData?.template = template
+        invitationData.value?.template = template
     }
 
 }

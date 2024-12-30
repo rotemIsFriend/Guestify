@@ -12,9 +12,21 @@ import com.example.guestify.Event
 import com.example.guestify.R
 
 
-class EventAdapter(private val events: List<Event>) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
+class EventAdapter(private val events: List<Event>, private val callback : EventListener) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
 
-    class EventViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    interface EventListener {
+        fun onEventClicked(index: Int)
+    }
+
+    inner class EventViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
+
+        init {
+            view.rootView.setOnClickListener(this)
+        }
+        override fun onClick(v: View?) {
+            callback.onEventClicked(adapterPosition)
+        }
+
         val eventImage: ImageView = view.findViewById(R.id.eventImage)
         val eventName: TextView = view.findViewById(R.id.eventName)
         val eventDate: TextView = view.findViewById(R.id.eventDate)
@@ -35,4 +47,5 @@ class EventAdapter(private val events: List<Event>) : RecyclerView.Adapter<Event
     override fun getItemCount(): Int {
         return events.size
     }
+
 }

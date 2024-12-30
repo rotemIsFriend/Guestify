@@ -12,11 +12,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginTop="40dp"
         android:padding="16dp">
 
 
         <TextView
-            android:id="@+id/event_title"
+            android:id="@+id/event_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Event Name"
@@ -31,7 +32,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:gravity="center">
 
 
             <com.google.android.material.button.MaterialButton
@@ -50,6 +52,9 @@
                 app:iconPadding="10dp"
                 app:iconTint="@color/primary" />
 
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="5dp"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/event_Time"
@@ -94,14 +99,17 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="16dp"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/bridess_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:enabled="false"/>
+                android:enabled="false"
+
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
 

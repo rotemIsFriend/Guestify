@@ -54,6 +54,10 @@
         android:label="Event Details"
         tools:layout="@layout/event_details">
 
+        <argument
+            android:name="eventId"
+            app:argType="integer" />
+
         <action
             android:id="@+id/action_eventDetailsFragment_to_dashboardFragment"
             app:destination="@id/dashboardFragment"

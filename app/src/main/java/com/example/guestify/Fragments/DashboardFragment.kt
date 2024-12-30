@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Adapter
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,12 +19,12 @@ class DashboardFragment : Fragment() {
     private var _binding: DashboardBinding ? = null
     private val binding get() = _binding!!
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = DashboardBinding.inflate(inflater, container, false)
+
 
         binding.newEventBtn.setOnClickListener {
             findNavController().navigate(R.id.action_dashboardFragment_to_invitationFragment)
@@ -36,7 +37,13 @@ class DashboardFragment : Fragment() {
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         val events = EventManager.getEventList()
 
-        binding.recyclerView.adapter = EventAdapter(events)
+        binding.recyclerView.adapter = EventAdapter(events, object : EventAdapter.EventListener {
+            override fun onEventClicked(index: Int) {
+                val bundle = bundleOf("eventId" to EventManager.getEventList()[index].eventId)
+                findNavController().navigate(R.id.action_dashboardFragment_to_eventDetailsFragment, bundle)
+
+            }
+        })
 
 
         return binding.root
