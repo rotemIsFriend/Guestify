@@ -23,15 +23,14 @@ class DashboardFragment : Fragment() {
     ): View {
         _binding = DashboardBinding.inflate(inflater, container, false)
 
-        // ניווט ליצירת אירוע חדש
+
         binding.newEventBtn.setOnClickListener {
             findNavController().navigate(R.id.action_dashboardFragment_to_invitationFragment)
         }
 
-        // הגדרת RecyclerView
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        val events = EventManager.getEventList().toMutableList() // הפיכת הרשימה ל-MutableList
 
+        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        val events = EventManager.getEventList().toMutableList()
         binding.recyclerView.adapter = EventAdapter(events, object : EventAdapter.EventListener {
             override fun onEventClicked(index: Int) {
                 val bundle = bundleOf("eventId" to events[index].eventId)
@@ -39,8 +38,8 @@ class DashboardFragment : Fragment() {
             }
 
             override fun onEventDeleted(index: Int) {
-                EventManager.remove(index) // מחיקת האירוע ממנהל האירועים
-                (binding.recyclerView.adapter as EventAdapter).removeEvent(index) // עדכון ה-Adapter עם אנימציה
+                EventManager.remove(index)
+                (binding.recyclerView.adapter as EventAdapter).removeEvent(index)
             }
         })
 

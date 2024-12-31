@@ -38,7 +38,7 @@ class EventAdapter(
         holder.eventDate.text = event.date
         holder.eventImage.setImageBitmap(event.imageBitmap)
 
-        // מחיקה בלחיצה על כפתור הפח
+
         holder.deleteButton.setOnClickListener {
             callback.onEventDeleted(holder.adapterPosition)
         }
