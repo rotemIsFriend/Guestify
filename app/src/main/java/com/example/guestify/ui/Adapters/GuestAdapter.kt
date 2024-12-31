@@ -1,4 +1,4 @@
-package com.example.guestify.Adapters
+package com.example.guestify.ui.Adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.guestify.R
-import com.example.guestify.data.local.entity.Guest
+import com.example.guestify.data.model.Guest
 
 class GuestAdapter(
     private var guests: List<Guest>,
