@@ -4,19 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.guestify.EventManager
 import com.example.guestify.R
-import com.example.guestify.databinding.DashboardBinding
 import com.example.guestify.Adapters.EventAdapter
+import com.example.guestify.databinding.DashboardBinding
 
 class DashboardFragment : Fragment() {
-    private var _binding: DashboardBinding ? = null
+    private var _binding: DashboardBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -25,35 +23,30 @@ class DashboardFragment : Fragment() {
     ): View {
         _binding = DashboardBinding.inflate(inflater, container, false)
 
-
+        // ניווט ליצירת אירוע חדש
         binding.newEventBtn.setOnClickListener {
             findNavController().navigate(R.id.action_dashboardFragment_to_invitationFragment)
         }
 
-        binding.viewEventDetailsBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_dashboardFragment_to_eventDetailsFragment)
-        }
-
+        // הגדרת RecyclerView
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        val events = EventManager.getEventList()
+        val events = EventManager.getEventList().toMutableList() // הפיכת הרשימה ל-MutableList
 
         binding.recyclerView.adapter = EventAdapter(events, object : EventAdapter.EventListener {
             override fun onEventClicked(index: Int) {
-                val bundle = bundleOf("eventId" to EventManager.getEventList()[index].eventId)
+                val bundle = bundleOf("eventId" to events[index].eventId)
                 findNavController().navigate(R.id.action_dashboardFragment_to_eventDetailsFragment, bundle)
+            }
 
+            override fun onEventDeleted(index: Int) {
+                EventManager.remove(index) // מחיקת האירוע ממנהל האירועים
+                (binding.recyclerView.adapter as EventAdapter).removeEvent(index) // עדכון ה-Adapter עם אנימציה
             }
         })
 
-
         return binding.root
-
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

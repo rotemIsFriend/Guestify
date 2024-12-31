@@ -46,6 +46,15 @@
 
         </LinearLayout>
 
+        <ImageButton
+            android:id="@+id/deleteButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Delete Event"
+            app:srcCompat="@drawable/baseline_delete_outline_24" />
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
