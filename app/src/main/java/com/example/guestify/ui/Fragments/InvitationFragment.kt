@@ -1,4 +1,4 @@
-package com.example.guestify.Fragments
+package com.example.guestify.ui.Fragments
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
@@ -14,13 +14,12 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.guestify.R
 import com.example.guestify.databinding.InvitationBinding
-import com.example.guestify.viewModels.InvitationViewModel
+import com.example.guestify.ui.viewModels.EventsViewModel
 
 class InvitationFragment: Fragment() {
 
     private var _binding : InvitationBinding ? = null
     private val binding get() = _binding!!
-    private val invitationViewModel : InvitationViewModel by activityViewModels()
 
     private var eventTime = ""
     private var eventDate = ""
@@ -40,7 +39,6 @@ class InvitationFragment: Fragment() {
 
         binding.btnSelectDate.setOnClickListener {
             setDateTimePicker()
-
         }
 
         binding.btnSubmit.setOnClickListener {
@@ -68,20 +66,19 @@ class InvitationFragment: Fragment() {
             )
 
             if (isValid) {
-                // Submit data to ViewModel if valid
-                invitationViewModel.submitInvitation(
-                    groomName,
-                    brideName,
-                    groomParents,
-                    brideParents,
-                    eventDate,
-                    eventTime,
-                    eventLocation,
-                    venue,
-                    invitationText,
-                    numOfGuests.toInt()
-                )
-                findNavController().navigate(R.id.action_invitationFragment_to_chooseTemplateFragment)
+                val bundle = Bundle().apply {
+                    putString("groomName", groomName)
+                    putString("brideName", brideName)
+                    putString("groomParents", groomParents)
+                    putString("brideParents", brideParents)
+                    putString("eventDate", eventDate)
+                    putString("eventTime", eventTime)
+                    putString("eventLocation", eventLocation)
+                    putString("venueName", venue)
+                    putString("invitationText", invitationText)
+                    putInt("numOfGuests", numOfGuests.toInt())
+                }
+                findNavController().navigate(R.id.action_invitationFragment_to_chooseTemplateFragment, bundle)
             } else {
                 Toast.makeText(requireContext(), "Please fix the errors above.", Toast.LENGTH_SHORT).show()
             }
@@ -91,7 +88,6 @@ class InvitationFragment: Fragment() {
 
     private fun setDateTimePicker() {
         val cal = Calendar.getInstance()
-
         cal.add(Calendar.DAY_OF_YEAR, 1)
         val minDate = cal.timeInMillis
 
@@ -178,7 +174,7 @@ class InvitationFragment: Fragment() {
 
         // Event Date
         if (eventDate.isEmpty() || eventTime.isEmpty()) {
-            binding.btnSelectDate.error = "Please pick date & time"
+            Toast.makeText(requireContext(), "Please pick a date and time.", Toast.LENGTH_SHORT).show()
             isValid = false
         }
 

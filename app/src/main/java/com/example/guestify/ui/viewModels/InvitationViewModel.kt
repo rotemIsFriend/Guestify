@@ -1,4 +1,4 @@
-package com.example.guestify.viewModels
+package com.example.guestify.ui.viewModels
 
 import android.graphics.Bitmap
 import androidx.lifecycle.MutableLiveData
@@ -35,7 +35,8 @@ class InvitationViewModel : ViewModel() {
             venueName = "",
             invitationText = "",
             numOfGuests = 0
-        )}
+        )
+    }
         private set
 
     fun submitInvitation(groomName: String,

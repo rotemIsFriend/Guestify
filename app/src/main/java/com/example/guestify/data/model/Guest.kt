@@ -1,4 +1,4 @@
-package com.example.guestify.data.local.entity
+package com.example.guestify.data.model
 
 data class Guest (
     val id: Int = 0,

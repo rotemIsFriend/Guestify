@@ -1,4 +1,4 @@
-package com.example.guestify.Adapters
+package com.example.guestify.ui.Adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,11 +7,11 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.guestify.Event
+import com.example.guestify.data.model.Event
 import com.example.guestify.R
 
 class EventAdapter(
-    private val events: MutableList<Event>,
+    private val events: List<Event>,
     private val callback: EventListener
 ) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
 
@@ -47,8 +47,6 @@ class EventAdapter(
         holder.eventName.text = event.name
         holder.eventDate.text = event.date
         holder.eventImage.setImageBitmap(event.imageBitmap)
-
-
         holder.deleteButton.setOnClickListener {
             callback.onEventDeleted(holder.adapterPosition)
         }
@@ -56,9 +54,6 @@ class EventAdapter(
 
     override fun getItemCount(): Int = events.size
 
-    fun removeEvent(position: Int) {
-        events.removeAt(position)
-        notifyItemRemoved(position)
-    }
+
 }
 

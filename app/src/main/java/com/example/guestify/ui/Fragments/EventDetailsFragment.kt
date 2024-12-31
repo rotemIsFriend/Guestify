@@ -1,5 +1,4 @@
-package com.example.guestify.Fragments
-
+package com.example.guestify.ui.Fragments
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
@@ -12,11 +11,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.guestify.EventManager
 import com.example.guestify.R
+import com.example.guestify.data.model.Event
 import com.example.guestify.databinding.EventDetailsBinding
-import com.example.guestify.viewModels.InvitationData
-import com.example.guestify.viewModels.InvitationViewModel
+import com.example.guestify.ui.viewModels.EventsViewModel
+import com.example.guestify.ui.viewModels.InvitationData
+import com.example.guestify.ui.viewModels.InvitationViewModel
 import java.util.Calendar
 
 class EventDetailsFragment : Fragment() {
@@ -24,6 +24,7 @@ class EventDetailsFragment : Fragment() {
     private var _binding: EventDetailsBinding? = null
     private val binding get() = _binding!!
     private val invitationViewModel: InvitationViewModel by viewModels()
+    private val eventsViewModel: EventsViewModel by activityViewModels()
     private var isEditing = false
 
     override fun onCreateView(
@@ -31,8 +32,6 @@ class EventDetailsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.e("EventDetailsFragment", "eventDetails created ${invitationViewModel.invitationData.value}")
-
         _binding = EventDetailsBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -41,19 +40,14 @@ class EventDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val eventId = arguments?.getInt("eventId") ?: -1
         if (eventId == -1) {
-            Log.e("EventDetailsFragment", "Invalid eventId passed to fragment")
             findNavController().navigateUp()
             return
         }
-        val event = EventManager.getById(eventId)
-
+        val event = eventsViewModel.getEventByID(eventId)
         if (event == null) {
-            Log.e("EventDetailsFragment", "Event not found for id: $eventId")
             findNavController().navigateUp()
             return
         }
-
-        invitationViewModel.invitationData.value = event.toInvitationData()
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -61,9 +55,8 @@ class EventDetailsFragment : Fragment() {
             }
         })
 
-        invitationViewModel.invitationData.observe(viewLifecycleOwner) {
-            populateFields(it)
-
+        eventsViewModel.events?.observe(viewLifecycleOwner) {
+            populateFields(event)
         }
 
         binding.btnEditGuests.setOnClickListener {
@@ -84,7 +77,7 @@ class EventDetailsFragment : Fragment() {
 
         binding.btnEditEvent.setOnClickListener {
             if (isEditing) {
-                saveEventDetails()
+                saveEventDetails(event)
             }
             toggleEditMode()
         }
@@ -92,15 +85,15 @@ class EventDetailsFragment : Fragment() {
         enableEditing(false)
     }
 
-    private fun populateFields(data: InvitationData) {
-        binding.eventName.setText(data.eventName)
+    private fun populateFields(data: Event) {
+        binding.eventName.setText(data.name)
         binding.groomsName.setText(data.groomName)
         binding.bridessName.setText(data.brideName)
         binding.groomsParents.setText(data.groomParents)
         binding.bridesParents.setText(data.brideParents)
-        binding.eventDate.setText(data.eventDate)
+        binding.eventDate.setText(data.date)
         binding.eventTime.setText(data.eventTime)
-        binding.location.setText(data.eventLocation)
+        binding.location.setText(data.location)
         binding.eventVenue.setText(data.venueName)
         binding.description.setText(data.invitationText)
         binding.amount.setText(data.numOfGuests.toString())
@@ -130,27 +123,19 @@ class EventDetailsFragment : Fragment() {
         binding.description.isEnabled = enabled
     }
 
-    private fun saveEventDetails() {
-
-        val invitationData = InvitationData(
-            groomName = binding.groomsName.text.toString(),
-            brideName = binding.bridessName.text.toString(),
-            groomParents = binding.groomsParents.text.toString(),
-            brideParents = binding.bridesParents.text.toString(),
-            eventDate = binding.eventDate.text.toString(),
-            eventTime = binding.eventTime.text.toString(),
-            eventLocation = binding.location.text.toString(),
-            venueName = binding.eventVenue.text.toString(),
-            invitationText = binding.description.text.toString(),
-            numOfGuests = binding.amount.text.toString().toInt()
-        )
-        // Update viewModel
-        invitationViewModel.invitationData.value = invitationData
-
-        //Update Event
-        val eventId = arguments?.getInt("eventId") ?: -1
-        val event = EventManager.getById(eventId)
-        event?.updateFromInvitationData(invitationData)
+    private fun saveEventDetails(event: Event) {
+        event.groomName = binding.groomsName.text.toString()
+        event.brideName = binding.bridessName.text.toString()
+        event.name = "${event.groomName} & ${event.brideName} Wedding"
+        event.groomParents = binding.groomsParents.text.toString()
+        event.brideParents = binding.bridesParents.text.toString()
+        event.date = binding.eventDate.text.toString()
+        event.eventTime = binding.eventTime.text.toString()
+        event.location = binding.location.text.toString()
+        event.venueName = binding.eventVenue.text.toString()
+        event.invitationText = binding.description.text.toString()
+        event.numOfGuests = binding.amount.text.toString().toInt()
+        eventsViewModel.updateEvent(event)
 
         findNavController().navigate(R.id.action_eventDetailsFragment_to_dashboardFragment)
     }

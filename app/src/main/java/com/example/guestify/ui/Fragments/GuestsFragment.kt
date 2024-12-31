@@ -10,13 +10,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.guestify.R
-import com.example.guestify.Adapters.GuestAdapter
-import com.example.guestify.data.local.entity.Guest
+import com.example.guestify.ui.Adapters.GuestAdapter
+import com.example.guestify.data.model.Guest
 import com.example.guestify.databinding.GuestsBinding
-import com.example.guestify.viewModels.GuestsViewModel
+import com.example.guestify.ui.viewModels.GuestsViewModel
 
 class GuestsFragment : Fragment() {
 

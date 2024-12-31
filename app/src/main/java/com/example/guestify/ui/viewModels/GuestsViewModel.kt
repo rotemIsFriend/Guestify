@@ -1,9 +1,9 @@
-package com.example.guestify.viewModels
+package com.example.guestify.ui.viewModels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.guestify.data.local.entity.Guest
+import com.example.guestify.data.model.Guest
 
 class GuestsViewModel : ViewModel() {
 
