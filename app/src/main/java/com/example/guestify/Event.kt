@@ -5,9 +5,9 @@ import com.example.guestify.viewModels.InvitationData
 
 
 open class Event(
-    var name: String,
-    var date: String,
-    var location: String,
+    var name: String = "",
+    var date: String = "",
+    var location: String = "",
     var imageBitmap: Bitmap,
     var groomName: String = "",
     var brideName: String = "",
@@ -36,6 +36,7 @@ open class Event(
     }
 
     fun updateFromInvitationData(invitationData: InvitationData) {
+        name = invitationData.groomName + " & " + invitationData.brideName + " Wedding"
         groomName = invitationData.groomName
         brideName = invitationData.brideName
         groomParents = invitationData.groomParents

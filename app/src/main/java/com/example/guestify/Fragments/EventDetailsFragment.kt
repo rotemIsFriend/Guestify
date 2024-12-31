@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.guestify.EventManager
 import com.example.guestify.R
@@ -22,7 +23,7 @@ class EventDetailsFragment : Fragment() {
 
     private var _binding: EventDetailsBinding? = null
     private val binding get() = _binding!!
-    private val invitationViewModel: InvitationViewModel by activityViewModels()
+    private val invitationViewModel: InvitationViewModel by viewModels()
     private var isEditing = false
 
     override fun onCreateView(
@@ -30,6 +31,8 @@ class EventDetailsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        Log.e("EventDetailsFragment", "eventDetails created ${invitationViewModel.invitationData.value}")
+
         _binding = EventDetailsBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -37,7 +40,19 @@ class EventDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val eventId = arguments?.getInt("eventId") ?: -1
+        if (eventId == -1) {
+            Log.e("EventDetailsFragment", "Invalid eventId passed to fragment")
+            findNavController().navigateUp()
+            return
+        }
         val event = EventManager.getById(eventId)
+
+        if (event == null) {
+            Log.e("EventDetailsFragment", "Event not found for id: $eventId")
+            findNavController().navigateUp()
+            return
+        }
+
         invitationViewModel.invitationData.value = event.toInvitationData()
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
@@ -45,11 +60,11 @@ class EventDetailsFragment : Fragment() {
                 findNavController().navigate(R.id.action_eventDetailsFragment_to_dashboardFragment)
             }
         })
+
         invitationViewModel.invitationData.observe(viewLifecycleOwner) {
             populateFields(it)
+
         }
-
-
 
         binding.btnEditGuests.setOnClickListener {
             findNavController().navigate(R.id.action_eventDetailsFragment_to_guestsFragment)
@@ -135,7 +150,7 @@ class EventDetailsFragment : Fragment() {
         //Update Event
         val eventId = arguments?.getInt("eventId") ?: -1
         val event = EventManager.getById(eventId)
-        event.updateFromInvitationData(invitationData)
+        event?.updateFromInvitationData(invitationData)
 
         findNavController().navigate(R.id.action_eventDetailsFragment_to_dashboardFragment)
     }

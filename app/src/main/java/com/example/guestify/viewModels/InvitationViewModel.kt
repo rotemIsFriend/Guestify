@@ -17,13 +17,25 @@ data class InvitationData(
     val invitationText: String,
     val numOfGuests: Int,
     var template : Bitmap ? = null,
-    val eventName:String = groomName + " & " + brideName
+    val eventName:String = groomName + " & " + brideName + " Wedding"
 )
 
 
 class InvitationViewModel : ViewModel() {
 
-    var invitationData = MutableLiveData<InvitationData>()
+    var invitationData = MutableLiveData<InvitationData>().apply {
+        value = InvitationData(
+            groomName = "",
+            brideName = "",
+            groomParents = "",
+            brideParents = "",
+            eventDate = "",
+            eventTime = "",
+            eventLocation = "",
+            venueName = "",
+            invitationText = "",
+            numOfGuests = 0
+        )}
         private set
 
     fun submitInvitation(groomName: String,

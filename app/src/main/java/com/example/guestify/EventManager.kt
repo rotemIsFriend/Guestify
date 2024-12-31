@@ -20,8 +20,8 @@ object EventManager {
         }
     }
 
-    fun getById(id: Int): Event {
-        return events.find { it.eventId == id } ?: throw NoSuchElementException("Event not found")
+    fun getById(id: Int): Event? {
+        return events.find { it.eventId == id }
     }
 
     fun getEventList(): MutableList<Event> {

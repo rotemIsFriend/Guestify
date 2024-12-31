@@ -50,7 +50,7 @@ class InvitationFragment: Fragment() {
             val brideParents = binding.etBridePName.text.toString().trim()
             val eventLocation = binding.etEventLocation.text.toString().trim()
             val venue = binding.etVenueName.text.toString().trim()
-            val numOfGuests = binding.etNumOfGuests.text.toString().trim().toInt()
+            val numOfGuests = binding.etNumOfGuests.text.toString().trim()
             val invitationText = binding.etInvitationText.text.toString().trim()
 
             // Validate form inputs
@@ -79,7 +79,7 @@ class InvitationFragment: Fragment() {
                     eventLocation,
                     venue,
                     invitationText,
-                    numOfGuests
+                    numOfGuests.toInt()
                 )
                 findNavController().navigate(R.id.action_invitationFragment_to_chooseTemplateFragment)
             } else {
@@ -102,6 +102,8 @@ class InvitationFragment: Fragment() {
             val timePickerListener = TimePickerDialog.OnTimeSetListener { _, hourOfDay, minute ->
                 eventTime = String.format("%02d:%02d", hourOfDay, minute)
                 binding.tvDateTime.text = "${eventDate} - ${eventTime}"
+                binding.btnSelectDate.error = null
+
             }
 
             TimePickerDialog(
@@ -134,7 +136,7 @@ class InvitationFragment: Fragment() {
         eventLocation: String,
         venue: String,
         invitationText: String,
-        numOfGuests: Int,
+        numOfGuests: String,
     ): Boolean {
         var isValid = true
 
@@ -169,7 +171,7 @@ class InvitationFragment: Fragment() {
         }
 
         // Number of guests
-        if (numOfGuests.toString().isEmpty()) {
+        if (numOfGuests.isEmpty()) {
             binding.etNumOfGuests.error = "Please enter number of guests"
             isValid = false
         }

@@ -14,6 +14,7 @@ import com.example.guestify.Adapters.EventAdapter
 import com.example.guestify.databinding.DashboardBinding
 
 class DashboardFragment : Fragment() {
+
     private var _binding: DashboardBinding? = null
     private val binding get() = _binding!!
 

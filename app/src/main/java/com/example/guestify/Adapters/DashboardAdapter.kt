@@ -20,11 +20,21 @@ class EventAdapter(
         fun onEventDeleted(index: Int)
     }
 
-    inner class EventViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class EventViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
+
+        init {
+            view.setOnClickListener(this)
+        }
+
         val eventImage: ImageView = view.findViewById(R.id.eventImage)
         val eventName: TextView = view.findViewById(R.id.eventName)
         val eventDate: TextView = view.findViewById(R.id.eventDate)
         val deleteButton: ImageButton = view.findViewById(R.id.deleteButton)
+
+        override fun onClick(v:View?){
+            callback.onEventClicked(adapterPosition)
+        }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
