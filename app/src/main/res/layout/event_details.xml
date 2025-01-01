@@ -401,6 +401,25 @@
                 android:background="@drawable/edit_text_bg"/>
         </com.google.android.material.textfield.TextInputLayout>
 
+        <FrameLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/invite_border"
+            android:clipToOutline="true"
+            android:layout_marginTop="25dp">
+
+            <ImageButton
+                android:id="@+id/choose_template"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
+                android:contentDescription="template" />
+
+        </FrameLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -416,18 +435,20 @@
                 android:text="Edit Guests"
                 app:cornerRadius="8dp"
                 app:backgroundTint="@color/primary"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:textSize="15sp"
                 android:layout_marginEnd="10dp" />
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="5dp"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_edit_event"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Edit Event"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:textSize="15sp"
                 app:backgroundTint="@color/primary"
                 app:cornerRadius="8dp" />
