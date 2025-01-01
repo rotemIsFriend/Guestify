@@ -83,7 +83,10 @@ class EventDetailsFragment : Fragment() {
         }
 
         binding.chooseTemplate.setOnClickListener {
-            findNavController().navigate(R.id.action_eventDetailsFragment_to_chooseTemplateFragment)
+            val bundle = Bundle().apply {
+                putInt("eventId", eventId)
+            }
+            findNavController().navigate(R.id.action_eventDetailsFragment_to_chooseTemplateFragment, bundle)
         }
 
         enableEditing(false)
