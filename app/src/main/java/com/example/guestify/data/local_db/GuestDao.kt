@@ -8,23 +8,23 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.example.guestify.data.model.Event
+import com.example.guestify.data.model.Guest
 
 @Dao
-interface EventDao {
-
+interface GuestDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun addEvent(event: Event)
+    fun addGuest(guest: Guest)
 
     @Update
-    fun updateEvent(event: Event)
+    fun updateGuest(guest: Guest)
 
     @Delete
-    fun deleteEvent(event: Event)
+    fun deleteGuest(guest: Guest)
 
-    @Query("SELECT * FROM events_table ORDER BY date ASC")
-    fun getEvents() : LiveData<List<Event>>
+    @Query("SELECT * FROM guests_table ORDER BY name ASC")
+    fun getGuests() : LiveData<List<Guest>>
 
-    @Query("SELECT * FROM events_table WHERE id LIKE :id" )
-    fun getEvent(id: Int): Event
+    @Query("SELECT * FROM guests_table WHERE id LIKE :id" )
+    fun getGuest(id: Int): Guest
 }

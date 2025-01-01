@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -90,7 +91,9 @@ class ChooseTemplateFragment : Fragment() {
     }
 
     private fun getInvitationData(): Map<String, Any> {
-        val data = if(eventId != null && eventId != -1) {
+        Log.d("ChooseTemplateFragment", "Event ID: $eventId")
+
+        val data = if(eventId != null && eventId != 0) {
             val existingEvent = eventsViewModel.getEventByID(eventId!!)
             mapOf(
                 "groomName" to (existingEvent?.groomName ?: ""),
@@ -199,7 +202,7 @@ class ChooseTemplateFragment : Fragment() {
 
     private fun updateTemplateAndNavigate(template: Bitmap, invitationData: Map<String, Any>){
 
-        if (eventId != null && eventId != -1) {
+        if (eventId != null && eventId != 0) {
             // Update existing event
             val existingEvent = eventsViewModel.getEventByID(eventId!!)
             if (existingEvent != null) {
@@ -248,7 +251,10 @@ class ChooseTemplateFragment : Fragment() {
                 )
 
                 eventsViewModel.addEvent(event)
-                findNavController().navigate(R.id.action_chooseTemplateFragment_to_guestsFragment)
+            val bundle = Bundle().apply {
+                eventId?.let { putInt("eventId", it) }
+            }
+                findNavController().navigate(R.id.action_chooseTemplateFragment_to_guestsFragment, bundle)
             }
     }
 

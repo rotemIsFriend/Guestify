@@ -20,8 +20,8 @@ class EventRepository(application: Application) {
         eventDao?.addEvent(event)
     }
 
-    fun deleteEvent(id: Int){
-        eventDao?.deleteEvent(id)
+    fun deleteEvent(event: Event){
+        eventDao?.deleteEvent(event)
     }
 
     fun getEvent(id: Int) =  eventDao?.getEvent(id)

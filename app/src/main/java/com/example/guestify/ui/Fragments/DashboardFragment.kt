@@ -58,7 +58,7 @@ class DashboardFragment : Fragment() {
         builder.setTitle("Delete Event Confirmation")
         builder.setMessage("Are you sure you want to delete this event? This action cannot be undone.")
         builder.setPositiveButton("Yes") { dialog, which ->
-            eventsViewModel.deleteEvent(events[index].id)
+            eventsViewModel.deleteEvent(events[index])
 
         }
         builder.setNegativeButton("No") { dialog, which ->

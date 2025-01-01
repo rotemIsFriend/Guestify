@@ -16,8 +16,8 @@ class EventsViewModel(application: Application): AndroidViewModel(application) {
         repository.addEvent(event)
     }
 
-    fun deleteEvent(id: Int){
-        repository.deleteEvent(id)
+    fun deleteEvent(event: Event){
+        repository.deleteEvent(event)
     }
 
     fun getEventByID(id: Int) = repository.getEvent(id)
