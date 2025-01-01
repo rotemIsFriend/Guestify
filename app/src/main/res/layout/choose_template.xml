@@ -113,6 +113,27 @@
             android:padding="10dp"
             android:layout_marginTop="5dp"
             />
+
+        <FrameLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/invite_border"
+            android:clipToOutline="true"
+            android:layout_marginTop="25dp">
+
+            <ImageButton
+                android:id="@+id/custom_img"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
+                android:enabled="false"
+                android:contentDescription="template" />
+
+        </FrameLayout>
     </LinearLayout>
 
 </ScrollView>

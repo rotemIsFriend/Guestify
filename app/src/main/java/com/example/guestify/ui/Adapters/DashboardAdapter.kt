@@ -1,11 +1,14 @@
 package com.example.guestify.ui.Adapters
 
+import android.graphics.Bitmap
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
 import com.example.guestify.data.model.Event
 import com.example.guestify.R
@@ -51,6 +54,7 @@ class EventAdapter(
             callback.onEventDeleted(holder.adapterPosition)
         }
     }
+
 
     override fun getItemCount(): Int = events.size
 
