@@ -3,6 +3,7 @@ package com.example.guestify.ui.guests
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.provider.ContactsContract
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +11,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.guestify.R
 import com.example.guestify.ui.Adapters.GuestAdapter
 import com.example.guestify.data.model.Guest
 import com.example.guestify.databinding.GuestsBinding
@@ -24,6 +27,7 @@ class GuestsFragment : Fragment() {
     private val viewModel: GuestsViewModel by viewModels()
     private var guestToEdit: Guest? = null
     private var eventId: Int? = null
+    private var isNewEvent: Boolean? = null
 
     companion object {
         private const val REQUEST_CONTACTS_PERMISSION = 1
@@ -36,6 +40,7 @@ class GuestsFragment : Fragment() {
     ): View {
         _binding = GuestsBinding.inflate(inflater, container, false)
         eventId = arguments?.getInt("eventId")
+        isNewEvent = arguments?.getBoolean("isNewEvent")
 
         return binding.root
     }
@@ -78,6 +83,16 @@ class GuestsFragment : Fragment() {
                 }
                 binding.guestNameInput.text.clear()
                 binding.guestPhoneInput.text.clear()
+            }
+        }
+
+        binding.finishBtn.setOnClickListener {
+            Log.d("GuestsFragment", "isNewEvent: $isNewEvent")
+            if(isNewEvent == false){
+                findNavController().navigateUp()
+            }
+            else{
+                findNavController().navigate(R.id.action_guestsFragment_to_dashboardFragment)
             }
         }
 

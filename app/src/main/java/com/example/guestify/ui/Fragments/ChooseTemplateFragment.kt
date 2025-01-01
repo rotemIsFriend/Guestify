@@ -222,40 +222,42 @@ class ChooseTemplateFragment : Fragment() {
                     }
                     .show()
             }}
-         else{
-                val groomName = invitationData["groomName"] as? String ?: ""
-                val brideName = invitationData["brideName"] as? String ?: ""
-                val eventName = "$groomName & $brideName Wedding"
-                val groomParents = invitationData["groomParents"] as? String ?: ""
-                val brideParents = invitationData["brideParents"] as? String ?: ""
-                val eventDate = invitationData["eventDate"] as? String ?: ""
-                val eventTime = invitationData["eventTime"] as? String ?: ""
-                val eventLocation = invitationData["eventLocation"] as? String ?: ""
-                val venueName = invitationData["venueName"] as? String ?: ""
-                val invitationText = invitationData["invitationText"] as? String ?: ""
-                val numOfGuests = (invitationData["numOfGuests"] as? Int) ?: 0
+        else{
+            val groomName = invitationData["groomName"] as? String ?: ""
+            val brideName = invitationData["brideName"] as? String ?: ""
+            val eventName = "$groomName & $brideName Wedding"
+            val groomParents = invitationData["groomParents"] as? String ?: ""
+            val brideParents = invitationData["brideParents"] as? String ?: ""
+            val eventDate = invitationData["eventDate"] as? String ?: ""
+            val eventTime = invitationData["eventTime"] as? String ?: ""
+            val eventLocation = invitationData["eventLocation"] as? String ?: ""
+            val venueName = invitationData["venueName"] as? String ?: ""
+            val invitationText = invitationData["invitationText"] as? String ?: ""
+            val numOfGuests = (invitationData["numOfGuests"] as? Int) ?: 0
 
-                val event = Event(
-                    eventName,
-                    eventDate,
-                    eventLocation,
-                    template,
-                    groomName,
-                    brideName,
-                    groomParents,
-                    brideParents,
-                    eventTime,
-                    venueName,
-                    invitationText,
-                    numOfGuests
-                )
+            val event = Event(
+                eventName,
+                eventDate,
+                eventLocation,
+                template,
+                groomName,
+                brideName,
+                groomParents,
+                brideParents,
+                eventTime,
+                venueName,
+                invitationText,
+                numOfGuests
+            )
 
-                eventsViewModel.addEvent(event)
-            val bundle = Bundle().apply {
-                eventId?.let { putInt("eventId", it) }
-            }
+            eventsViewModel.addEvent(event) { newEventId ->
+                val bundle = Bundle().apply {
+                    putInt("eventId", newEventId.toInt()) // Convert Long to Int if necessary
+                    putBoolean("isNewEvent", true)
+                }
                 findNavController().navigate(R.id.action_chooseTemplateFragment_to_guestsFragment, bundle)
             }
+        }
     }
 
     private fun showConfirmationDialog(template: Bitmap, invitationData: Map<String, Any>) {

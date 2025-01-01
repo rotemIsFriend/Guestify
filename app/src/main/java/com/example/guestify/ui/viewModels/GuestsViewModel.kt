@@ -26,7 +26,7 @@ class GuestsViewModel(application: Application) : AndroidViewModel(application) 
         repository.deleteGuest(guest)
     }
 
-    fun getGuest(id: Int) {
-        repository.getGuest(id)
+    fun getGuest(id: Int): Guest? {
+        return repository.getGuest(id)
     }
 }

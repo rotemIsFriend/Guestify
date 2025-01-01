@@ -170,6 +170,17 @@ class InvitationFragment: Fragment() {
         if (numOfGuests.isEmpty()) {
             binding.etNumOfGuests.error = "Please enter number of guests"
             isValid = false
+        } else{
+            when {
+                numOfGuests.length > 7 -> {
+                    binding.etNumOfGuests.error = "Number of guests cannot exceed 999,999"
+                    isValid = false
+                }
+                numOfGuests.toInt() <= 0 -> {
+                    binding.etNumOfGuests.error = "Number of guests must be greater than zero"
+                    isValid = false
+                }
+        }
         }
 
         // Event Date

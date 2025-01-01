@@ -62,6 +62,7 @@ class EventDetailsFragment : Fragment() {
         binding.btnEditGuests.setOnClickListener {
             val bundle = Bundle().apply {
                 putInt("eventId", eventId)
+                putBoolean("isNewEvent", false)
             }
             findNavController().navigate(R.id.action_eventDetailsFragment_to_guestsFragment, bundle)
         }
