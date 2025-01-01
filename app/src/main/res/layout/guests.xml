@@ -1,32 +1,77 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.guestify.ui.guests.GuestsFragment"
-    android:padding="16dp">
+    android:paddingHorizontal="16dp"
+    android:paddingTop="50dp">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Event Guest List"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:layout_marginTop="20dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Manage Your Guest List Here"
+        android:textColor="@color/text_secondary"
+        android:textSize="20sp"
+        />
     <!-- RecyclerView להצגת הרשימה -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/guest_list"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="220dp"
+        android:divider="@android:color/darker_gray"
         android:dividerHeight="1dp"
-        android:divider="@android:color/darker_gray" />
-
-    <ImageButton
-        android:id="@+id/add_from_contacts_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/contact"
-        android:contentDescription="Add from contacts"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="16dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
+        android:layout_marginBottom="30dp"
+        />
        />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Add Guests"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="15dp"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        />
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_from_contacts_button"
+        android:text="Open Contacts"
+        app:cornerRadius="5dp"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/primary"
+        app:icon="@drawable/contacts_icon"
+        app:iconSize="25dp"
+        android:padding="12dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Or, add guests manually.."
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,6 +99,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:backgroundTint="@color/black"
             android:text="Save Guest" />
     </LinearLayout>
 </LinearLayout>

@@ -22,8 +22,8 @@ class GuestsFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: GuestsViewModel by viewModels()
-    private lateinit var adapter: GuestAdapter
     private var guestToEdit: Guest? = null
+    private var eventId: Int? = null
 
     companion object {
         private const val REQUEST_CONTACTS_PERMISSION = 1
@@ -35,27 +35,28 @@ class GuestsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = GuestsBinding.inflate(inflater, container, false)
+        eventId = arguments?.getInt("eventId")
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapter = GuestAdapter(
-            guests = listOf(),
-            onEditClick = { guest ->
-                editGuest(guest)
-            },
-            onDeleteClick = { guest ->
-                showDeleteConfirmationDialog(guest)
-            }
-        )
-
         binding.guestList.layoutManager = LinearLayoutManager(requireContext())
-        binding.guestList.adapter = adapter
 
-        viewModel.guests.observe(viewLifecycleOwner) { guests ->
-            adapter.updateGuests(guests)
+        viewModel.guests?.observe(viewLifecycleOwner) {
+            val currentEventGuests = it.filter { guest -> guest.eventId == eventId }
+            binding.guestList.adapter = GuestAdapter(
+                guests = currentEventGuests,
+                onEditClick = { guest ->
+                    editGuest(guest)
+                },
+                onDeleteClick = { guest ->
+                    showDeleteConfirmationDialog(guest)
+                }
+            )
+            binding.guestList.adapter
         }
 
         binding.addGuestButton.setOnClickListener {
@@ -66,12 +67,13 @@ class GuestsFragment : Fragment() {
                 Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show()
             } else {
                 if (guestToEdit != null) {
-                    val updatedGuest = guestToEdit!!.copy(name = name, phone = phone)
-                    viewModel.updateGuest(guestToEdit!!, updatedGuest)
+                    guestToEdit?.name = name
+                    guestToEdit?.phone = phone
+                    guestToEdit?.let {viewModel.updateGuest(it)}
                     Toast.makeText(requireContext(), "Guest updated", Toast.LENGTH_SHORT).show()
                     guestToEdit = null
                 } else {
-                    viewModel.addGuest(Guest(name = name, phone = phone))
+                    eventId?.let{viewModel.addGuest(Guest(name, phone, it))}
                     Toast.makeText(requireContext(), "Guest added", Toast.LENGTH_SHORT).show()
                 }
                 binding.guestNameInput.text.clear()
@@ -166,7 +168,9 @@ class GuestsFragment : Fragment() {
             .setPositiveButton("Add") { _, _ ->
                 selectedItems.forEach { index ->
                     val selectedContact = contacts[index]
-                    viewModel.addGuest(Guest(name = selectedContact.first, phone = selectedContact.second))
+                    eventId?.let{
+                        viewModel.addGuest(Guest(selectedContact.first, selectedContact.second, it))
+                    }
                 }
                 Toast.makeText(requireContext(), "Guests added", Toast.LENGTH_SHORT).show()
             }

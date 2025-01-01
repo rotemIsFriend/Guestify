@@ -1,32 +1,32 @@
 package com.example.guestify.ui.viewModels
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.guestify.data.model.Guest
+import com.example.guestify.data.repository.GuestRepository
 
-class GuestsViewModel : ViewModel() {
+class GuestsViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val _guests = MutableLiveData<List<Guest>>()
-    val guests: LiveData<List<Guest>> get() = _guests
+    private val repository = GuestRepository(application)
 
-    private val guestList = mutableListOf<Guest>()
+    val guests: LiveData<List<Guest>>? = repository.getGuests()
 
     fun addGuest(guest: Guest) {
-        guestList.add(guest)
-        _guests.value = guestList
+        repository.addGuest(guest)
     }
 
-    fun updateGuest(oldGuest: Guest, newGuest: Guest) {
-        val index = guestList.indexOf(oldGuest)
-        if (index != -1) {
-            guestList[index] = newGuest
-            _guests.value = guestList
-        }
+    fun updateGuest(guest: Guest) {
+        repository.updateGuest(guest)
     }
 
     fun removeGuest(guest: Guest) {
-        guestList.remove(guest)
-        _guests.value = guestList
+        repository.deleteGuest(guest)
+    }
+
+    fun getGuest(id: Int) {
+        repository.getGuest(id)
     }
 }
