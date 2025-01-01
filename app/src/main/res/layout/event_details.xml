@@ -5,7 +5,10 @@
     tools:context="com.example.guestify.ui.Fragments.EventDetailsFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:paddingHorizontal="16dp"
+    android:paddingTop="25dp"
+    android:paddingBottom="40dp"
+    android:layout_marginBottom="30dp"
     >
 
     <LinearLayout
@@ -13,7 +16,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="40dp"
-        android:padding="16dp">
+        android:paddingHorizontal="16dp"
+        android:paddingBottom="40dp">
 
 
         <TextView
@@ -25,7 +29,18 @@
             android:textStyle="bold"
             android:gravity="center"
             android:textColor="@color/black"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="5dp" />
+
+        <TextView
+            android:id="@+id/welcome_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View and Edit Your Event Details Here"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="@color/text_secondary"
+            android:layout_marginBottom="25dp" />
 
 
         <LinearLayout
@@ -90,7 +105,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Brides's Name:"
+                android:text="Bride's Name:"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
@@ -99,7 +114,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="8dp"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -108,7 +123,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="text"
                 android:enabled="false"
-
+                android:textColor="@color/edit_text_color"
+                android:background="@drawable/edit_text_bg"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -129,7 +145,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Brides's Parent's Name:"
+                android:text="Bride's Parent's Name:"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
@@ -141,14 +157,16 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="8dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/brides_parents"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:enabled="false" />
+                android:enabled="false"
+                android:textColor="@color/edit_text_color"
+                android:background="@drawable/edit_text_bg"/>
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -180,14 +198,16 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="8dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/grooms_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:enabled="false"/>
+                android:enabled="false"
+                android:textColor="@color/edit_text_color"
+                android:background="@drawable/edit_text_bg"/>
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -207,7 +227,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Grooms's Parent's Name:"
+                android:text="Groom's Parent's Name:"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
@@ -219,13 +239,16 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="8dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/grooms_parents"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" android:enabled="false" />
+                android:inputType="text"
+                android:enabled="false"
+                android:textColor="@color/edit_text_color"
+                android:background="@drawable/edit_text_bg"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
@@ -254,13 +277,16 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="8dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/event_venue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" android:enabled="false"/>
+                android:inputType="text"
+                android:enabled="false"
+                android:textColor="@color/edit_text_color"
+                android:background="@drawable/edit_text_bg"/>
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -290,13 +316,16 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="8dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" android:enabled="false"/>
+                android:inputType="text"
+                android:enabled="false"
+                android:textColor="@color/edit_text_color"
+                android:background="@drawable/edit_text_bg"/>
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -332,7 +361,9 @@
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
                 android:gravity="top"
-                android:lines="5" />
+                android:lines="2"
+                android:textColor="@color/edit_text_color"
+                android:background="@drawable/edit_text_bg"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
@@ -359,13 +390,15 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="8dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/amount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number" />
+                android:inputType="number"
+                android:textColor="@color/edit_text_color"
+                android:background="@drawable/edit_text_bg"/>
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -400,10 +433,6 @@
                 app:cornerRadius="8dp" />
 
         </LinearLayout>
-
-
-
-
 
     </LinearLayout>
 </ScrollView>

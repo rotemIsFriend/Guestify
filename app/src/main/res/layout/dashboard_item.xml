@@ -34,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Event Name"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -50,7 +50,7 @@
             android:id="@+id/deleteButton"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_gravity="center"
+            android:layout_gravity="top"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Delete Event"
             app:srcCompat="@drawable/baseline_delete_outline_24" />
