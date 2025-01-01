@@ -82,6 +82,10 @@ class EventDetailsFragment : Fragment() {
             toggleEditMode()
         }
 
+        binding.chooseTemplate.setOnClickListener {
+            findNavController().navigate(R.id.action_eventDetailsFragment_to_chooseTemplateFragment)
+        }
+
         enableEditing(false)
     }
 
@@ -97,6 +101,7 @@ class EventDetailsFragment : Fragment() {
         binding.eventVenue.setText(data.venueName)
         binding.description.setText(data.invitationText)
         binding.amount.setText(data.numOfGuests.toString())
+        binding.chooseTemplate.setImageBitmap(data.imageBitmap)
     }
 
     private fun toggleEditMode() {

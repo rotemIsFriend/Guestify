@@ -69,6 +69,10 @@ class ChooseTemplateFragment : Fragment() {
             updateTemplateAndNavigate(previewBitmap[2], invitationData)
         }
 
+        binding.btnCustom.setOnClickListener {
+            //TODO Open image picker to upload from phone
+        }
+
     }
     private fun generateInvitationPreview(data: Map<String, Any>, bindingT1 : InviteTemplate1Binding, bindingT2 : InviteTemplate2Binding, bindingT3 : InviteTemplate3Binding): List<Bitmap> {
         // Use View Binding to inflate the layout
@@ -175,7 +179,7 @@ class ChooseTemplateFragment : Fragment() {
             )
 
         eventsViewModel.addEvent(event)
-        findNavController().navigate(R.id.action_chooseTemplateFragment_to_dashboardFragment)
+        findNavController().navigate(R.id.action_chooseTemplateFragment_to_guestsFragment)
     }
 
     override fun onDestroyView() {

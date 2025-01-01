@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center"
+        android:gravity="top"
         android:padding="8dp">
 
         <ImageView
@@ -27,6 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical"
+            android:paddingTop="16dp"
             android:paddingStart="8dp">
 
             <TextView
@@ -42,6 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Event Date"
+                android:layout_marginTop="5dp"
                 android:textSize="18sp" />
 
         </LinearLayout>
