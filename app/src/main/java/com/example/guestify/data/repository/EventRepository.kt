@@ -16,8 +16,8 @@ class EventRepository(application: Application) {
 
     fun getEvents() = eventDao?.getEvents()
 
-    fun addEvent(event: Event){
-        eventDao?.addEvent(event)
+    fun addEvent(event: Event): Long{
+        return eventDao!!.addEvent(event)
     }
 
     fun deleteEvent(event: Event){

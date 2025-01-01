@@ -35,10 +35,18 @@
         android:layout_marginBottom="10dp"
         />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="7"
+        >
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="400dp"
+        android:layout_weight="6"
+        android:paddingBottom="30dp"/>
 
 
     <com.google.android.material.button.MaterialButton
@@ -50,7 +58,7 @@
         android:layout_gravity="bottom|center"
         android:layout_marginTop="16dp"
         />
-
+    </LinearLayout>
 
 
 </LinearLayout>

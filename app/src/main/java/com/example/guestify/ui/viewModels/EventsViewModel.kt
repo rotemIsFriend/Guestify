@@ -3,8 +3,12 @@ package com.example.guestify.ui.viewModels
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.viewModelScope
 import com.example.guestify.data.model.Event
 import com.example.guestify.data.repository.EventRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class EventsViewModel(application: Application): AndroidViewModel(application) {
 
@@ -12,8 +16,13 @@ class EventsViewModel(application: Application): AndroidViewModel(application) {
 
     val events : LiveData<List<Event>>? = repository.getEvents()
 
-    fun addEvent(event : Event) {
-        repository.addEvent(event)
+    fun addEvent(event: Event, onResult: (Long) -> Unit) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val newEventId = repository.addEvent(event)
+            withContext(Dispatchers.Main) {
+                onResult(newEventId)
+            }
+        }
     }
 
     fun deleteEvent(event: Event){
@@ -22,7 +31,9 @@ class EventsViewModel(application: Application): AndroidViewModel(application) {
 
     fun getEventByID(id: Int) = repository.getEvent(id)
 
-    fun updateEvent(event: Event){
-        repository.updateEvent(event)
+    fun updateEvent(event: Event) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateEvent(event)
+        }
     }
 }
