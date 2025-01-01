@@ -10,6 +10,9 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding: MainActivityBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.setLogo(R.drawable.guestify_logo)
+        supportActionBar?.setDisplayUseLogoEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
         binding = MainActivityBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)

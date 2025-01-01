@@ -121,6 +121,7 @@ class EventDetailsFragment : Fragment() {
         binding.location.isEnabled = enabled
         binding.eventVenue.isEnabled = enabled
         binding.description.isEnabled = enabled
+        binding.amount.isEnabled = enabled
     }
 
     private fun saveEventDetails(event: Event) {
