@@ -1,4 +1,5 @@
 package com.example.guestify.ui.Fragments
+
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
@@ -23,7 +24,6 @@ class EventDetailsFragment : Fragment() {
 
     private var _binding: EventDetailsBinding? = null
     private val binding get() = _binding!!
-    private val invitationViewModel: InvitationViewModel by viewModels()
     private val eventsViewModel: EventsViewModel by activityViewModels()
     private var isEditing = false
 
@@ -49,11 +49,13 @@ class EventDetailsFragment : Fragment() {
             return
         }
 
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                findNavController().navigate(R.id.action_eventDetailsFragment_to_dashboardFragment)
-            }
-        })
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    findNavController().navigate(R.id.action_eventDetailsFragment_to_dashboardFragment)
+                }
+            })
 
         eventsViewModel.events?.observe(viewLifecycleOwner) {
             populateFields(event)
@@ -81,16 +83,24 @@ class EventDetailsFragment : Fragment() {
 
         binding.btnEditEvent.setOnClickListener {
             if (isEditing) {
-                saveEventDetails(event)
+                if(validateFields()){
+                    saveEventDetails(event)
+                    toggleEditMode()
+                }
             }
-            toggleEditMode()
+            else{
+                toggleEditMode()
+            }
         }
 
         binding.chooseTemplate.setOnClickListener {
             val bundle = Bundle().apply {
                 putInt("eventId", eventId)
             }
-            findNavController().navigate(R.id.action_eventDetailsFragment_to_chooseTemplateFragment, bundle)
+            findNavController().navigate(
+                R.id.action_eventDetailsFragment_to_chooseTemplateFragment,
+                bundle
+            )
         }
 
         enableEditing(false)
@@ -159,9 +169,10 @@ class EventDetailsFragment : Fragment() {
         val month = calendar.get(Calendar.MONTH)
         val day = calendar.get(Calendar.DAY_OF_MONTH)
 
-        val datePicker = DatePickerDialog(requireContext(), { _, selectedYear, selectedMonth, selectedDay ->
-            binding.eventDate.setText("$selectedDay/${selectedMonth + 1}/$selectedYear")
-        }, year, month, day)
+        val datePicker =
+            DatePickerDialog(requireContext(), { _, selectedYear, selectedMonth, selectedDay ->
+                binding.eventDate.setText("$selectedDay/${selectedMonth + 1}/$selectedYear")
+            }, year, month, day)
 
         datePicker.datePicker.minDate = calendar.timeInMillis
         datePicker.show()
@@ -173,9 +184,103 @@ class EventDetailsFragment : Fragment() {
         val minute = calendar.get(Calendar.MINUTE)
 
         TimePickerDialog(requireContext(), { _, selectedHour, selectedMinute ->
-            binding.eventTime.setText("${String.format("%02d", selectedHour)}:${String.format("%02d", selectedMinute)}")
+            binding.eventTime.setText(
+                "${
+                    String.format(
+                        "%02d",
+                        selectedHour
+                    )
+                }:${String.format("%02d", selectedMinute)}"
+            )
         }, hour, minute, true).show()
     }
+
+    private fun validateFields(): Boolean {
+        var isValid = true
+
+        // 1) Bride's Name (max length = 20)
+        val brideNameStr = binding.bridessName.text?.toString()?.trim().orEmpty()
+        if (brideNameStr.isEmpty()) {
+            binding.bridessName.error = "Bride's Name cannot be empty"
+            isValid = false
+        } else if (brideNameStr.length > 20) {
+            binding.bridessName.error = "Bride's Name must be at most 20 characters"
+            isValid = false
+        }
+
+        // 2) Bride's Parents (max length = 50)
+        val brideParentsStr = binding.bridesParents.text?.toString()?.trim().orEmpty()
+        if (brideParentsStr.isEmpty()) {
+            binding.bridesParents.error = "Bride's Parents cannot be empty"
+            isValid = false
+        } else if (brideParentsStr.length > 50) {
+            binding.bridesParents.error = "Bride's Parents name must be at most 50 characters"
+            isValid = false
+        }
+
+        // 3) Groom's Name (max length = 20)
+        val groomNameStr = binding.groomsName.text?.toString()?.trim().orEmpty()
+        if (groomNameStr.isEmpty()) {
+            binding.groomsName.error = "Groom's Name cannot be empty"
+            isValid = false
+        } else if (groomNameStr.length > 20) {
+            binding.groomsName.error = "Groom's Name must be at most 20 characters"
+            isValid = false
+        }
+
+        // 4) Groom's Parents (max length = 50)
+        val groomParentsStr = binding.groomsParents.text?.toString()?.trim().orEmpty()
+        if (groomParentsStr.isEmpty()) {
+            binding.groomsParents.error = "Groom's Parents cannot be empty"
+            isValid = false
+        } else if (groomParentsStr.length > 50) {
+            binding.groomsParents.error = "Groom's Parents name must be at most 50 characters"
+            isValid = false
+        }
+
+        // 5) Event Hall (max length = 20)
+        val eventVenueStr = binding.eventVenue.text?.toString()?.trim().orEmpty()
+        if (eventVenueStr.isEmpty()) {
+            binding.eventVenue.error = "Event Hall cannot be empty"
+            isValid = false
+        } else if (eventVenueStr.length > 20) {
+            binding.eventVenue.error = "Event Hall must be at most 20 characters"
+            isValid = false
+        }
+
+        // 6) Event Location (max length = 50)
+        val eventLocationStr = binding.location.text?.toString()?.trim().orEmpty()
+        if (eventLocationStr.isEmpty()) {
+            binding.location.error = "Event Location cannot be empty"
+            isValid = false
+        } else if (eventLocationStr.length > 50) {
+            binding.location.error = "Event Location must be at most 50 characters"
+            isValid = false
+        }
+
+        // 7) Amount of Guests (max length = 5 digits)
+        val amountStr = binding.amount.text?.toString()?.trim().orEmpty()
+        if (amountStr.isEmpty()) {
+            binding.amount.error = "Amount of guests cannot be empty"
+            isValid = false
+        } else {
+            val guestCount = amountStr.toIntOrNull()
+            // 7a) Basic numeric validation
+            if (guestCount == null || guestCount < 1) {
+                binding.amount.error = "Please enter a valid number (> 0)"
+                isValid = false
+            }
+            // 7b) Check upper limit
+            else if (guestCount > 99999) {
+                binding.amount.error = "Please enter a valid number (< 100,000)"
+                isValid = false
+            }
+        }
+
+        return isValid
+    }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()

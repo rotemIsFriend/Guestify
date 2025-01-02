@@ -27,4 +27,5 @@
 
     <!-- Template colors -->
     <color name="template_dark">#141418</color>
+    <color name="template_light">#D7D1E2</color>
 </resources>

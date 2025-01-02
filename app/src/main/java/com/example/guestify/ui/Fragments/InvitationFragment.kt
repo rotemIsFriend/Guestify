@@ -16,9 +16,9 @@ import com.example.guestify.R
 import com.example.guestify.databinding.InvitationBinding
 import com.example.guestify.ui.viewModels.EventsViewModel
 
-class InvitationFragment: Fragment() {
+class InvitationFragment : Fragment() {
 
-    private var _binding : InvitationBinding ? = null
+    private var _binding: InvitationBinding? = null
     private val binding get() = _binding!!
 
     private var eventTime = ""
@@ -52,13 +52,12 @@ class InvitationFragment: Fragment() {
             val invitationText = binding.etInvitationText.text.toString().trim()
 
             // Validate form inputs
-            val isValid = validateForm(
+            val isValid = validateInvitationFields(
                 groomName,
                 brideName,
                 groomParents,
                 brideParents,
                 eventDate,
-                eventTime,
                 eventLocation,
                 venue,
                 invitationText,
@@ -78,9 +77,13 @@ class InvitationFragment: Fragment() {
                     putString("invitationText", invitationText)
                     putInt("numOfGuests", numOfGuests.toInt())
                 }
-                findNavController().navigate(R.id.action_invitationFragment_to_chooseTemplateFragment, bundle)
+                findNavController().navigate(
+                    R.id.action_invitationFragment_to_chooseTemplateFragment,
+                    bundle
+                )
             } else {
-                Toast.makeText(requireContext(), "Please fix the errors above.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Please fix the errors above.", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
 
@@ -122,13 +125,12 @@ class InvitationFragment: Fragment() {
         datePickerDialog.show()
     }
 
-    private fun validateForm(
+    private fun validateInvitationFields(
         groomName: String,
         brideName: String,
         groomParents: String,
         brideParents: String,
-        eventDate: String,
-        eventTime: String,
+        dateTime: String,
         eventLocation: String,
         venue: String,
         invitationText: String,
@@ -136,73 +138,115 @@ class InvitationFragment: Fragment() {
     ): Boolean {
         var isValid = true
 
-        // Groom Name
+        // -- Groom's Name (max length = 20) --
         if (groomName.isEmpty()) {
-            binding.etGroomName.error = "Please enter Groom's name"
+            binding.etGroomName.error = "Groom's Name cannot be empty"
             isValid = false
+        } else if (groomName.length > 20) {
+            binding.etGroomName.error = "Groom's Name must be at most 20 characters"
+            isValid = false
+        } else {
+            binding.etGroomName.error = null // Clear any previous error
         }
 
-        // Bride Name
+        // -- Bride's Name (max length = 20) --
         if (brideName.isEmpty()) {
-            binding.etBrideName.error = "Please enter Bride's name"
+            binding.etBrideName.error = "Bride's Name cannot be empty"
             isValid = false
+        } else if (brideName.length > 20) {
+            binding.etBrideName.error = "Bride's Name must be at most 20 characters"
+            isValid = false
+        } else {
+            binding.etBrideName.error = null
         }
 
-        // Groom Parents Name
+        // -- Groom's Parents (max length = 50) --
         if (groomParents.isEmpty()) {
-            binding.etGroomPName.error = "Please enter Groom's parents name"
+            binding.etGroomPName.error = "Groom's Parents cannot be empty"
             isValid = false
+        } else if (groomParents.length > 50) {
+            binding.etGroomPName.error = "Groom's Parents must be at most 50 characters"
+            isValid = false
+        } else {
+            binding.etGroomPName.error = null
         }
 
-        // Bride Parents Name
+        // -- Bride's Parents (max length = 50) --
         if (brideParents.isEmpty()) {
-            binding.etBridePName.error = "Please enter Bride's parents name"
+            binding.etBridePName.error = "Bride's Parents cannot be empty"
             isValid = false
+        } else if (brideParents.length > 50) {
+            binding.etBridePName.error = "Bride's Parents must be at most 50 characters"
+            isValid = false
+        } else {
+            binding.etBridePName.error = null
         }
 
-        // Venue Name
-        if (venue.isEmpty()) {
-            binding.etVenueName.error = "Please enter Venue name"
-            isValid = false
-        }
-
-        // Number of guests
-        if (numOfGuests.isEmpty()) {
-            binding.etNumOfGuests.error = "Please enter number of guests"
-            isValid = false
-        } else{
-            when {
-                numOfGuests.length > 7 -> {
-                    binding.etNumOfGuests.error = "Number of guests cannot exceed 999,999"
-                    isValid = false
-                }
-                numOfGuests.toInt() <= 0 -> {
-                    binding.etNumOfGuests.error = "Number of guests must be greater than zero"
-                    isValid = false
-                }
-        }
-        }
-
-        // Event Date
-        if (eventDate.isEmpty() || eventTime.isEmpty()) {
-            Toast.makeText(requireContext(), "Please pick a date and time.", Toast.LENGTH_SHORT).show()
-            isValid = false
-        }
-
-        // Event Location
+        // -- Event Location (max length = 100) --
         if (eventLocation.isEmpty()) {
-            binding.etEventLocation.error = "Please enter a location"
+            binding.etEventLocation.error = "Event Location cannot be empty"
             isValid = false
+        } else if (eventLocation.length > 100) {
+            binding.etEventLocation.error = "Event Location must be at most 100 characters"
+            isValid = false
+        } else {
+            binding.etEventLocation.error = null
         }
 
-        // Invitation Text
-        if (invitationText.isEmpty()) {
-            binding.etInvitationText.error = "Invitation text cannot be empty"
+        // -- Venue Name (max length = 100) --
+        if (venue.isEmpty()) {
+            binding.etVenueName.error = "Venue cannot be empty"
             isValid = false
+        } else if (venue.length > 100) {
+            binding.etVenueName.error = "Venue must be at most 100 characters"
+            isValid = false
+        } else {
+            binding.etVenueName.error = null
         }
 
+        // -- Number of Guests (max = 5 digits) --
+        if (numOfGuests.isEmpty()) {
+            binding.etNumOfGuests.error = "Number of guests cannot be empty"
+            isValid = false
+        } else {
+            val guestCount = numOfGuests.toIntOrNull()
+            if (guestCount == null || guestCount < 1) {
+                binding.etNumOfGuests.error = "Please enter a valid number (> 0)"
+                isValid = false
+            } else if (guestCount > 99999) {
+                binding.etNumOfGuests.error = "Please enter a valid number (< 100000)"
+                isValid = false
+            } else {
+                binding.etNumOfGuests.error = null
+            }
+        }
+
+        // -- Invitation Text (max = 250) --
+        if (invitationText.length > 250) {
+            binding.etInvitationText.error = "Invitation text must be at most 250 characters"
+            isValid = false
+        } else {
+             if (invitationText.isEmpty()) {
+                 binding.etInvitationText.error = "Invitation text cannot be empty"
+                 isValid = false
+             } else {
+                 binding.etInvitationText.error = null
+             }
+            binding.etInvitationText.error = null
+        }
+
+        if (dateTime.isEmpty()) {
+            // For a TextView, you can do:
+            binding.tvDateTime.error = "Event Date & Time cannot be empty"
+            isValid = false
+        } else {
+            // Clear any previous error if supported
+            binding.tvDateTime.error = null
+        }
         return isValid
     }
+
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

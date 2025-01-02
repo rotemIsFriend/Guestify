@@ -32,6 +32,7 @@ class EventAdapter(
         val eventImage: ImageView = view.findViewById(R.id.eventImage)
         val eventName: TextView = view.findViewById(R.id.eventName)
         val eventDate: TextView = view.findViewById(R.id.eventDate)
+        val guestCount: TextView = view.findViewById(R.id.guest_count)
         val deleteButton: ImageButton = view.findViewById(R.id.deleteButton)
 
         override fun onClick(v:View?){
@@ -50,6 +51,7 @@ class EventAdapter(
         holder.eventName.text = event.name
         holder.eventDate.text = event.date
         holder.eventImage.setImageBitmap(event.imageBitmap)
+        holder.guestCount.text = event.numOfGuests.toString()
         holder.deleteButton.setOnClickListener {
             callback.onEventDeleted(holder.adapterPosition)
         }

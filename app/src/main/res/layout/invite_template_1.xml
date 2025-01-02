@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutDirection="ltr"
-    android:background="@drawable/bg_template_1"
+    android:background="@drawable/template_bg_1"
     android:paddingHorizontal="40dp"
     android:paddingVertical="55dp">
 
