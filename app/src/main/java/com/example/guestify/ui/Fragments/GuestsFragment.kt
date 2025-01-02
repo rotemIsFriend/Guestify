@@ -69,16 +69,17 @@ class GuestsFragment : Fragment() {
             val phone = binding.guestPhoneInput.text.toString().trim()
 
             if (name.isEmpty() || phone.isEmpty()) {
-                Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT)
+                    .show()
             } else {
                 if (guestToEdit != null) {
                     guestToEdit?.name = name
                     guestToEdit?.phone = phone
-                    guestToEdit?.let {viewModel.updateGuest(it)}
+                    guestToEdit?.let { viewModel.updateGuest(it) }
                     Toast.makeText(requireContext(), "Guest updated", Toast.LENGTH_SHORT).show()
                     guestToEdit = null
                 } else {
-                    eventId?.let{viewModel.addGuest(Guest(name, phone, it))}
+                    eventId?.let { viewModel.addGuest(Guest(name, phone, it)) }
                     Toast.makeText(requireContext(), "Guest added", Toast.LENGTH_SHORT).show()
                 }
                 binding.guestNameInput.text.clear()
@@ -88,10 +89,9 @@ class GuestsFragment : Fragment() {
 
         binding.finishBtn.setOnClickListener {
             Log.d("GuestsFragment", "isNewEvent: $isNewEvent")
-            if(isNewEvent == false){
+            if (isNewEvent == false) {
                 findNavController().navigateUp()
-            }
-            else{
+            } else {
                 findNavController().navigate(R.id.action_guestsFragment_to_dashboardFragment)
             }
         }
@@ -113,7 +113,11 @@ class GuestsFragment : Fragment() {
             .setMessage("Are you sure you want to delete ${guest.name}?")
             .setPositiveButton("Yes") { _, _ ->
                 viewModel.removeGuest(guest)
-                Toast.makeText(requireContext(), "${guest.name} has been deleted", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    "${guest.name} has been deleted",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
             .setNegativeButton("No") { dialog, _ ->
                 dialog.dismiss()
@@ -125,7 +129,10 @@ class GuestsFragment : Fragment() {
         if (requireContext().checkSelfPermission(android.Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
             loadContacts()
         } else {
-            requestPermissions(arrayOf(android.Manifest.permission.READ_CONTACTS), REQUEST_CONTACTS_PERMISSION)
+            requestPermissions(
+                arrayOf(android.Manifest.permission.READ_CONTACTS),
+                REQUEST_CONTACTS_PERMISSION
+            )
         }
     }
 
@@ -158,8 +165,10 @@ class GuestsFragment : Fragment() {
 
         cursor?.use {
             while (it.moveToNext()) {
-                val name = it.getString(it.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
-                val phone = it.getString(it.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.NUMBER))
+                val name =
+                    it.getString(it.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
+                val phone =
+                    it.getString(it.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.NUMBER))
                 contacts.add(name to phone)
             }
         }
@@ -183,7 +192,7 @@ class GuestsFragment : Fragment() {
             .setPositiveButton("Add") { _, _ ->
                 selectedItems.forEach { index ->
                     val selectedContact = contacts[index]
-                    eventId?.let{
+                    eventId?.let {
                         viewModel.addGuest(Guest(selectedContact.first, selectedContact.second, it))
                     }
                 }
@@ -192,6 +201,7 @@ class GuestsFragment : Fragment() {
             .setNegativeButton("Cancel", null)
             .show()
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
