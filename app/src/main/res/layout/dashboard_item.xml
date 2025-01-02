@@ -5,8 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
+    android:backgroundTint="@color/card_bg"
     app:cardCornerRadius="8dp"
-    app:cardElevation="4dp">
+    app:cardElevation="8dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,11 +16,13 @@
         android:gravity="top"
         android:padding="8dp">
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/eventImage"
             android:layout_width="128dp"
             android:layout_height="128dp"
             android:scaleType="centerCrop"
+            android:background="@drawable/invite_border"
+            app:shapeAppearanceOverlay="@style/RoundedCorners"
             android:contentDescription="Event Image" />
 
         <LinearLayout
@@ -36,7 +39,8 @@
                 android:layout_height="wrap_content"
                 android:text="Event Name"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                />
 
             <TextView
                 android:id="@+id/eventDate"
