@@ -11,7 +11,7 @@
     <!-- Background colors -->
     <color name="background">#E2DFED</color>
     <color name="surface">#c3c3e0</color>
-    <color name="card_bg">#EAE9F0</color>
+    <color name="card_bg">#DEDDE9</color>
 
     <!-- Text colors -->
     <color name="text_primary">#353434</color>
