@@ -14,7 +14,7 @@
         android:id="@+id/tvBrideAndGroom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Jessica &amp; Michael"
+        android:text="@string/jessica_amp_michael"
         android:textSize="35sp"
         android:textStyle="bold"
         android:layout_marginTop="24dp"
@@ -29,7 +29,7 @@
         android:id="@+id/tvSubTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="The Wedding"
+        android:text="@string/the_wedding"
         android:textSize="18sp"
         android:layout_marginTop="4dp"
         app:layout_constraintTop_toBottomOf="@id/tvBrideAndGroom"
@@ -41,7 +41,7 @@
         android:id="@+id/tvInvitationIntro"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="We are excited to invite you to celebrate with us on our happiest day."
+        android:text="@string/we_are_excited_to_invite_you_to_celebrate_with_us_on_our_happiest_day"
         android:textAlignment="center"
         android:gravity="center"
         android:layout_marginTop="16dp"
@@ -54,7 +54,7 @@
         android:id="@+id/tvDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="August 15, 2024"
+        android:text="@string/august_15_2024"
         android:textSize="24sp"
         android:textStyle="bold"
         android:layout_marginTop="24dp"
@@ -67,7 +67,7 @@
         android:id="@+id/tvAdditionalDateInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Thursday"
+        android:text="@string/thursday"
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@id/tvDate"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +78,7 @@
         android:id="@+id/tvVenue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Troyah Hall"
+        android:text="@string/troyah_hall"
         android:textSize="20sp"
         android:textStyle="bold"
         android:layout_marginTop="24dp"
@@ -91,7 +91,7 @@
         android:id="@+id/tvVenueAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="123 Main Street, City"
+        android:text="@string/_123_main_street_city"
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@id/tvVenue"
         app:layout_constraintStart_toStartOf="parent"
@@ -124,7 +124,7 @@
                 android:id="@+id/tvTimeCeremony"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="7:30 PM"
+                android:text="@string/_7_30_pm"
                 android:textStyle="bold"
                 android:textSize="16sp" />
 
@@ -132,7 +132,7 @@
                 android:id="@+id/tvEventCeremonyLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ceremony"
+                android:text="@string/ceremony"
                 android:layout_marginTop="4dp" />
         </LinearLayout>
     </LinearLayout>
@@ -142,7 +142,7 @@
         android:id="@+id/tvFooterNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="We look forward to celebrating with you!"
+        android:text="@string/we_look_forward_to_celebrating_with_you"
         android:layout_marginTop="24dp"
         app:layout_constraintTop_toBottomOf="@id/llTimesRow"
         app:layout_constraintStart_toStartOf="parent"
@@ -172,14 +172,14 @@
                 android:id="@+id/tvBrideParentsLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bride's Parents"
+                android:text="@string/bride_s_parents"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvBrideParentsNames"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mary &amp; John Johnson" />
+                android:text="@string/mary_amp_john_johnson" />
         </LinearLayout>
 
         <!-- Groom's Parents -->
@@ -193,14 +193,14 @@
                 android:id="@+id/tvGroomParentsLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Groom's Parents"
+                android:text="@string/groom_s_parents"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvGroomParentsNames"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sara &amp; David Brown" />
+                android:text="@string/sara_amp_david_brown" />
         </LinearLayout>
     </LinearLayout>
 

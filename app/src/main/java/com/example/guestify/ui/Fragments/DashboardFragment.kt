@@ -56,13 +56,13 @@ class DashboardFragment : Fragment() {
 
     private fun showConfirmationDialog(events: List<Event>, index : Int) {
         val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle("Delete Event Confirmation")
-        builder.setMessage("Are you sure you want to delete this event? This action cannot be undone.")
-        builder.setPositiveButton("Yes") { dialog, which ->
+        builder.setTitle(getString(R.string.delete_event_confirmation))
+        builder.setMessage(getString(R.string.are_you_sure_you_want_to_delete_this_event_this_action_cannot_be_undone))
+        builder.setPositiveButton(getString(R.string.yes)) { dialog, which ->
             eventsViewModel.deleteEvent(events[index])
 
         }
-        builder.setNegativeButton("No") { dialog, which ->
+        builder.setNegativeButton(getString(R.string.no)) { dialog, which ->
             dialog.dismiss()
         }
         val dialog: AlertDialog = builder.create()

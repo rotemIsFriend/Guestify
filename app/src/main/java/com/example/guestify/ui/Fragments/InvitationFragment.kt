@@ -82,7 +82,8 @@ class InvitationFragment : Fragment() {
                     bundle
                 )
             } else {
-                Toast.makeText(requireContext(), "Please fix the errors above.", Toast.LENGTH_SHORT)
+                Toast.makeText(requireContext(),
+                    getString(R.string.please_fix_the_errors_above), Toast.LENGTH_SHORT)
                     .show()
             }
         }
@@ -140,10 +141,10 @@ class InvitationFragment : Fragment() {
 
         // -- Groom's Name (max length = 20) --
         if (groomName.isEmpty()) {
-            binding.etGroomName.error = "Groom's Name cannot be empty"
+            binding.etGroomName.error = getString(R.string.groom_s_name_cannot_be_empty)
             isValid = false
         } else if (groomName.length > 20) {
-            binding.etGroomName.error = "Groom's Name must be at most 20 characters"
+            binding.etGroomName.error =  getString(R.string.groom_s_name_must_be_at_most_20_characters)
             isValid = false
         } else {
             binding.etGroomName.error = null // Clear any previous error
@@ -151,10 +152,10 @@ class InvitationFragment : Fragment() {
 
         // -- Bride's Name (max length = 20) --
         if (brideName.isEmpty()) {
-            binding.etBrideName.error = "Bride's Name cannot be empty"
+            binding.etBrideName.error = getString(R.string.bride_s_name_cannot_be_empty)
             isValid = false
         } else if (brideName.length > 20) {
-            binding.etBrideName.error = "Bride's Name must be at most 20 characters"
+            binding.etBrideName.error =  getString(R.string.bride_s_name_must_be_at_most_20_characters)
             isValid = false
         } else {
             binding.etBrideName.error = null
@@ -162,10 +163,10 @@ class InvitationFragment : Fragment() {
 
         // -- Groom's Parents (max length = 50) --
         if (groomParents.isEmpty()) {
-            binding.etGroomPName.error = "Groom's Parents cannot be empty"
+            binding.etGroomPName.error = getString(R.string.groom_s_parents_cannot_be_empty)
             isValid = false
         } else if (groomParents.length > 50) {
-            binding.etGroomPName.error = "Groom's Parents must be at most 50 characters"
+            binding.etGroomPName.error = getString(R.string.groom_s_parents_name_must_be_at_most_50_characters)
             isValid = false
         } else {
             binding.etGroomPName.error = null
@@ -173,10 +174,10 @@ class InvitationFragment : Fragment() {
 
         // -- Bride's Parents (max length = 50) --
         if (brideParents.isEmpty()) {
-            binding.etBridePName.error = "Bride's Parents cannot be empty"
+            binding.etBridePName.error = getString(R.string.bride_s_parents_cannot_be_empty)
             isValid = false
         } else if (brideParents.length > 50) {
-            binding.etBridePName.error = "Bride's Parents must be at most 50 characters"
+            binding.etBridePName.error =  getString(R.string.bride_s_parents_name_must_be_at_most_50_characters)
             isValid = false
         } else {
             binding.etBridePName.error = null
@@ -184,10 +185,11 @@ class InvitationFragment : Fragment() {
 
         // -- Event Location (max length = 100) --
         if (eventLocation.isEmpty()) {
-            binding.etEventLocation.error = "Event Location cannot be empty"
+            binding.etEventLocation.error = getString(R.string.event_location_cannot_be_empty)
             isValid = false
         } else if (eventLocation.length > 100) {
-            binding.etEventLocation.error = "Event Location must be at most 100 characters"
+            binding.etEventLocation.error =
+                getString(R.string.event_location_must_be_at_most_100_characters)
             isValid = false
         } else {
             binding.etEventLocation.error = null
@@ -195,10 +197,10 @@ class InvitationFragment : Fragment() {
 
         // -- Venue Name (max length = 100) --
         if (venue.isEmpty()) {
-            binding.etVenueName.error = "Venue cannot be empty"
+            binding.etVenueName.error = getString(R.string.venue_cannot_be_empty)
             isValid = false
         } else if (venue.length > 100) {
-            binding.etVenueName.error = "Venue must be at most 100 characters"
+            binding.etVenueName.error = getString(R.string.venue_must_be_at_most_100_characters)
             isValid = false
         } else {
             binding.etVenueName.error = null
@@ -206,15 +208,15 @@ class InvitationFragment : Fragment() {
 
         // -- Number of Guests (max = 5 digits) --
         if (numOfGuests.isEmpty()) {
-            binding.etNumOfGuests.error = "Number of guests cannot be empty"
+            binding.etNumOfGuests.error = getString(R.string.number_of_guests_cannot_be_empty)
             isValid = false
         } else {
             val guestCount = numOfGuests.toIntOrNull()
             if (guestCount == null || guestCount < 1) {
-                binding.etNumOfGuests.error = "Please enter a valid number (> 0)"
+                binding.etNumOfGuests.error = getString(R.string.please_enter_a_valid_number_0)
                 isValid = false
             } else if (guestCount > 99999) {
-                binding.etNumOfGuests.error = "Please enter a valid number (< 100000)"
+                binding.etNumOfGuests.error = getString(R.string.please_enter_a_valid_number_100000)
                 isValid = false
             } else {
                 binding.etNumOfGuests.error = null
@@ -223,11 +225,13 @@ class InvitationFragment : Fragment() {
 
         // -- Invitation Text (max = 250) --
         if (invitationText.length > 250) {
-            binding.etInvitationText.error = "Invitation text must be at most 250 characters"
+            binding.etInvitationText.error =
+                getString(R.string.invitation_text_must_be_at_most_250_characters)
             isValid = false
         } else {
              if (invitationText.isEmpty()) {
-                 binding.etInvitationText.error = "Invitation text cannot be empty"
+                 binding.etInvitationText.error =
+                     getString(R.string.invitation_text_cannot_be_empty)
                  isValid = false
              } else {
                  binding.etInvitationText.error = null
@@ -237,7 +241,7 @@ class InvitationFragment : Fragment() {
 
         if (dateTime.isEmpty()) {
             // For a TextView, you can do:
-            binding.tvDateTime.error = "Event Date & Time cannot be empty"
+            binding.tvDateTime.error = getString(R.string.event_date_time_cannot_be_empty)
             isValid = false
         } else {
             // Clear any previous error if supported

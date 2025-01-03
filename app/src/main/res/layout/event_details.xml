@@ -24,7 +24,7 @@
             android:id="@+id/event_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Event Name"
+            android:text="@string/event_name"
             android:textSize="27sp"
             android:textFontWeight="600"
             android:gravity="center"
@@ -36,7 +36,7 @@
             android:id="@+id/welcome_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="View and Edit Your Event Details"
+            android:text="@string/view_and_edit_your_event_details"
             android:textSize="17sp"
             android:gravity="center"
             android:textColor="@color/text_secondary"
@@ -66,7 +66,7 @@
                     android:layout_height="wrap_content"
                     android:enabled="false"
                     android:padding="10dp"
-                    android:text="Event Date: "
+                    android:text="@string/event_date_"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     app:cornerRadius="10dp"
@@ -86,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:enabled="false"
                     android:padding="10dp"
-                    android:text="Event Time:"
+                    android:text="@string/event_time"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     app:cornerRadius="10dp"
@@ -129,7 +129,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Bride's Name:"
+                        android:text="@string/bride_s_name"
                         android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="16sp" />
@@ -170,7 +170,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Bride's Parent's Name:"
+                        android:text="@string/bride_s_parent_s_name"
                         android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="16sp" />
@@ -229,7 +229,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Groom's Name:"
+                        android:text="@string/groom_s_name"
                         android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="16sp" />
@@ -270,7 +270,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Groom's Parent's Name:"
+                        android:text="@string/groom_s_parent_s_name"
                         android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="16sp" />
@@ -330,7 +330,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Event Hall:"
+                        android:text="@string/event_hall"
                         android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="16sp"/>
@@ -372,7 +372,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Event Location:"
+                        android:text="@string/event_location"
                         android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="16sp"/>
@@ -414,7 +414,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Description:"
+                        android:text="@string/description"
                         android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="16sp" />
@@ -457,7 +457,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Amount of guests:"
+                        android:text="@string/amount_of_guests"
                         android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="16sp"/>
@@ -500,7 +500,7 @@
                 android:layout_gravity="center"
                 android:scaleType="centerCrop"
                 android:adjustViewBounds="true"
-                android:contentDescription="template" />
+                android:contentDescription="@string/template" />
         </FrameLayout>
 
         <!-- Buttons: Edit Guests & Edit Event -->
@@ -515,7 +515,7 @@
                 android:id="@+id/btn_edit_guests"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Edit Guests"
+                android:text="@string/edit_guests"
                 android:textColor="@android:color/white"
                 android:textSize="15sp"
                 app:cornerRadius="8dp"
@@ -526,7 +526,7 @@
                 android:id="@+id/btn_edit_event"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Edit Event"
+                android:text="@string/edit_event"
                 android:textColor="@android:color/white"
                 android:textSize="15sp"
                 app:cornerRadius="8dp"

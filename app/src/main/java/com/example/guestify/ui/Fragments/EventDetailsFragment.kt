@@ -126,10 +126,10 @@ class EventDetailsFragment : Fragment() {
 
         if (isEditing) {
             enableEditing(true)
-            binding.btnEditEvent.text = "Save"
+            binding.btnEditEvent.text = getString(R.string.save)
         } else {
             enableEditing(false)
-            binding.btnEditEvent.text = "Edit Event"
+            binding.btnEditEvent.text = getString(R.string.edit_event)
         }
     }
 
@@ -149,7 +149,7 @@ class EventDetailsFragment : Fragment() {
     private fun saveEventDetails(event: Event) {
         event.groomName = binding.groomsName.text.toString()
         event.brideName = binding.bridessName.text.toString()
-        event.name = "${event.groomName} & ${event.brideName} Wedding"
+        event.name = getString(R.string.wedding3, event.groomName, event.brideName)
         event.groomParents = binding.groomsParents.text.toString()
         event.brideParents = binding.bridesParents.text.toString()
         event.date = binding.eventDate.text.toString()
@@ -201,78 +201,83 @@ class EventDetailsFragment : Fragment() {
         // 1) Bride's Name (max length = 20)
         val brideNameStr = binding.bridessName.text?.toString()?.trim().orEmpty()
         if (brideNameStr.isEmpty()) {
-            binding.bridessName.error = "Bride's Name cannot be empty"
+            binding.bridessName.error = getString(R.string.bride_s_name_cannot_be_empty)
             isValid = false
         } else if (brideNameStr.length > 20) {
-            binding.bridessName.error = "Bride's Name must be at most 20 characters"
+            binding.bridessName.error =
+                getString(R.string.bride_s_name_must_be_at_most_20_characters)
             isValid = false
         }
 
         // 2) Bride's Parents (max length = 50)
         val brideParentsStr = binding.bridesParents.text?.toString()?.trim().orEmpty()
         if (brideParentsStr.isEmpty()) {
-            binding.bridesParents.error = "Bride's Parents cannot be empty"
+            binding.bridesParents.error = getString(R.string.bride_s_parents_cannot_be_empty)
             isValid = false
         } else if (brideParentsStr.length > 50) {
-            binding.bridesParents.error = "Bride's Parents name must be at most 50 characters"
+            binding.bridesParents.error =
+                getString(R.string.bride_s_parents_name_must_be_at_most_50_characters)
             isValid = false
         }
 
         // 3) Groom's Name (max length = 20)
         val groomNameStr = binding.groomsName.text?.toString()?.trim().orEmpty()
         if (groomNameStr.isEmpty()) {
-            binding.groomsName.error = "Groom's Name cannot be empty"
+            binding.groomsName.error = getString(R.string.groom_s_name_cannot_be_empty)
             isValid = false
         } else if (groomNameStr.length > 20) {
-            binding.groomsName.error = "Groom's Name must be at most 20 characters"
+            binding.groomsName.error =
+                getString(R.string.groom_s_name_must_be_at_most_20_characters)
             isValid = false
         }
 
         // 4) Groom's Parents (max length = 50)
         val groomParentsStr = binding.groomsParents.text?.toString()?.trim().orEmpty()
         if (groomParentsStr.isEmpty()) {
-            binding.groomsParents.error = "Groom's Parents cannot be empty"
+            binding.groomsParents.error = getString(R.string.groom_s_parents_cannot_be_empty)
             isValid = false
         } else if (groomParentsStr.length > 50) {
-            binding.groomsParents.error = "Groom's Parents name must be at most 50 characters"
+            binding.groomsParents.error =
+                getString(R.string.groom_s_parents_name_must_be_at_most_50_characters)
             isValid = false
         }
 
         // 5) Event Hall (max length = 20)
         val eventVenueStr = binding.eventVenue.text?.toString()?.trim().orEmpty()
         if (eventVenueStr.isEmpty()) {
-            binding.eventVenue.error = "Event Hall cannot be empty"
+            binding.eventVenue.error = getString(R.string.event_hall_cannot_be_empty)
             isValid = false
         } else if (eventVenueStr.length > 20) {
-            binding.eventVenue.error = "Event Hall must be at most 20 characters"
+            binding.eventVenue.error = getString(R.string.event_hall_must_be_at_most_20_characters)
             isValid = false
         }
 
         // 6) Event Location (max length = 50)
         val eventLocationStr = binding.location.text?.toString()?.trim().orEmpty()
         if (eventLocationStr.isEmpty()) {
-            binding.location.error = "Event Location cannot be empty"
+            binding.location.error = getString(R.string.event_location_cannot_be_empty)
             isValid = false
         } else if (eventLocationStr.length > 50) {
-            binding.location.error = "Event Location must be at most 50 characters"
+            binding.location.error =
+                getString(R.string.event_location_must_be_at_most_50_characters)
             isValid = false
         }
 
         // 7) Amount of Guests (max length = 5 digits)
         val amountStr = binding.amount.text?.toString()?.trim().orEmpty()
         if (amountStr.isEmpty()) {
-            binding.amount.error = "Amount of guests cannot be empty"
+            binding.amount.error = getString(R.string.amount_of_guests_cannot_be_empty)
             isValid = false
         } else {
             val guestCount = amountStr.toIntOrNull()
             // 7a) Basic numeric validation
             if (guestCount == null || guestCount < 1) {
-                binding.amount.error = "Please enter a valid number (> 0)"
+                binding.amount.error = getString(R.string.please_enter_a_valid_number_0)
                 isValid = false
             }
             // 7b) Check upper limit
             else if (guestCount > 99999) {
-                binding.amount.error = "Please enter a valid number (< 100,000)"
+                binding.amount.error = getString(R.string.please_enter_a_valid_number_100_000)
                 isValid = false
             }
         }

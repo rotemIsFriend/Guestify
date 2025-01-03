@@ -13,7 +13,7 @@
         android:id="@+id/tvTopQuote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="“מים רבים לא יוכלו לכבות את האהבה...”"
+        android:text="מים רבים לא יוכלו לכבות את האהבה..."
         android:textSize="16sp"
         android:textColor="@color/white"
         android:layout_marginBottom="8dp"
@@ -26,7 +26,7 @@
         android:id="@+id/tvBrideAndGroom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="HILA &amp; NOAM"
+        android:text="@string/hila_amp_noam"
         android:textColor="@color/white"
         android:textSize="35sp"
         android:textStyle="bold"
@@ -69,7 +69,7 @@
         android:id="@+id/tvDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="14.10.2024"
+        android:text="@string/_14_10_2024"
         android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="@color/white"
@@ -146,7 +146,7 @@
                 android:id="@+id/tvTimeCeremony"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="20:30"
+                android:text="@string/_20_30"
                 android:textColor="@color/white"
 
                 android:textStyle="bold"
@@ -199,7 +199,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
-                android:text="הורי הכלה"
+                android:text="הוריי הכלה"
                 android:textStyle="bold" />
 
             <TextView
@@ -208,7 +208,7 @@
                 android:textColor="@color/white"
 
                 android:layout_height="wrap_content"
-                android:text="מזל ואילון יצחקן" />
+                android:text="@string/mazal_and_ilon_yitzhakan" />
         </LinearLayout>
 
         <!-- Groom's Parents -->
@@ -222,7 +222,7 @@
                 android:id="@+id/tvGroomParentsLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="הורי החתן"
+                android:text="הוריי החתן"
                 android:textColor="@color/white"
 
                 android:textStyle="bold" />
@@ -233,7 +233,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
 
-                android:text="חפציבה וירון אשד" />
+                android:text="יוכבד ואיילון אשד" />
         </LinearLayout>
     </LinearLayout>
 

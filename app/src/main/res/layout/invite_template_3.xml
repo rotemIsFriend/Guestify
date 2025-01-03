@@ -26,7 +26,7 @@
         android:id="@+id/tvBrideAndGroom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Neta &amp; Barak"
+        android:text="@string/neta_amp_barak"
         android:textSize="30sp"
         android:fontFamily="@font/sour_gummy"
         android:layout_marginTop="16dp"
@@ -39,7 +39,7 @@
         android:id="@+id/tvSubTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Are Getting Married"
+        android:text="@string/are_getting_married"
         android:textSize="18sp"
         android:layout_marginTop="4dp"
         app:layout_constraintTop_toBottomOf="@id/tvBrideAndGroom"
@@ -51,7 +51,7 @@
         android:id="@+id/tvInvitationIntro"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="שמחים ונרגשים להזמינכם לחגוג עמנו את היום המאושר בחיינו"
+        android:text="@string/happy_and_excited_to_invite_you_to_celebrate_with_us_the_happiest_day_of_our_lives"
         android:textAlignment="center"
         android:gravity="center"
         android:layout_marginTop="16dp"
@@ -64,7 +64,7 @@
         android:id="@+id/tvDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="04.02.2025"
+        android:text="@string/_04_02_2025"
         android:textSize="24sp"
         android:textStyle="bold"
         android:layout_marginTop="24dp"
@@ -77,7 +77,7 @@
         android:id="@+id/tvAdditionalDateInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tuesday, 11 Shevat"
+        android:text="@string/tuesday_11_shevat"
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@id/tvDate"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +88,7 @@
         android:id="@+id/tvVenue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bnei Darom Hall"
+        android:text="@string/bnei_darom_hall"
         android:textSize="20sp"
         android:textStyle="bold"
         android:layout_marginTop="24dp"
@@ -101,7 +101,7 @@
         android:id="@+id/tvVenueAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ashdod, Israel"
+        android:text="@string/ashdod_israel"
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@id/tvVenue"
         app:layout_constraintStart_toStartOf="parent"
@@ -131,7 +131,7 @@
                 android:id="@+id/tvTimeCeremony"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="20:30"
+                android:text="@string/_20_30"
                 android:textStyle="bold"
                 android:textSize="16sp" />
 
@@ -140,7 +140,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="Ceremony" />
+                android:text="@string/ceremony" />
         </LinearLayout>
     </LinearLayout>
 
@@ -149,7 +149,7 @@
         android:id="@+id/tvFooterNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="We look forward to celebrating with you!"
+        android:text="@string/we_look_forward_to_celebrating_with_you"
         android:layout_marginTop="24dp"
         app:layout_constraintTop_toBottomOf="@id/llTimesRow"
         app:layout_constraintStart_toStartOf="parent"
@@ -179,14 +179,14 @@
                 android:id="@+id/tvBrideParentsLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bride's Parents"
+                android:text="@string/bride_s_parents"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvBrideParentsNames"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Adina &amp; Meir Job" />
+                android:text="@string/adina_amp_meir_job" />
         </LinearLayout>
 
         <!-- Groom's Parents -->
@@ -200,14 +200,14 @@
                 android:id="@+id/tvGroomParentsLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Groom's Parents"
+                android:text="@string/groom_s_name"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvGroomParentsNames"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ovadia &amp; Gail Tzion" />
+                android:text="@string/ovadia_amp_gail_tzion" />
         </LinearLayout>
     </LinearLayout>
 

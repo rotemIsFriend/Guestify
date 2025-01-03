@@ -215,9 +215,9 @@ class ChooseTemplateFragment : Fragment() {
             } else {
                 // Handle case where event is not found
                 AlertDialog.Builder(requireContext())
-                    .setTitle("Error")
-                    .setMessage("Event not found.")
-                    .setPositiveButton("OK") { dialog, _ ->
+                    .setTitle(getString(R.string.error))
+                    .setMessage(getString(R.string.event_not_found))
+                    .setPositiveButton(getString(R.string.ok)) { dialog, _ ->
                         dialog.dismiss()
                     }
                     .show()
@@ -225,7 +225,7 @@ class ChooseTemplateFragment : Fragment() {
         else{
             val groomName = invitationData["groomName"] as? String ?: ""
             val brideName = invitationData["brideName"] as? String ?: ""
-            val eventName = "$groomName & $brideName Wedding"
+            val eventName = getString(R.string.wedding3, groomName, brideName)
             val groomParents = invitationData["groomParents"] as? String ?: ""
             val brideParents = invitationData["brideParents"] as? String ?: ""
             val eventDate = invitationData["eventDate"] as? String ?: ""
@@ -262,12 +262,12 @@ class ChooseTemplateFragment : Fragment() {
 
     private fun showConfirmationDialog(template: Bitmap, invitationData: Map<String, Any>) {
         val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle("Confirm Template")
-        builder.setMessage("Do you want to proceed with the selected template?")
-        builder.setPositiveButton("Yes") { dialog, which ->
+        builder.setTitle(getString(R.string.confirm_template))
+        builder.setMessage(getString(R.string.do_you_want_to_proceed_with_the_selected_template))
+        builder.setPositiveButton(getString(R.string.yes)) { dialog, which ->
             updateTemplateAndNavigate(template, invitationData)
         }
-        builder.setNegativeButton("No") { dialog, which ->
+        builder.setNegativeButton(getString(R.string.no)) { dialog, which ->
             dialog.dismiss()
         }
         val dialog: AlertDialog = builder.create()

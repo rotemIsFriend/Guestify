@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Event Guest List"
+            android:text="@string/event_guest_list"
             android:textStyle="bold"
             android:textSize="27sp"
             android:layout_marginTop="20dp" />
@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Manage Your Guest List Here"
+            android:text="@string/manage_your_guest_list_here"
             android:textColor="@color/text_secondary"
             android:textSize="17sp"
             android:layout_marginBottom="12dp" />
@@ -61,7 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Add Guests"
+            android:text="@string/add_guests"
             android:textStyle="bold"
             android:textSize="20sp"
             android:layout_marginBottom="15dp"
@@ -72,7 +72,7 @@
             android:id="@+id/add_from_contacts_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Open Contacts"
+            android:text="@string/open_contacts"
             android:layout_gravity="center"
             app:cornerRadius="5dp"
             android:backgroundTint="@color/primary"
@@ -87,7 +87,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Or, add guests manually.."
+            android:text="@string/or_add_guests_manually"
             android:textStyle="bold"
             android:textSize="16sp"
             android:layout_marginTop="15dp"
@@ -103,7 +103,7 @@
                 android:id="@+id/guest_name_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter guest name"
+                android:hint="@string/enter_guest_name"
                 android:inputType="textPersonName"
                 android:layout_marginBottom="8dp" />
 
@@ -111,7 +111,7 @@
                 android:id="@+id/guest_phone_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter phone number"
+                android:hint="@string/enter_phone_number"
                 android:inputType="phone"
                 android:layout_marginBottom="8dp" />
 
@@ -127,8 +127,8 @@
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:backgroundTint="@color/black"
-                    android:text="Save Guest" />
+                    android:backgroundTint="@color/primary"
+                    android:text="@string/save_guest" />
 
                 <Space
                     android:layout_width="20dp"
@@ -140,7 +140,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:backgroundTint="@color/primary"
-                    android:text="Finish" />
+                    android:text="@string/finish" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

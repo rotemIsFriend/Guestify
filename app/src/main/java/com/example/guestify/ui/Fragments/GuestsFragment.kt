@@ -69,18 +69,21 @@ class GuestsFragment : Fragment() {
             val phone = binding.guestPhoneInput.text.toString().trim()
 
             if (name.isEmpty() || phone.isEmpty()) {
-                Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT)
+                Toast.makeText(requireContext(),
+                    getString(R.string.please_fill_in_all_fields), Toast.LENGTH_SHORT)
                     .show()
             } else {
                 if (guestToEdit != null) {
                     guestToEdit?.name = name
                     guestToEdit?.phone = phone
                     guestToEdit?.let { viewModel.updateGuest(it) }
-                    Toast.makeText(requireContext(), "Guest updated", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(),
+                        getString(R.string.guest_updated), Toast.LENGTH_SHORT).show()
                     guestToEdit = null
                 } else {
                     eventId?.let { viewModel.addGuest(Guest(name, phone, it)) }
-                    Toast.makeText(requireContext(), "Guest added", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(),
+                        getString(R.string.guest_added), Toast.LENGTH_SHORT).show()
                 }
                 binding.guestNameInput.text.clear()
                 binding.guestPhoneInput.text.clear()
@@ -109,17 +112,17 @@ class GuestsFragment : Fragment() {
 
     private fun showDeleteConfirmationDialog(guest: Guest) {
         AlertDialog.Builder(requireContext())
-            .setTitle("Delete Guest")
-            .setMessage("Are you sure you want to delete ${guest.name}?")
-            .setPositiveButton("Yes") { _, _ ->
+            .setTitle(getString(R.string.delete_guest))
+            .setMessage(getString(R.string.are_you_sure_you_want_to_delete, guest.name))
+            .setPositiveButton(getString(R.string.yes)) { _, _ ->
                 viewModel.removeGuest(guest)
                 Toast.makeText(
                     requireContext(),
-                    "${guest.name} has been deleted",
+                    getString(R.string.has_been_deleted, guest.name),
                     Toast.LENGTH_SHORT
                 ).show()
             }
-            .setNegativeButton("No") { dialog, _ ->
+            .setNegativeButton(getString(R.string.no)) { dialog, _ ->
                 dialog.dismiss()
             }
             .show()
@@ -145,7 +148,8 @@ class GuestsFragment : Fragment() {
         if (requestCode == REQUEST_CONTACTS_PERMISSION && grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             loadContacts()
         } else {
-            Toast.makeText(requireContext(), "Permission denied", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(),
+                getString(R.string.permission_denied), Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -181,7 +185,7 @@ class GuestsFragment : Fragment() {
         val selectedItems = mutableListOf<Int>()
 
         AlertDialog.Builder(requireContext())
-            .setTitle("Choose contacts")
+            .setTitle(getString(R.string.choose_contacts))
             .setMultiChoiceItems(contactNames, null) { _, which, isChecked ->
                 if (isChecked) {
                     selectedItems.add(which)
@@ -189,16 +193,17 @@ class GuestsFragment : Fragment() {
                     selectedItems.remove(which)
                 }
             }
-            .setPositiveButton("Add") { _, _ ->
+            .setPositiveButton(getString(R.string.add)) { _, _ ->
                 selectedItems.forEach { index ->
                     val selectedContact = contacts[index]
                     eventId?.let {
                         viewModel.addGuest(Guest(selectedContact.first, selectedContact.second, it))
                     }
                 }
-                Toast.makeText(requireContext(), "Guests added", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),
+                    getString(R.string.guests_added), Toast.LENGTH_SHORT).show()
             }
-            .setNegativeButton("Cancel", null)
+            .setNegativeButton(getString(R.string.cancel), null)
             .show()
     }
 

@@ -18,7 +18,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Create Your Digital Invitation"
+            android:text="@string/create_your_digital_invitation"
             android:textStyle="bold"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
@@ -29,7 +29,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Groom's Name:"
+            android:text="@string/groom_s_name"
             android:textStyle="bold"
             android:layout_marginTop="25dp"
             />
@@ -38,7 +38,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter the groom's name"
+            android:hint="@string/enter_the_groom_s_name"
             app:counterEnabled="true"
             app:counterMaxLength="20"
             app:boxStrokeColor="@color/primary"
@@ -56,7 +56,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Groom's Parents:"
+            android:text="@string/groom_s_parent_s_name"
             android:textStyle="bold"
             />
 
@@ -64,7 +64,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Example: Rotem and Roei Haver"
+            android:hint="@string/example_rotem_and_roei_haver"
             app:counterEnabled="true"
             app:counterMaxLength="50"
             app:boxStrokeColor="@color/primary"
@@ -83,14 +83,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Brides's Name:"
+            android:text="@string/bride_s_name"
             android:textStyle="bold"
             />
         <!-- Bride's Name -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter the bride's name"
+            android:hint="@string/enter_the_bride_s_name"
             app:counterEnabled="true"
             app:counterMaxLength="20"
             app:boxStrokeColor="@color/primary"
@@ -106,7 +106,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Brides's Parents:"
+            android:text="@string/bride_s_parent_s_name"
             android:textStyle="bold"
             />
 
@@ -114,7 +114,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Example: Hannan and Yohevet Fridman"
+            android:hint="@string/example_hannan_and_yohevet_fridman"
             app:counterEnabled="true"
             app:counterMaxLength="50"
             app:boxStrokeColor="@color/primary"
@@ -130,7 +130,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Event Location:"
+            android:text="@string/event_location"
             android:textStyle="bold"
             android:layout_marginTop="10dp"
             />
@@ -138,7 +138,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter the event location"
+            android:hint="@string/enter_the_event_location"
             app:counterEnabled="true"
             app:counterMaxLength="100"
             app:boxStrokeColor="@color/primary"
@@ -156,7 +156,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Venue Name:"
+            android:text="@string/venue_name"
             android:textStyle="bold"
             android:layout_marginTop="10dp"
             />
@@ -164,7 +164,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Example: Gan Havradim"
+            android:hint="@string/example_gan_havradim"
             app:counterEnabled="true"
             app:counterMaxLength="100"
             app:boxStrokeColor="@color/primary"
@@ -180,7 +180,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Expected number of guests:"
+            android:text="@string/expected_number_of_guests"
             android:textStyle="bold"
             android:layout_marginTop="10dp"
             />
@@ -188,7 +188,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Example: 350"
+            android:hint="@string/example_350"
             app:counterEnabled="true"
             app:counterMaxLength="5"
             app:boxStrokeColor="@color/primary"
@@ -206,7 +206,7 @@
             style="@style/Widget.Material3.Button.IconButton.Outlined"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Select your event date &amp; time"
+            android:text="@string/select_your_event_date_amp_time"
             app:icon="@drawable/date_icon"
             app:iconGravity="start"
             app:iconTint="@color/black"
@@ -226,7 +226,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Invitation Text:"
+            android:text="@string/invitation_text"
             android:textStyle="bold"
             android:layout_marginTop="10dp"
             />
@@ -235,7 +235,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="This is the main text of your invitation."
+            android:hint="@string/this_is_the_main_text_of_your_invitation"
             app:counterEnabled="true"
             app:counterMaxLength="250"
             app:boxStrokeColor="@color/primary"
@@ -255,7 +255,7 @@
             android:id="@+id/btn_submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Pick A Template"
+            android:text="@string/pick_a_template"
             android:layout_marginTop="16dp"
             android:backgroundTint="@color/primary"
             style="@style/Widget.MaterialComponents.Button" />
