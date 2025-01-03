@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.guestify.ui.Fragments.EventDetailsFragment"
@@ -9,440 +10,487 @@
     android:paddingTop="25dp"
     android:paddingBottom="40dp"
     android:layout_marginBottom="30dp"
-    >
+    android:clipToPadding="false"
+    android:scrollbars="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="40dp"
-        android:paddingHorizontal="16dp"
-        android:paddingBottom="40dp">
+        android:layout_marginTop="30dp">
 
-
+        <!-- Header Texts -->
         <TextView
             android:id="@+id/event_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Event Name"
-            android:fontFamily="@font/poppins_font_family"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:textSize="27sp"
+            android:textFontWeight="600"
             android:gravity="center"
             android:textColor="@color/black"
-            android:layout_marginBottom="5dp" />
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="6dp" />
 
         <TextView
             android:id="@+id/welcome_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="View and Edit Your Event Details Here"
-            android:textSize="15sp"
-            android:textStyle="bold"
+            android:text="View and Edit Your Event Details"
+            android:textSize="17sp"
             android:gravity="center"
             android:textColor="@color/text_secondary"
-            android:layout_marginBottom="25dp" />
+            android:layout_marginBottom="20dp" />
 
-
-        <LinearLayout
+        <!-- Card: Date & Time Buttons -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
+            android:backgroundTint="@color/card_bg"
             android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:cardUseCompatPadding="true"
             android:layout_marginBottom="16dp"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:elevation="2dp">
 
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/event_Date"
-                style="@style/Widget.Material3.Button.IconButton.Outlined"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:enabled="false"
-                android:padding="10dp"
-                android:text="Event Date: "
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:cornerRadius="10dp"
-                app:icon="@drawable/date_icon"
-                app:iconGravity="start"
-                app:iconPadding="10dp"
-                app:iconTint="@color/primary" />
-
-            <Space
-                android:layout_width="20dp"
-                android:layout_height="5dp"/>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/event_Time"
-                style="@style/Widget.Material3.Button.IconButton.Outlined"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:enabled="false"
-                android:padding="10dp"
-                android:text="Event Time:"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:cornerRadius="10dp"
-                app:icon="@drawable/clock_icon"
-                app:iconGravity="start"
-                app:iconPadding="10dp"
-                app:iconTint="@color/primary" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            android:gravity="center_vertical">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/bride_2_svgrepo_com"
-                android:layout_marginEnd="8dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Bride's Name:"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            app:counterEnabled="true"
-            app:counterMaxLength="20"
-            app:boxStrokeColor="@color/primary"
-            app:hintTextColor="@color/primary"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/bridess_name"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:enabled="false"
-                android:textColor="@color/edit_text_color"
-                android:background="@drawable/edit_text_bg"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:padding="16dp">
 
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/event_Date"
+                    style="@style/Widget.Material3.Button.IconButton.Outlined"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:padding="10dp"
+                    android:text="Event Date: "
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:cornerRadius="10dp"
+                    app:icon="@drawable/date_icon"
+                    app:iconGravity="start"
+                    app:iconPadding="10dp"
+                    app:iconTint="@color/primary" />
 
-        <LinearLayout
+                <Space
+                    android:layout_width="20dp"
+                    android:layout_height="0dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/event_Time"
+                    style="@style/Widget.Material3.Button.IconButton.Outlined"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:padding="10dp"
+                    android:text="Event Time:"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:cornerRadius="10dp"
+                    app:icon="@drawable/clock_icon"
+                    app:iconGravity="start"
+                    app:iconPadding="10dp"
+                    app:iconTint="@color/primary" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Card: Bride Info -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
+            android:backgroundTint="@color/card_bg"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            android:gravity="center_vertical">
+            app:cardCornerRadius="12dp"
+            app:cardUseCompatPadding="true"
+            android:layout_marginBottom="16dp"
+            android:elevation="2dp">
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/bride_2_svgrepo_com"
-                android:layout_marginEnd="8dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Bride's Parent's Name:"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            app:counterEnabled="true"
-            app:counterMaxLength="50"
-            app:boxStrokeColor="@color/primary"
-            app:hintTextColor="@color/primary">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/brides_parents"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:enabled="false"
-                android:textColor="@color/edit_text_color"
-                android:background="@drawable/edit_text_bg" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:orientation="vertical"
+                android:padding="16dp">
 
+                <!-- Bride's Name -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="6dp">
 
-        <LinearLayout
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/bride_2_svgrepo_com"
+                        android:layout_marginEnd="8dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bride's Name:"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    app:boxStrokeColor="@color/primary"
+                    app:hintTextColor="@color/primary"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="20">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/bridess_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:enabled="false"
+                        android:textColor="@color/edit_text_color"
+                        android:background="@drawable/edit_text_bg" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Bride's Parents -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="6dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/bride_2_svgrepo_com"
+                        android:layout_marginEnd="8dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bride's Parent's Name:"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    app:boxStrokeColor="@color/primary"
+                    app:hintTextColor="@color/primary"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="50">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/brides_parents"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:enabled="false"
+                        android:textColor="@color/edit_text_color"
+                        android:background="@drawable/edit_text_bg" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Card: Groom Info -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
+            android:backgroundTint="@color/card_bg"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            android:gravity="center_vertical">
+            app:cardCornerRadius="12dp"
+            app:cardUseCompatPadding="true"
+            android:layout_marginBottom="16dp"
+            android:elevation="2dp">
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/groom_icon"
-                android:layout_marginEnd="8dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Groom's Name:"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            app:counterEnabled="true"
-            app:counterMaxLength="20"
-            app:boxStrokeColor="@color/primary"
-            app:hintTextColor="@color/primary">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/grooms_name"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:enabled="false"
-                android:textColor="@color/edit_text_color"
-                android:background="@drawable/edit_text_bg" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:orientation="vertical"
+                android:padding="16dp">
 
+                <!-- Groom's Name -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="6dp">
 
-        <LinearLayout
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/groom_icon"
+                        android:layout_marginEnd="8dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Groom's Name:"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    app:boxStrokeColor="@color/primary"
+                    app:hintTextColor="@color/primary"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="20">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/grooms_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:enabled="false"
+                        android:textColor="@color/edit_text_color"
+                        android:background="@drawable/edit_text_bg" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Groom's Parents -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="6dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/groom_icon"
+                        android:layout_marginEnd="8dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Groom's Parent's Name:"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    app:boxStrokeColor="@color/primary"
+                    app:hintTextColor="@color/primary"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="50">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/grooms_parents"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:enabled="false"
+                        android:textColor="@color/edit_text_color"
+                        android:background="@drawable/edit_text_bg" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Card: Event Hall, Location, Description, Guests -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
+            android:backgroundTint="@color/card_bg"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            android:gravity="center_vertical">
+            app:cardCornerRadius="12dp"
+            app:cardUseCompatPadding="true"
+            android:layout_marginBottom="16dp"
+            android:elevation="2dp">
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/groom_icon"
-                android:layout_marginEnd="8dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Groom's Parent's Name:"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            app:counterEnabled="true"
-            app:counterMaxLength="50"
-            app:boxStrokeColor="@color/primary"
-            app:hintTextColor="@color/primary">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/grooms_parents"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:enabled="false"
-                android:textColor="@color/edit_text_color"
-                android:background="@drawable/edit_text_bg" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:orientation="vertical"
+                android:padding="16dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+                <!-- Event Hall -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="6dp">
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/party_svgrepo_com"
-                android:layout_marginEnd="8dp" />
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/party_svgrepo_com"
+                        android:layout_marginEnd="8dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Event Hall:"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="16sp"/>
-        </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Event Hall:"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"/>
+                </LinearLayout>
 
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="20"
+                    app:boxStrokeColor="@color/primary"
+                    app:hintTextColor="@color/primary">
 
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/event_venue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:enabled="false"
+                        android:textColor="@color/edit_text_color"
+                        android:background="@drawable/edit_text_bg" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            app:counterEnabled="true"
-            app:counterMaxLength="20"
-            app:boxStrokeColor="@color/primary"
-            app:hintTextColor="@color/primary">
+                <!-- Event Location -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="6dp">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/event_venue"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:enabled="false"
-                android:textColor="@color/edit_text_color"
-                android:background="@drawable/edit_text_bg" />
-        </com.google.android.material.textfield.TextInputLayout>
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/location_icon"
+                        android:layout_marginEnd="8dp" />
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Event Location:"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"/>
+                </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="50"
+                    app:boxStrokeColor="@color/primary"
+                    app:hintTextColor="@color/primary">
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/location_icon"
-                android:layout_marginEnd="8dp" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:enabled="false"
+                        android:textColor="@color/edit_text_color"
+                        android:background="@drawable/edit_text_bg" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Event Location:"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="16sp"/>
-        </LinearLayout>
+                <!-- Description -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="6dp">
 
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/file_svgrepo_com"
+                        android:layout_marginEnd="8dp" />
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Description:"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+                </LinearLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            app:counterEnabled="true"
-            app:counterMaxLength="50"
-            app:boxStrokeColor="@color/primary"
-            app:hintTextColor="@color/primary">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="250"
+                    app:boxStrokeColor="@color/primary"
+                    app:hintTextColor="@color/primary">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/location"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:enabled="false"
-                android:textColor="@color/edit_text_color"
-                android:background="@drawable/edit_text_bg" />
-        </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textMultiLine"
+                        android:gravity="top"
+                        android:lines="2"
+                        android:textColor="@color/edit_text_color"
+                        android:background="@drawable/edit_text_bg" />
+                </com.google.android.material.textfield.TextInputLayout>
 
+                <!-- Amount of guests -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="6dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            android:gravity="center_vertical">
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/people_icon"
+                        android:layout_marginEnd="8dp" />
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/file_svgrepo_com"
-                android:layout_marginEnd="8dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Amount of guests:"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"/>
+                </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Description:"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-        </LinearLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="5"
+                    app:boxStrokeColor="@color/primary"
+                    app:hintTextColor="@color/primary">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:counterEnabled="true"
-            app:counterMaxLength="250"
-            app:boxStrokeColor="@color/primary"
-            app:hintTextColor="@color/primary">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/amount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:textColor="@color/edit_text_color"
+                        android:background="@drawable/edit_text_bg" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textMultiLine"
-                android:gravity="top"
-                android:lines="2"
-                android:textColor="@color/edit_text_color"
-                android:background="@drawable/edit_text_bg" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/people_icon"
-                android:layout_marginEnd="8dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Amount of guests:"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="16sp"/>
-        </LinearLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            app:counterEnabled="true"
-            app:counterMaxLength="5"
-            app:boxStrokeColor="@color/primary"
-            app:hintTextColor="@color/primary"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/amount"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:textColor="@color/edit_text_color"
-                android:background="@drawable/edit_text_bg"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
-
+        <!-- Invitation Template Preview -->
         <FrameLayout
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@drawable/invite_border"
+            android:layout_marginTop="20dp"
             android:clipToOutline="true"
-            android:layout_marginTop="25dp">
+            android:background="@drawable/invite_border"
+            android:padding="4dp">
 
             <ImageButton
                 android:id="@+id/choose_template"
@@ -453,9 +501,9 @@
                 android:scaleType="centerCrop"
                 android:adjustViewBounds="true"
                 android:contentDescription="template" />
-
         </FrameLayout>
 
+        <!-- Buttons: Edit Guests & Edit Event -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -468,15 +516,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Edit Guests"
-                app:cornerRadius="8dp"
-                app:backgroundTint="@color/primary"
                 android:textColor="@android:color/white"
                 android:textSize="15sp"
-                android:layout_marginEnd="10dp" />
-
-            <Space
-                android:layout_width="20dp"
-                android:layout_height="5dp"/>
+                app:cornerRadius="8dp"
+                app:backgroundTint="@color/primary"
+                android:layout_marginEnd="12dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_edit_event"
@@ -485,9 +529,8 @@
                 android:text="Edit Event"
                 android:textColor="@android:color/white"
                 android:textSize="15sp"
-                app:backgroundTint="@color/primary"
-                app:cornerRadius="8dp" />
-
+                app:cornerRadius="8dp"
+                app:backgroundTint="@color/primary" />
         </LinearLayout>
 
     </LinearLayout>

@@ -38,6 +38,7 @@
             android:layout_gravity="center"
             android:background="@drawable/invite_border"
             android:clipToOutline="true"
+            android:padding="4dp"
             android:layout_marginTop="25dp">
 
             <ImageButton
@@ -57,6 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@drawable/invite_border"
+            android:padding="4dp"
             android:clipToOutline="true"
             android:layout_marginTop="25dp">
 
@@ -77,6 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@drawable/invite_border"
+            android:padding="4dp"
             android:clipToOutline="true"
             android:layout_marginTop="25dp">
 
@@ -120,6 +123,7 @@
             android:layout_gravity="center"
             android:background="@drawable/invite_border"
             android:clipToOutline="true"
+            android:padding="4dp"
             android:layout_marginTop="25dp">
 
             <ImageButton
@@ -134,6 +138,7 @@
                 android:contentDescription="template" />
 
         </FrameLayout>
+
     </LinearLayout>
 
 </ScrollView>
