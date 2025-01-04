@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- אפליקציה -->
     <string name="app_name">Guestify</string>
-    <string name="choose_a_template">בחירת תבנית</string>
-    <string name="we_ve_prepared_templates_for_you_to_choose_from_take_a_look">הכנו עבורך תבניות לבחירה. מוזמנים להסתכל!</string>
+
+    <!-- מסך בחירת תבנית -->
+    <string name="choose_a_template">בחרו תבנית</string>
+    <string name="we_ve_prepared_templates_for_you_to_choose_from_take_a_look">הכנו לכם כמה תבניות לבחירה, מוזמנים להציץ!</string>
     <string name="template">תבנית</string>
-    <string name="already_got_your_own_invitation">כבר יש לך הזמנה משלך?</string>
-    <string name="upload_custom_invite">"תעלה הזמנה "</string>
-    <string name="dashboard">מרכז ניהול</string>
-    <string name="monitor_and_manage_your_events">עקוב ונטר אחר האירועים שלך</string>
+    <string name="already_got_your_own_invitation">כבר יש לכם הזמנה משלכם?</string>
+    <string name="upload_custom_invite">העלו הזמנה</string>
+
+    <!-- מסך מרכז ניהול -->
+    <string name="dashboard">מרכז השליטה</string>
+    <string name="monitor_and_manage_your_events">עקבו ונהלו את האירועים שלכם</string>
     <string name="new_event">אירוע חדש</string>
     <string name="event_image">תמונת אירוע</string>
-    <string name="delete_event">תמחק את האירוע</string>
+    <string name="delete_event">מחקו את האירוע</string>
+
+    <!-- פרטי אירוע -->
     <string name="event_name">שם האירוע</string>
     <string name="event_date">תאריך האירוע</string>
-    <string name="view_and_edit_your_event_details">תצפה ותערוך את פרטי האירוע שלך</string>
+    <string name="view_and_edit_your_event_details">צפו וערכו את פרטי האירוע</string>
     <string name="event_date_">תאריך האירוע:</string>
     <string name="event_time">שעת האירוע:</string>
     <string name="bride_s_name">שם הכלה:</string>
@@ -23,105 +30,112 @@
     <string name="event_hall">אולם האירועים:</string>
     <string name="event_location">מיקום האירוע:</string>
     <string name="description">תיאור:</string>
-    <string name="amount_of_guests">כמות אורחים:</string>
-    <string name="edit_guests">עריכת מוזמנים</string>
+    <string name="amount_of_guests">מספר אורחים:</string>
+    <string name="edit_guests">עריכת רשימת מוזמנים</string>
     <string name="edit_event">עריכת האירוע</string>
     <string name="delete">מחק</string>
+
+    <!-- אורחים -->
     <string name="name">שם:</string>
     <string name="phone_number">מספר טלפון:</string>
     <string name="edit">ערוך</string>
     <string name="event_guest_list">רשימת האורחים</string>
-    <string name="manage_your_guest_list_here">נהל את רשימת האורחים שלך כאן</string>
-    <string name="add_guests">הוסף אורחים:</string>
-    <string name="open_contacts">פתח אנשי קשר:</string>
-    <string name="or_add_guests_manually">או, שהכנס אורחים בצורה ידנית..</string>
-    <string name="enter_phone_number">הכנס מספר טלפון</string>
-    <string name="enter_guest_name">הכנס שם אורח</string>
-    <string name="save_guest">שמור אורח</string>
-    <string name="finish">סיים</string>
-    <string name="create_your_digital_invitation">צור את ההזמנה הדיגיטלית שלך</string>
-    <string name="enter_the_groom_s_name">הכנס את שם החתן</string>
+    <string name="manage_your_guest_list_here">נהלו כאן את רשימת האורחים שלכם</string>
+    <string name="add_guests">הוסיפו אורחים:</string>
+    <string name="open_contacts">פתחו אנשי קשר:</string>
+    <string name="or_add_guests_manually">או הוסיפו אורחים ידנית...</string>
+    <string name="enter_phone_number">הכניסו מספר טלפון</string>
+    <string name="enter_guest_name">הכניסו שם אורח</string>
+    <string name="save_guest">שמרו אורח</string>
+    <string name="finish">סיום</string>
+
+    <!-- יצירת הזמנה דיגיטלית -->
+    <string name="create_your_digital_invitation">צרו את ההזמנה הדיגיטלית שלכם</string>
+    <string name="enter_the_groom_s_name">הכניסו את שם החתן</string>
     <string name="example_rotem_and_roei_haver">לדוגמה: רתם ורועי חבר</string>
-    <string name="enter_the_bride_s_name">הכנס את שם הכלה</string>
+    <string name="enter_the_bride_s_name">הכניסו את שם הכלה</string>
     <string name="example_hannan_and_yohevet_fridman">לדוגמה: חנן ויוכבת פרידמן</string>
-    <string name="enter_the_event_location">הכנס את מיקום האירוע</string>
-    <string name="venue_name">שם המקום:</string>
+    <string name="enter_the_event_location">הכניסו את מיקום האירוע</string>
+    <string name="venue_name">שם אולם האירוע:</string>
     <string name="example_gan_havradim">לדוגמה: גן הוורדים</string>
-    <string name="expected_number_of_guests">מספר האורחים הצפוי:</string>
+    <string name="expected_number_of_guests">מספר אורחים צפוי:</string>
     <string name="example_350">לדוגמה: 350</string>
-    <string name="select_your_event_date_amp_time">בחר תאריך ושעה:</string>
+    <string name="select_your_event_date_amp_time">בחרו תאריך ושעה:</string>
     <string name="invitation_text">טקסט ההזמנה:</string>
-    <string name="this_is_the_main_text_of_your_invitation">זה המלל העיקרי של ההזמנה</string>
+    <string name="this_is_the_main_text_of_your_invitation">זה הטקסט העיקרי של ההזמנה</string>
     <string name="ovadia_amp_gail_tzion"><![CDATA[עובדיה  & גלי ציון]]></string>
-    <string name="groom_s_parents">הוריי החתן</string>
+    <string name="groom_s_parents">הורי החתן</string>
     <string name="ashdod_israel">אשדוד, ישראל</string>
-    <string name="pick_a_template">בחר תבנית</string>
+
+    <!-- מסך בחירת תבנית הזמנה -->
+    <string name="pick_a_template">בחרו תבנית</string>
     <string name="the_wedding">החתונה</string>
-    <string name="we_are_excited_to_invite_you_to_celebrate_with_us_on_our_happiest_day">"אנחנו נרגשים להזמין אותכם לחגוג איתנו את היום השמח שלנו "</string>
+    <string name="we_are_excited_to_invite_you_to_celebrate_with_us_on_our_happiest_day">אנחנו מתרגשים להזמין אתכם לחגוג איתנו ביום הכי שמח שלנו</string>
     <string name="thursday">יום חמישי</string>
     <string name="troyah_hall">אולמי טרויה</string>
-    <string name="_123_main_street_city">123 הרחוב הראשי</string>
+    <string name="_123_main_street_city">רחוב הראשי 123</string>
     <string name="_7_30_pm">7:30 בערב</string>
     <string name="ceremony">טקס</string>
-    <string name="we_look_forward_to_celebrating_with_you">אנחנו מצפים לחגוג איתך!</string>
-    <string name="bride_s_parents">הוריי הכלה</string>
-    <string name="sara_amp_david_brown"><![CDATA[שרה & דוד בראון ]]></string>
+    <string name="we_look_forward_to_celebrating_with_you">מחכים לחגוג איתך!</string>
+    <string name="bride_s_parents">הורי הכלה</string>
+    <string name="sara_amp_david_brown"><![CDATA[שרה & דוד בראון]]></string>
     <string name="hila_amp_noam"><![CDATA[הילה & נעם]]></string>
     <string name="neta_amp_barak"><![CDATA[נטע & ברק]]></string>
     <string name="are_getting_married">מתחתנים</string>
-    <string name="tuesday_11_shevat">יום שלישי, י\"א בשבט</string>
+    <string name="tuesday_11_shevat">יום שלישי, י"א בשבט</string>
     <string name="bnei_darom_hall">אולם בני דרום</string>
     <string name="adina_amp_meir_job"><![CDATA[עדינה & מאיר גוב]]></string>
+
+    <!-- הודעות ושגיאות -->
     <string name="error">שגיאה</string>
-    <string name="event_not_found">האירוע לא נמצא.</string>
+    <string name="event_not_found">האירוע לא נמצא</string>
     <string name="ok">אישור</string>
     <string name="confirm_template">אישור תבנית</string>
-    <string name="do_you_want_to_proceed_with_the_selected_template">האם ברצונך להמשיך עם התבנית שנבחרה?</string>
+    <string name="do_you_want_to_proceed_with_the_selected_template">להמשיך עם התבנית שנבחרה?</string>
     <string name="yes">כן</string>
     <string name="no">לא</string>
     <string name="delete_event_confirmation">אישור מחיקת אירוע</string>
-    <string name="are_you_sure_you_want_to_delete_this_event_this_action_cannot_be_undone">האם את/ה בטוח/ה שברצונך למחוק את האירוע הזה? פעולה זו אינה ניתנת לביטול.</string>
+    <string name="are_you_sure_you_want_to_delete_this_event_this_action_cannot_be_undone">למחוק את האירוע הזה? פעולה זו לא ניתנת לביטול.</string>
     <string name="save">שמור</string>
-    <string name="bride_s_name_cannot_be_empty">שם הכלה לא יכול להיות ריק</string>
-    <string name="bride_s_name_must_be_at_most_20_characters">שם הכלה חייב להיות באורך של עד 20 תווים</string>
-    <string name="bride_s_parents_cannot_be_empty">שמות הורי הכלה לא יכולים להיות ריקים</string>
-    <string name="bride_s_parents_name_must_be_at_most_50_characters">שמות הורי הכלה חייבים להיות באורך של עד 50 תווים</string>
-    <string name="groom_s_name_cannot_be_empty">שם החתן לא יכול להיות ריק</string>
-    <string name="groom_s_name_must_be_at_most_20_characters">שם החתן חייב להיות באורך של עד 20 תווים</string>
-    <string name="groom_s_parents_cannot_be_empty">שמות הורי החתן לא יכולים להיות ריקים</string>
-    <string name="groom_s_parents_name_must_be_at_most_50_characters">שמות הורי החתן חייבים להיות באורך של עד 50 תווים</string>
-    <string name="event_hall_cannot_be_empty">אולם האירוע לא יכול להיות ריק</string>
-    <string name="event_hall_must_be_at_most_20_characters">שם אולם האירוע חייב להיות באורך של עד 20 תווים</string>
-    <string name="event_location_cannot_be_empty">מיקום האירוע לא יכול להיות ריק</string>
-    <string name="event_location_must_be_at_most_50_characters">מיקום האירוע חייב להיות באורך של עד 50 תווים</string>
-    <string name="amount_of_guests_cannot_be_empty">מספר האורחים לא יכול להיות ריק</string>
-    <string name="please_enter_a_valid_number_0"><![CDATA[נא להזין מספר חוקי (> 0)]]></string>
-    <string name="please_enter_a_valid_number_100_000"><![CDATA[נא להזין מספר חוקי (< 100,000)]]></string>
+
+    <!-- התראות ולוגיקה של שדות -->
+    <string name="bride_s_name_cannot_be_empty">שם הכלה לא יכול להישאר ריק</string>
+    <string name="bride_s_name_must_be_at_most_20_characters">שם הכלה חייב להיות עד 20 תווים</string>
+    <string name="bride_s_parents_cannot_be_empty">שמות הורי הכלה לא יכולים להישאר ריקים</string>
+    <string name="bride_s_parents_name_must_be_at_most_50_characters">שמות הורי הכלה חייבים להיות עד 50 תווים</string>
+    <string name="groom_s_name_cannot_be_empty">שם החתן לא יכול להישאר ריק</string>
+    <string name="groom_s_name_must_be_at_most_20_characters">שם החתן חייב להיות עד 20 תווים</string>
+    <string name="groom_s_parents_cannot_be_empty">שמות הורי החתן לא יכולים להישאר ריקים</string>
+    <string name="groom_s_parents_name_must_be_at_most_50_characters">שמות הורי החתן חייבים להיות עד 50 תווים</string>
+    <string name="event_hall_cannot_be_empty">אולם האירוע לא יכול להישאר ריק</string>
+    <string name="event_hall_must_be_at_most_20_characters">שם האולם חייב להיות עד 20 תווים</string>
+    <string name="event_location_cannot_be_empty">מיקום האירוע לא יכול להישאר ריק</string>
+    <string name="event_location_must_be_at_most_50_characters">מיקום האירוע חייב להיות עד 50 תווים</string>
+    <string name="amount_of_guests_cannot_be_empty">מספר האורחים לא יכול להישאר ריק</string>
+    <string name="please_enter_a_valid_number_0"><![CDATA[נא להזין מספר תקין (> 0)]]></string>
+    <string name="please_enter_a_valid_number_100_000"><![CDATA[נא להזין מספר תקין (< 100,000)]]></string>
     <string name="please_fill_in_all_fields">נא למלא את כל השדות</string>
     <string name="guest_updated">האורח עודכן</string>
     <string name="guest_added">האורח נוסף</string>
-    <string name="delete_guest">מחיקת אורח</string>
-    <string name="are_you_sure_you_want_to_delete">האם את/ה בטוח/ה שברצונך למחוק את %1$s?</string>
+    <string name="delete_guest">מחקו אורח</string>
+    <string name="are_you_sure_you_want_to_delete">בטוחים שברצונכם למחוק את %1$s?</string>
     <string name="has_been_deleted">%1$s נמחק/ה</string>
     <string name="permission_denied">אין הרשאה</string>
-    <string name="choose_contacts">בחר/י אנשי קשר</string>
-    <string name="add">הוסף</string>
+    <string name="choose_contacts">בחרו אנשי קשר</string>
+    <string name="add">הוסיפו</string>
     <string name="guests_added">האורחים נוספו</string>
     <string name="cancel">בטל</string>
     <string name="please_fix_the_errors_above">נא לתקן את השגיאות למעלה.</string>
-    <string name="event_date_time_cannot_be_empty"><![CDATA[תאריך ושעת האירוע לא יכולים להיות ריקים]]></string>
-    <string name="invitation_text_cannot_be_empty">טקסט ההזמנה לא יכול להיות ריק</string>
-    <string name="invitation_text_must_be_at_most_250_characters">טקסט ההזמנה חייב להיות באורך של עד 250 תווים</string>
-    <string name="please_enter_a_valid_number_100000"><![CDATA[נא להזין מספר חוקי (< 100000)]]></string>
-    <string name="number_of_guests_cannot_be_empty">מספר האורחים לא יכול להיות ריק</string>
-    <string name="venue_must_be_at_most_100_characters">שם המקום חייב להיות באורך של עד 100 תווים</string>
-    <string name="venue_cannot_be_empty">שם המקום לא יכול להיות ריק</string>
-    <string name="event_location_must_be_at_most_100_characters">מיקום האירוע חייב להיות באורך של עד 100 תווים</string>
-    <string name="wedding3"> <![CDATA[החתונה של %1$s ו-%2$s]]></string>
-    <string name="happy_and_excited_to_invite_you_to_celebrate_with_us_the_happiest_day_of_our_lives">שמחים ונרגשים להזמינכם לחגוג עמנו את היום המאושר בחיינו.</string>
+    <string name="event_date_time_cannot_be_empty"><![CDATA[תאריך ושעת האירוע לא יכולים להישאר ריקים]]></string>
+    <string name="invitation_text_cannot_be_empty">טקסט ההזמנה לא יכול להישאר ריק</string>
+    <string name="invitation_text_must_be_at_most_250_characters">טקסט ההזמנה חייב להיות עד 250 תווים</string>
+    <string name="please_enter_a_valid_number_100000"><![CDATA[נא להזין מספר תקין (< 100000)]]></string>
+    <string name="number_of_guests_cannot_be_empty">מספר האורחים לא יכול להישאר ריק</string>
+    <string name="venue_must_be_at_most_100_characters">שם המקום חייב להיות עד 100 תווים</string>
+    <string name="venue_cannot_be_empty">שם המקום לא יכול להישאר ריק</string>
+    <string name="event_location_must_be_at_most_100_characters">מיקום האירוע חייב להיות עד 100 תווים</string>
 
-
-
-
-
+    <!-- תצוגת הזמנות -->
+    <string name="wedding3"><![CDATA[החתונה של %1$s ו-%2$s]]></string>
+    <string name="happy_and_excited_to_invite_you_to_celebrate_with_us_the_happiest_day_of_our_lives">אנחנו שמחים ומתרגשים להזמינכם לחגוג איתנו את היום הכי מאושר בחיינו.</string>
 </resources>
