@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Layout for the ChooseTemplateFragment, allowing users to select from predefined invitation templates
+    or upload a custom invitation image.
+-->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -11,8 +15,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
         android:orientation="vertical">
 
+        <!-- Title TextView prompting the user to choose a template -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -22,6 +28,7 @@
             android:layout_marginTop="20dp"
             android:textSize="25sp" />
 
+        <!-- Subtitle TextView providing additional context for template selection -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,7 +38,7 @@
             android:layout_marginTop="5dp"
             android:text="@string/we_ve_prepared_templates_for_you_to_choose_from_take_a_look" />
 
-
+        <!-- FrameLayout containing the first template ImageButton with a border -->
         <FrameLayout
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -53,6 +60,7 @@
 
         </FrameLayout>
 
+        <!-- FrameLayout containing the second template ImageButton with a border -->
         <FrameLayout
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -74,6 +82,7 @@
 
         </FrameLayout>
 
+        <!-- FrameLayout containing the third template ImageButton with a border -->
         <FrameLayout
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -83,17 +92,19 @@
             android:clipToOutline="true"
             android:layout_marginTop="25dp">
 
-        <ImageButton
-            android:id="@+id/ibtn_template_3"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:layout_gravity="center"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"
-            android:contentDescription="@string/template" />
+            <ImageButton
+                android:id="@+id/ibtn_template_3"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/template" />
 
         </FrameLayout>
+
+        <!-- TextView indicating the option to upload a custom invitation -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -104,6 +115,7 @@
             android:textSize="15sp"
             android:textColor="@color/text_primary"/>
 
+        <!-- MaterialButton allowing users to upload a custom invitation image -->
         <com.google.android.material.button.MaterialButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -114,9 +126,9 @@
             android:backgroundTint="@color/primary"
             app:icon="@drawable/upload_icon"
             android:padding="10dp"
-            android:layout_marginTop="5dp"
-            />
+            android:layout_marginTop="5dp" />
 
+        <!-- FrameLayout containing the ImageButton for displaying the custom uploaded image -->
         <FrameLayout
             android:layout_width="300dp"
             android:layout_height="wrap_content"

@@ -1,3 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Layout for a single guest item in the RecyclerView.
+    Displays the contact icon, guest name, phone number,
+    and action icons for editing and deleting the guest.
+-->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -5,7 +11,7 @@
     android:orientation="horizontal"
     android:padding="8dp">
 
-
+    <!-- Contact Icon -->
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,12 +21,14 @@
         android:layout_marginEnd="10dp"
         android:padding="8dp" />
 
+    <!-- Container for Guest Name and Phone Number -->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical">
 
+        <!-- Guest Name -->
         <TextView
             android:id="@+id/guest_name"
             android:layout_width="wrap_content"
@@ -29,6 +37,7 @@
             android:textSize="16sp"
             android:textStyle="bold" />
 
+        <!-- Guest Phone Number -->
         <TextView
             android:id="@+id/guest_phone"
             android:layout_width="wrap_content"
@@ -37,7 +46,7 @@
             android:textSize="14sp" />
     </LinearLayout>
 
-
+    <!-- Edit Guest Icon -->
     <ImageView
         android:id="@+id/edit_guest"
         android:layout_width="wrap_content"
@@ -46,6 +55,7 @@
         android:contentDescription="@string/edit"
         android:padding="8dp" />
 
+    <!-- Delete Guest Icon -->
     <ImageView
         android:id="@+id/delete_guest"
         android:layout_width="wrap_content"

@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Layout for the GuestsFragment.
+    Displays the event guest list and provides options to add new guests.
+-->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -11,7 +15,7 @@
     android:paddingTop="50dp"
     android:paddingBottom="60dp">
 
-
+    <!-- Upper Section: Guest List Header and RecyclerView -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -38,7 +42,7 @@
             android:textSize="17sp"
             android:layout_marginBottom="12dp" />
 
-        <!-- RecyclerView: takes as much vertical space as possible -->
+        <!-- RecyclerView: Displays the list of guests -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/guest_list"
             android:layout_width="match_parent"
@@ -49,14 +53,13 @@
             android:layout_marginBottom="10dp" />
     </LinearLayout>
 
-
-    <!-- BOTTOM SECTION: "Add Guests" part -->
+    <!-- Bottom Section: Add Guests Options -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Add Guests headline -->
+        <!-- Add Guests Headline -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -67,7 +70,7 @@
             android:layout_marginBottom="15dp"
             android:layout_marginTop="15dp" />
 
-        <!-- Open Contacts button -->
+        <!-- Open Contacts Button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/add_from_contacts_button"
             android:layout_width="wrap_content"
@@ -82,7 +85,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp" />
 
-        <!-- Or, add guests manually... -->
+        <!-- Or, Add Guests Manually -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -93,12 +96,13 @@
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp" />
 
-        <!-- Container for guest name/phone fields + buttons -->
+        <!-- Container for Manual Guest Entry Fields and Buttons -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <!-- Guest Name Input Field -->
             <EditText
                 android:id="@+id/guest_name_input"
                 android:layout_width="match_parent"
@@ -107,6 +111,7 @@
                 android:inputType="textPersonName"
                 android:layout_marginBottom="8dp" />
 
+            <!-- Guest Phone Number Input Field -->
             <EditText
                 android:id="@+id/guest_phone_input"
                 android:layout_width="match_parent"
@@ -122,6 +127,7 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
+                <!-- Save Guest Button -->
                 <Button
                     android:id="@+id/add_guest_button"
                     android:layout_width="150dp"
@@ -130,10 +136,12 @@
                     android:backgroundTint="@color/primary"
                     android:text="@string/save_guest" />
 
+                <!-- Spacer Between Buttons -->
                 <Space
                     android:layout_width="20dp"
                     android:layout_height="wrap_content" />
 
+                <!-- Finish Button -->
                 <Button
                     android:id="@+id/finish_btn"
                     android:layout_width="150dp"

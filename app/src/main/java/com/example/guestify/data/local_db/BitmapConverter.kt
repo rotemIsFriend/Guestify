@@ -7,6 +7,7 @@ import java.io.ByteArrayOutputStream
 
 class BitmapConverter {
 
+    // Converts a Bitmap to a ByteArray, enabling storage of image data in the database.
     @TypeConverter
     fun fromBitmap(bitmap: Bitmap): ByteArray {
         val outputStream = ByteArrayOutputStream()
@@ -14,6 +15,7 @@ class BitmapConverter {
         return outputStream.toByteArray()
     }
 
+    // Recreates a Bitmap from a ByteArray, allowing retrieval of the original image.
     @TypeConverter
     fun toBitmap(byteArray: ByteArray): Bitmap {
         return BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)

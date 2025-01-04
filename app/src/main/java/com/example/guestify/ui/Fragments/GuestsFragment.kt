@@ -19,20 +19,30 @@ import com.example.guestify.data.model.Guest
 import com.example.guestify.databinding.GuestsBinding
 import com.example.guestify.ui.viewModels.GuestsViewModel
 
+// Fragment responsible for managing and displaying the list of guests for a specific event.
 class GuestsFragment : Fragment() {
 
+    // ViewBinding for accessing UI components in the fragment's layout.
     private var _binding: GuestsBinding? = null
     private val binding get() = _binding!!
 
+    // ViewModel for handling guest-related data and operations.
     private val viewModel: GuestsViewModel by viewModels()
+
+    // Holds the guest currently being edited, if any.
     private var guestToEdit: Guest? = null
+
+    // ID of the associated event.
     private var eventId: Int? = null
+
+    // Flag indicating whether the current event is new.
     private var isNewEvent: Boolean? = null
 
     companion object {
         private const val REQUEST_CONTACTS_PERMISSION = 1
     }
 
+    // Inflates the fragment's layout and retrieves necessary arguments.
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -41,17 +51,19 @@ class GuestsFragment : Fragment() {
         _binding = GuestsBinding.inflate(inflater, container, false)
         eventId = arguments?.getInt("eventId")
         isNewEvent = arguments?.getBoolean("isNewEvent")
-
         return binding.root
     }
 
+    // Sets up UI components, observers, and event listeners after the view is created.
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Configures the RecyclerView with a linear layout manager for vertical scrolling.
         binding.guestList.layoutManager = LinearLayoutManager(requireContext())
 
-        viewModel.guests?.observe(viewLifecycleOwner) {
-            val currentEventGuests = it.filter { guest -> guest.eventId == eventId }
+        // Observes changes in the guests list from the ViewModel and updates the RecyclerView accordingly.
+        viewModel.guests?.observe(viewLifecycleOwner) { guestsList ->
+            val currentEventGuests = guestsList.filter { guest -> guest.eventId == eventId }
             binding.guestList.adapter = GuestAdapter(
                 guests = currentEventGuests,
                 onEditClick = { guest ->
@@ -61,35 +73,47 @@ class GuestsFragment : Fragment() {
                     showDeleteConfirmationDialog(guest)
                 }
             )
-            binding.guestList.adapter
         }
 
+        // Handles the addition of a new guest or updating an existing guest.
         binding.addGuestButton.setOnClickListener {
             val name = binding.guestNameInput.text.toString().trim()
             val phone = binding.guestPhoneInput.text.toString().trim()
 
             if (name.isEmpty() || phone.isEmpty()) {
-                Toast.makeText(requireContext(),
-                    getString(R.string.please_fill_in_all_fields), Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(
+                    requireContext(),
+                    getString(R.string.please_fill_in_all_fields),
+                    Toast.LENGTH_SHORT
+                ).show()
             } else {
                 if (guestToEdit != null) {
+                    // Update the existing guest's details.
                     guestToEdit?.name = name
                     guestToEdit?.phone = phone
                     guestToEdit?.let { viewModel.updateGuest(it) }
-                    Toast.makeText(requireContext(),
-                        getString(R.string.guest_updated), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.guest_updated),
+                        Toast.LENGTH_SHORT
+                    ).show()
                     guestToEdit = null
                 } else {
+                    // Add a new guest to the event.
                     eventId?.let { viewModel.addGuest(Guest(name, phone, it)) }
-                    Toast.makeText(requireContext(),
-                        getString(R.string.guest_added), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.guest_added),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
+                // Clear input fields after adding/updating a guest.
                 binding.guestNameInput.text.clear()
                 binding.guestPhoneInput.text.clear()
             }
         }
 
+        // Handles the completion action, navigating appropriately based on whether it's a new event.
         binding.finishBtn.setOnClickListener {
             Log.d("GuestsFragment", "isNewEvent: $isNewEvent")
             if (isNewEvent == false) {
@@ -99,17 +123,20 @@ class GuestsFragment : Fragment() {
             }
         }
 
+        // Initiates the process of adding guests from the user's contacts.
         binding.addFromContactsButton.setOnClickListener {
             checkAndRequestContactPermission()
         }
     }
 
+    // Initiates editing mode for the selected guest by populating input fields.
     private fun editGuest(guest: Guest) {
         guestToEdit = guest
         binding.guestNameInput.setText(guest.name)
         binding.guestPhoneInput.setText(guest.phone)
     }
 
+    // Displays a confirmation dialog before deleting a guest to prevent accidental deletions.
     private fun showDeleteConfirmationDialog(guest: Guest) {
         AlertDialog.Builder(requireContext())
             .setTitle(getString(R.string.delete_guest))
@@ -128,6 +155,7 @@ class GuestsFragment : Fragment() {
             .show()
     }
 
+    // Checks if the app has permission to read contacts and requests it if not.
     private fun checkAndRequestContactPermission() {
         if (requireContext().checkSelfPermission(android.Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
             loadContacts()
@@ -139,6 +167,7 @@ class GuestsFragment : Fragment() {
         }
     }
 
+    // Handles the result of the permission request for reading contacts.
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -148,11 +177,15 @@ class GuestsFragment : Fragment() {
         if (requestCode == REQUEST_CONTACTS_PERMISSION && grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             loadContacts()
         } else {
-            Toast.makeText(requireContext(),
-                getString(R.string.permission_denied), Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                requireContext(),
+                getString(R.string.permission_denied),
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
+    // Loads the user's contacts and prepares them for selection.
     private fun loadContacts() {
         val contacts = mutableListOf<Pair<String, String>>()
         val resolver = requireContext().contentResolver
@@ -180,6 +213,7 @@ class GuestsFragment : Fragment() {
         showContactsDialog(contacts)
     }
 
+    // Displays a dialog allowing the user to select multiple contacts to add as guests.
     private fun showContactsDialog(contacts: List<Pair<String, String>>) {
         val contactNames = contacts.map { "${it.first} (${it.second})" }.toTypedArray()
         val selectedItems = mutableListOf<Int>()
@@ -200,14 +234,17 @@ class GuestsFragment : Fragment() {
                         viewModel.addGuest(Guest(selectedContact.first, selectedContact.second, it))
                     }
                 }
-                Toast.makeText(requireContext(),
-                    getString(R.string.guests_added), Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    getString(R.string.guests_added),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
             .setNegativeButton(getString(R.string.cancel), null)
             .show()
     }
 
-
+    // Cleans up the binding when the fragment's view is destroyed to prevent memory leaks.
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
