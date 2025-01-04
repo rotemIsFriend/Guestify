@@ -1,6 +1,7 @@
 # Guestify
 
-![Guestify Logo](drawable/guestify_logo.xml)
+![Guestify-removebg-preview](https://github.com/user-attachments/assets/dbc08e0a-a3a4-4b29-864f-6cdab3f35020)
+
 
 Guestify is a comprehensive Android application designed to help users manage their events effortlessly. Whether you're planning a wedding, a birthday party, or any other special occasion, Guestify provides all the tools you need to organize guests, manage event details, and create stunning digital invitations.
 
