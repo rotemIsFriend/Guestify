@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layoutDirection="locale"
     android:background="@drawable/template_bg_dark"
     android:paddingHorizontal="40dp"
     android:paddingVertical="55dp">
@@ -13,7 +14,7 @@
         android:id="@+id/tvTopQuote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="מים רבים לא יוכלו לכבות את האהבה..."
+        android:text="@string/love_phrase"
         android:textSize="16sp"
         android:textColor="@color/white"
         android:layout_marginBottom="8dp"
@@ -41,7 +42,7 @@
         android:id="@+id/tvSubTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="החתונה שלנו"
+        android:text="@string/the_wedding"
         android:textSize="18sp"
         android:textColor="@color/white"
 

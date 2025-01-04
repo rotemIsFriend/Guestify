@@ -127,5 +127,7 @@
     <string name="event_location_must_be_at_most_100_characters">Event Location must be at most 100 characters</string>
     <string name="wedding3"><![CDATA[%1$s & %2$s Wedding]]></string>
     <string name="happy_and_excited_to_invite_you_to_celebrate_with_us_the_happiest_day_of_our_lives">Happy and excited to invite you to celebrate with us the happiest day of our lives.</string>
+    <string name="love_phrase">Many waters cannot quench love…</string>
+    <string name="love_phrase_2">“Together is a wonderful place to be.”</string>
 
 </resources>

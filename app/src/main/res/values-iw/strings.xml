@@ -11,7 +11,7 @@
     <string name="upload_custom_invite">העלו הזמנה</string>
 
     <!-- מסך מרכז ניהול -->
-    <string name="dashboard">מרכז השליטה</string>
+    <string name="dashboard">האירועים שלי</string>
     <string name="monitor_and_manage_your_events">עקבו ונהלו את האירועים שלכם</string>
     <string name="new_event">אירוע חדש</string>
     <string name="event_image">תמונת אירוע</string>
@@ -69,13 +69,13 @@
 
     <!-- מסך בחירת תבנית הזמנה -->
     <string name="pick_a_template">בחרו תבנית</string>
-    <string name="the_wedding">החתונה</string>
+    <string name="the_wedding">החתונה שלנו</string>
     <string name="we_are_excited_to_invite_you_to_celebrate_with_us_on_our_happiest_day">אנחנו מתרגשים להזמין אתכם לחגוג איתנו ביום הכי שמח שלנו</string>
     <string name="thursday">יום חמישי</string>
     <string name="troyah_hall">אולמי טרויה</string>
     <string name="_123_main_street_city">רחוב הראשי 123</string>
     <string name="_7_30_pm">7:30 בערב</string>
-    <string name="ceremony">טקס</string>
+    <string name="ceremony">חופה וקידושין</string>
     <string name="we_look_forward_to_celebrating_with_you">מחכים לחגוג איתך!</string>
     <string name="bride_s_parents">הורי הכלה</string>
     <string name="sara_amp_david_brown"><![CDATA[שרה & דוד בראון]]></string>
@@ -138,4 +138,7 @@
     <!-- תצוגת הזמנות -->
     <string name="wedding3"><![CDATA[החתונה של %1$s ו-%2$s]]></string>
     <string name="happy_and_excited_to_invite_you_to_celebrate_with_us_the_happiest_day_of_our_lives">אנחנו שמחים ומתרגשים להזמינכם לחגוג איתנו את היום הכי מאושר בחיינו.</string>
+    <string name="love_phrase">מים רבים לא יוכלו לכבות את האהבה...</string>
+    <string name="love_phrase_2">“שְׁמַעְתִּי אֶת קוֹלֵךְ... נֶפֶשִׁי אָהֲבָה אֹתָךְ...”</string>
+
 </resources>

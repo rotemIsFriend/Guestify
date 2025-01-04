@@ -9,12 +9,14 @@
     android:paddingVertical="25dp"
     android:fillViewport="true">
 
+    <!-- Main Container -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp">
 
+        <!-- Headline: Create Your Digital Invitation -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -25,7 +27,7 @@
             android:textSize="20sp"
             android:textColor="@color/text_primary"/>
 
-
+        <!-- Sub-headline: Groom's Name -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,7 +36,7 @@
             android:layout_marginTop="25dp"
             />
 
-        <!-- Groom's Name -->
+        <!-- Groom's Name Input Field -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -53,6 +55,7 @@
                 android:inputType="textPersonName" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Sub-headline: Groom's Parents Name -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -60,7 +63,7 @@
             android:textStyle="bold"
             />
 
-        <!-- Groom's Parents Name -->
+        <!-- Groom's Parents Name Input Field -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -80,13 +83,15 @@
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Sub-headline: Bride's Name -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/bride_s_name"
             android:textStyle="bold"
             />
-        <!-- Bride's Name -->
+
+        <!-- Bride's Name Input Field -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -103,6 +108,7 @@
                 android:inputType="textPersonName" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Sub-headline: Bride's Parents Name -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -110,7 +116,7 @@
             android:textStyle="bold"
             />
 
-        <!-- Bride's Parents Name -->
+        <!-- Bride's Parents Name Input Field -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -127,6 +133,7 @@
                 android:inputType="textPersonName" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Sub-headline: Event Location -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -134,7 +141,8 @@
             android:textStyle="bold"
             android:layout_marginTop="10dp"
             />
-        <!-- Event Location -->
+
+        <!-- Event Location Input Field -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -151,8 +159,7 @@
                 android:inputType="textPostalAddress" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Venue Name -->
-
+        <!-- Sub-headline: Venue Name -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -161,6 +168,7 @@
             android:layout_marginTop="10dp"
             />
 
+        <!-- Venue Name Input Field -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -177,6 +185,7 @@
                 android:inputType="textPostalAddress" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Sub-headline: Expected Number of Guests -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -185,6 +194,7 @@
             android:layout_marginTop="10dp"
             />
 
+        <!-- Expected Number of Guests Input Field -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -201,6 +211,7 @@
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Button: Select Event Date & Time -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_select_date"
             style="@style/Widget.Material3.Button.IconButton.Outlined"
@@ -216,6 +227,7 @@
             app:iconPadding="10dp"
             android:textStyle="bold" />
 
+        <!-- TextView: Display Selected Date & Time -->
         <TextView
             android:id="@+id/tv_date_time"
             android:layout_width="wrap_content"
@@ -223,6 +235,8 @@
             android:textColor="@color/text_secondary"
             android:layout_marginStart="5dp"
             android:textStyle="bold" />
+
+        <!-- Sub-headline: Invitation Text -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -231,7 +245,7 @@
             android:layout_marginTop="10dp"
             />
 
-        <!-- Invitation Text -->
+        <!-- Invitation Text Input Field -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -250,7 +264,7 @@
                 android:lines="5" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Submit Button -->
+        <!-- Button: Submit and Pick a Template -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_submit"
             android:layout_width="match_parent"
