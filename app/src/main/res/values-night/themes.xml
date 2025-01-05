@@ -3,5 +3,29 @@
     <style name="Base.Theme.Guestify" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="android:fontFamily">@font/poppins_font_family</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="hintTextColor">@color/primary</item>
+        <item name="boxStrokeColor">@color/primary</item>
+        <item name="android:windowBackground">@color/background</item>
+    </style>
+
+    <style name="CornerCut" parent="">
+        <item name="cornerFamilyTopLeft">rounded</item>
+        <item name="cornerFamilyTopRight">cut</item>
+        <item name="cornerFamilyBottomLeft">cut</item>
+        <item name="cornerFamilyBottomRight">rounded</item>
+        <item name="cornerSizeTopLeft">50%</item>
+        <item name="cornerSizeTopRight">25%</item>
+        <item name="cornerSizeBottomLeft">25%</item>
+        <item name="cornerSizeBottomRight">50%</item>
+
+    </style>
+
+    <style name="Theme.Guestify" parent="Base.Theme.Guestify" />
+
+    <style name="MyDateTimePickerOverlay" parent="ThemeOverlay.MaterialComponents.MaterialCalendar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@android:color/white</item>
     </style>
 </resources>

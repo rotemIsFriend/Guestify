@@ -11,6 +11,7 @@
 
     <!-- Title: Bride and Groom Names -->
     <TextView
+        android:textColor="@color/black"
         android:id="@+id/tvBrideAndGroom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,6 +27,7 @@
 
     <!-- Subtitle in English -->
     <TextView
+        android:textColor="@color/black"
         android:id="@+id/tvSubTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -38,6 +40,7 @@
 
     <!-- Intro Invitation Text -->
     <TextView
+        android:textColor="@color/black"
         android:id="@+id/tvInvitationIntro"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -51,6 +54,7 @@
 
     <!-- Date -->
     <TextView
+        android:textColor="@color/black"
         android:id="@+id/tvDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -64,6 +68,7 @@
 
     <!-- Additional Date / Day Info (Optional) -->
     <TextView
+        android:textColor="@color/black"
         android:id="@+id/tvAdditionalDateInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -75,6 +80,7 @@
 
     <!-- Venue Name -->
     <TextView
+        android:textColor="@color/black"
         android:id="@+id/tvVenue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -88,6 +94,7 @@
 
     <!-- Venue Address -->
     <TextView
+        android:textColor="@color/black"
         android:id="@+id/tvVenueAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -121,6 +128,7 @@
             android:gravity="center">
 
             <TextView
+                android:textColor="@color/black"
                 android:id="@+id/tvTimeCeremony"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -129,6 +137,7 @@
                 android:textSize="16sp" />
 
             <TextView
+                android:textColor="@color/black"
                 android:id="@+id/tvEventCeremonyLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -139,6 +148,7 @@
 
     <!-- Closing Note -->
     <TextView
+        android:textColor="@color/black"
         android:id="@+id/tvFooterNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -169,6 +179,7 @@
             android:gravity="center">
 
             <TextView
+                android:textColor="@color/black"
                 android:id="@+id/tvBrideParentsLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -176,6 +187,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:textColor="@color/black"
                 android:id="@+id/tvBrideParentsNames"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -190,6 +202,7 @@
             android:gravity="center">
 
             <TextView
+                android:textColor="@color/black"
                 android:id="@+id/tvGroomParentsLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -197,6 +210,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:textColor="@color/black"
                 android:id="@+id/tvGroomParentsNames"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

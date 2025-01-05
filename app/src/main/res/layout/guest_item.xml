@@ -47,20 +47,22 @@
     </LinearLayout>
 
     <!-- Edit Guest Icon -->
-    <ImageView
+    <ImageButton
         android:id="@+id/edit_guest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/edit"
+        android:background="@null"
         android:contentDescription="@string/edit"
         android:padding="8dp" />
 
     <!-- Delete Guest Icon -->
-    <ImageView
+    <ImageButton
         android:id="@+id/delete_guest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/delete_icon"
+        android:background="@null"
         android:contentDescription="@string/delete"
         android:padding="8dp" />
 </LinearLayout>
