@@ -13,12 +13,12 @@
         <action
             android:id="@+id/action_invitationFragment_to_chooseTemplateFragment"
             app:destination="@id/chooseTemplateFragment"
-            app:popUpTo="@id/new_event_nav"
             app:enterAnim="@anim/from_left"
             app:exitAnim="@anim/to_right"
             app:popEnterAnim="@anim/from_right"
             app:popExitAnim="@anim/to_left"
-            />
+            app:popUpTo="@id/invitationFragment"
+            app:popUpToInclusive="false" />
     </fragment>
 
     <fragment
@@ -30,12 +30,12 @@
         <action
             android:id="@+id/action_dashboardFragment_to_invitationFragment"
             app:destination="@id/invitationFragment"
-            app:popUpTo="@id/new_event_nav"
             app:enterAnim="@anim/from_left"
             app:exitAnim="@anim/to_right"
             app:popEnterAnim="@anim/from_right"
             app:popExitAnim="@anim/to_left"
-            />
+            app:popUpTo="@id/dashboardFragment"
+            app:popUpToInclusive="false" />
 
         <action
             android:id="@+id/action_dashboardFragment_to_eventDetailsFragment"
@@ -68,14 +68,22 @@
             app:popUpTo="@id/new_event_nav" />
         <action
             android:id="@+id/action_eventDetailsFragment_to_chooseTemplateFragment"
-            app:destination="@id/chooseTemplateFragment" />
+            app:destination="@id/chooseTemplateFragment"
+            app:popUpTo="@id/eventDetailsFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_eventDetailsFragment_to_guestsFragment"
             app:destination="@id/guestsFragment"
             app:enterAnim="@anim/from_left"
             app:exitAnim="@anim/to_right"
             app:popEnterAnim="@anim/from_right"
-            app:popExitAnim="@anim/to_left" />
+            app:popExitAnim="@anim/to_left"
+            app:popUpTo="@id/eventDetailsFragment"
+            app:popUpToInclusive="false" />
     </fragment>
 
     <fragment
@@ -109,11 +117,11 @@
         <action
             android:id="@+id/action_chooseTemplateFragment_to_guestsFragment"
             app:destination="@id/guestsFragment"
-            app:popUpTo="@id/new_event_nav"
             app:enterAnim="@anim/from_left"
             app:exitAnim="@anim/to_right"
             app:popEnterAnim="@anim/from_right"
-            app:popExitAnim="@anim/to_left" />
+            app:popExitAnim="@anim/to_left"
+            app:popUpTo="@id/new_event_nav" />
         <action
             android:id="@+id/action_chooseTemplateFragment_to_eventDetailsFragment"
             app:destination="@id/eventDetailsFragment"

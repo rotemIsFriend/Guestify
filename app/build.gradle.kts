@@ -40,6 +40,11 @@ android {
 
 dependencies {
 
+// Confetti library
+    implementation(libs.konfetti)
+// Lottie for advanced loading animations
+    implementation(libs.lottie)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
