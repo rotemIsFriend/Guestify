@@ -3,6 +3,7 @@
     <!-- Define a style for rounded corners -->
     <style name="RoundedCorners">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">50%</item> <!-- Adjust the radius as needed -->
+        <item name="cornerSize">20dp</item> <!-- Adjust the radius as needed -->
     </style>
+
 </resources>

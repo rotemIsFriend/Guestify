@@ -28,7 +28,7 @@
             android:textSize="27sp"
             android:textFontWeight="600"
             android:gravity="center"
-            android:textColor="@color/black"
+            android:textColor="@color/text_primary"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="6dp" />
 
@@ -65,9 +65,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:enabled="false"
-                    android:padding="10dp"
+                    android:padding="14dp"
                     android:text="@string/event_date_"
-                    android:textColor="@color/black"
+                    android:textColor="@color/text_primary"
                     android:textStyle="bold"
                     app:cornerRadius="10dp"
                     app:icon="@drawable/date_icon"
@@ -85,9 +85,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:enabled="false"
-                    android:padding="10dp"
+                    android:padding="14dp"
                     android:text="@string/event_time"
-                    android:textColor="@color/black"
+                    android:textColor="@color/text_primary"
                     android:textStyle="bold"
                     app:cornerRadius="10dp"
                     app:icon="@drawable/clock_icon"
@@ -131,7 +131,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/bride_s_name"
                         android:textStyle="bold"
-                        android:textColor="@color/black"
+                        android:textColor="@color/text_primary"
                         android:textSize="16sp" />
                 </LinearLayout>
 
@@ -147,9 +147,11 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/bridess_name"
                         android:layout_width="match_parent"
+                        android:textAlignment="viewStart"
                         android:layout_height="wrap_content"
                         android:inputType="text"
                         android:enabled="false"
+                        android:gravity="start"
                         android:textColor="@color/edit_text_color"
                         android:background="@drawable/edit_text_bg" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -172,7 +174,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/bride_s_parent_s_name"
                         android:textStyle="bold"
-                        android:textColor="@color/black"
+                        android:textColor="@color/text_primary"
                         android:textSize="16sp" />
                 </LinearLayout>
 
@@ -186,7 +188,9 @@
                     app:counterMaxLength="50">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:gravity="start"
                         android:id="@+id/brides_parents"
+                        android:textAlignment="viewStart"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
@@ -231,7 +235,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/groom_s_name"
                         android:textStyle="bold"
-                        android:textColor="@color/black"
+                        android:textColor="@color/text_primary"
                         android:textSize="16sp" />
                 </LinearLayout>
 
@@ -245,7 +249,9 @@
                     app:counterMaxLength="20">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:gravity="start"
                         android:id="@+id/grooms_name"
+                        android:textAlignment="viewStart"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
@@ -272,7 +278,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/groom_s_parent_s_name"
                         android:textStyle="bold"
-                        android:textColor="@color/black"
+                        android:textColor="@color/text_primary"
                         android:textSize="16sp" />
                 </LinearLayout>
 
@@ -286,7 +292,9 @@
                     app:counterMaxLength="50">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:gravity="start"
                         android:id="@+id/grooms_parents"
+                        android:textAlignment="viewStart"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
@@ -332,7 +340,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/event_hall"
                         android:textStyle="bold"
-                        android:textColor="@color/black"
+                        android:textColor="@color/text_primary"
                         android:textSize="16sp"/>
                 </LinearLayout>
 
@@ -346,7 +354,9 @@
                     app:hintTextColor="@color/primary">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:gravity="start"
                         android:id="@+id/event_venue"
+                        android:textAlignment="viewStart"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
@@ -374,7 +384,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/event_location"
                         android:textStyle="bold"
-                        android:textColor="@color/black"
+                        android:textColor="@color/text_primary"
                         android:textSize="16sp"/>
                 </LinearLayout>
 
@@ -384,16 +394,19 @@
                     android:layout_marginBottom="8dp"
                     app:counterEnabled="true"
                     app:counterMaxLength="50"
+                    android:gravity="start"
                     app:boxStrokeColor="@color/primary"
                     app:hintTextColor="@color/primary">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:gravity="start"
                         android:id="@+id/location"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
                         android:enabled="false"
                         android:textColor="@color/edit_text_color"
+                        android:textAlignment="viewStart"
                         android:background="@drawable/edit_text_bg" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -416,7 +429,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/description"
                         android:textStyle="bold"
-                        android:textColor="@color/black"
+                        android:textColor="@color/text_primary"
                         android:textSize="16sp" />
                 </LinearLayout>
 
@@ -430,11 +443,12 @@
                     app:hintTextColor="@color/primary">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:gravity="start|top"
                         android:id="@+id/description"
+                        android:textAlignment="viewStart"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textMultiLine"
-                        android:gravity="top"
                         android:lines="2"
                         android:textColor="@color/edit_text_color"
                         android:background="@drawable/edit_text_bg" />
@@ -459,7 +473,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/amount_of_guests"
                         android:textStyle="bold"
-                        android:textColor="@color/black"
+                        android:textColor="@color/text_primary"
                         android:textSize="16sp"/>
                 </LinearLayout>
 
@@ -472,7 +486,9 @@
                     app:hintTextColor="@color/primary">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:gravity="start"
                         android:id="@+id/amount"
+                        android:textAlignment="viewStart"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="number"
@@ -485,18 +501,18 @@
         <!-- Invitation Template Preview -->
         <FrameLayout
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            android:layout_height="600dp"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:clipToOutline="true"
             android:background="@drawable/invite_border"
             android:padding="4dp">
 
-            <ImageButton
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/choose_template"
                 android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
+                android:layout_height="match_parent"
+                app:shapeAppearanceOverlay="@style/RoundedCorners"
                 android:layout_gravity="center"
                 android:scaleType="centerCrop"
                 android:adjustViewBounds="true"

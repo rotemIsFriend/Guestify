@@ -76,11 +76,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/open_contacts"
+            android:textColor="@color/white"
             android:layout_gravity="center"
             app:cornerRadius="5dp"
             android:backgroundTint="@color/primary"
             app:icon="@drawable/contacts_icon"
             app:iconSize="25dp"
+            app:iconTint="@color/white"
             android:padding="12dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp" />
@@ -133,6 +135,7 @@
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
+                    android:textColor="@color/white"
                     android:backgroundTint="@color/primary"
                     android:text="@string/save_guest" />
 
@@ -148,7 +151,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:backgroundTint="@color/black"
-                    android:text="@string/finish" />
+                    android:text="@string/finish"
+                    android:textColor="@color/white"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

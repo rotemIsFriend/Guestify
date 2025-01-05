@@ -11,7 +11,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingHorizontal="30dp"
-    android:paddingVertical="45dp">
+    android:paddingTop="50dp"
+    android:paddingBottom="65dp">
 
     <!-- Existing ScrollView containing all original content -->
     <ScrollView
@@ -56,7 +57,8 @@
                 android:padding="4dp"
                 android:layout_marginTop="25dp">
 
-                <ImageButton
+                <com.google.android.material.imageview.ShapeableImageView
+                    app:shapeAppearanceOverlay="@style/RoundedCorners"
                     android:id="@+id/ibtn_template_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -78,7 +80,8 @@
                 android:clipToOutline="true"
                 android:layout_marginTop="25dp">
 
-                <ImageButton
+                <com.google.android.material.imageview.ShapeableImageView
+                    app:shapeAppearanceOverlay="@style/RoundedCorners"
                     android:id="@+id/ibtn_template_2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -100,7 +103,8 @@
                 android:clipToOutline="true"
                 android:layout_marginTop="25dp">
 
-                <ImageButton
+                <com.google.android.material.imageview.ShapeableImageView
+                    app:shapeAppearanceOverlay="@style/RoundedCorners"
                     android:id="@+id/ibtn_template_3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -129,10 +133,12 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/btn_custom"
                 android:text="@string/upload_custom_invite"
+                android:textColor="@color/white"
                 app:cornerRadius="5dp"
                 android:layout_gravity="center"
                 android:backgroundTint="@color/primary"
                 app:icon="@drawable/upload_icon"
+                lottie:iconTint="@color/white"
                 android:padding="10dp"
                 android:layout_marginTop="5dp" />
 
@@ -148,7 +154,8 @@
                 android:visibility="gone"
                 android:layout_marginTop="25dp">
 
-                <ImageButton
+                <com.google.android.material.imageview.ShapeableImageView
+                    app:shapeAppearanceOverlay="@style/RoundedCorners"
                     android:id="@+id/custom_img"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -173,30 +180,30 @@
         android:layout_gravity="center"
         android:orientation="vertical">
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lottie_loading"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_gravity="center"
-        android:visibility="gone"
-        lottie:layout_constraintTop_toTopOf="parent"
-        lottie:layout_constraintBottom_toBottomOf="parent"
-        lottie:layout_constraintStart_toStartOf="parent"
-        lottie:layout_constraintEnd_toEndOf="parent"
-        lottie:lottie_autoPlay="true"
-        lottie:lottie_loop="true"
-        lottie:lottie_fileName="loading2.json" />
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_loading"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            lottie:layout_constraintTop_toTopOf="parent"
+            lottie:layout_constraintBottom_toBottomOf="parent"
+            lottie:layout_constraintStart_toStartOf="parent"
+            lottie:layout_constraintEnd_toEndOf="parent"
+            lottie:lottie_autoPlay="true"
+            lottie:lottie_loop="true"
+            lottie:lottie_fileName="loading2.json" />
 
-    <TextView
-        android:id="@+id/loading_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="22sp"
-        android:textFontWeight="600"
-        android:text="@string/generating_templates"
-        android:visibility="gone"
-        />
+        <TextView
+            android:id="@+id/loading_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="22sp"
+            android:textFontWeight="600"
+            android:text="@string/generating_templates"
+            android:visibility="gone"
+            />
     </LinearLayout>
 
     <com.airbnb.lottie.LottieAnimationView

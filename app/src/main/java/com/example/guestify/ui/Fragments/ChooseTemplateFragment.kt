@@ -63,6 +63,11 @@ class ChooseTemplateFragment : Fragment() {
                     customImageBitmap = bitmapConverterResult
                     binding.customImg.isEnabled = true
                     binding.customImg.setImageBitmap(customImageBitmap)
+                }else {
+                    AlertDialog.Builder(requireContext())
+                        .setMessage("failed to load image")
+                        .setPositiveButton(getString(R.string.ok)) { dialog, _ -> dialog.dismiss() }
+                        .show()
                 }
             }
         }
@@ -128,12 +133,12 @@ class ChooseTemplateFragment : Fragment() {
         // Allows the user to confirm their custom image selection.
         binding.customImg.setOnClickListener {
             showConfirmationDialog(customImageBitmap, invitationData)
-            binding.customImgFrame.visibility = View.VISIBLE
         }
 
         // Initiates the process of picking a custom image from storage.
         binding.btnCustom.setOnClickListener {
             pickImageLauncher.launch(arrayOf("image/*"))
+            binding.customImgFrame.visibility = View.VISIBLE
         }
     }
 

@@ -170,7 +170,7 @@ class EventDetailsFragment : Fragment() {
     private fun saveEventDetails(event: Event) {
         event.groomName = binding.groomsName.text.toString()
         event.brideName = binding.bridessName.text.toString()
-        event.name = getString(R.string.wedding3, event.groomName, event.brideName)
+        event.name =  "${event.groomName} & ${event.brideName}"
         event.groomParents = binding.groomsParents.text.toString()
         event.brideParents = binding.bridesParents.text.toString()
         event.date = binding.eventDate.text.toString()

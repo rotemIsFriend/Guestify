@@ -31,8 +31,8 @@
     <string name="event_location">מיקום האירוע:</string>
     <string name="description">תיאור:</string>
     <string name="amount_of_guests">מספר אורחים:</string>
-    <string name="edit_guests">עריכת רשימת מוזמנים</string>
-    <string name="edit_event">עריכת האירוע</string>
+    <string name="edit_guests">עריכת מוזמנים</string>
+    <string name="edit_event">עריכת אירוע</string>
     <string name="delete">מחק</string>
 
     <!-- אורחים -->
@@ -50,17 +50,17 @@
     <string name="finish">סיום</string>
 
     <!-- יצירת הזמנה דיגיטלית -->
-    <string name="create_your_digital_invitation">צרו את ההזמנה הדיגיטלית שלכם</string>
-    <string name="enter_the_groom_s_name">הכניסו את שם החתן</string>
+    <string name="create_your_digital_invitation">יצירת אירוע חדש</string>
+    <string name="enter_the_groom_s_name">הכנס את שם החתן</string>
     <string name="example_rotem_and_roei_haver">לדוגמה: רתם ורועי חבר</string>
-    <string name="enter_the_bride_s_name">הכניסו את שם הכלה</string>
+    <string name="enter_the_bride_s_name">הכנס את שם הכלה</string>
     <string name="example_hannan_and_yohevet_fridman">לדוגמה: חנן ויוכבת פרידמן</string>
-    <string name="enter_the_event_location">הכניסו את מיקום האירוע</string>
+    <string name="enter_the_event_location">הכנס את מיקום האירוע</string>
     <string name="venue_name">שם אולם האירוע:</string>
     <string name="example_gan_havradim">לדוגמה: גן הוורדים</string>
     <string name="expected_number_of_guests">מספר אורחים צפוי:</string>
     <string name="example_350">לדוגמה: 350</string>
-    <string name="select_your_event_date_amp_time">בחרו תאריך ושעה:</string>
+    <string name="select_your_event_date_amp_time">בחר תאריך ושעת האירוע</string>
     <string name="invitation_text">טקסט ההזמנה:</string>
     <string name="this_is_the_main_text_of_your_invitation">זה הטקסט העיקרי של ההזמנה</string>
     <string name="ovadia_amp_gail_tzion"><![CDATA[עובדיה  & גלי ציון]]></string>
@@ -68,7 +68,7 @@
     <string name="ashdod_israel">אשדוד, ישראל</string>
 
     <!-- מסך בחירת תבנית הזמנה -->
-    <string name="pick_a_template">בחרו תבנית</string>
+    <string name="pick_a_template">בחר תבנית</string>
     <string name="the_wedding">החתונה שלנו</string>
     <string name="we_are_excited_to_invite_you_to_celebrate_with_us_on_our_happiest_day">אנחנו מתרגשים להזמין אתכם לחגוג איתנו ביום הכי שמח שלנו</string>
     <string name="thursday">יום חמישי</string>
