@@ -16,7 +16,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.airbnb.lottie.LottieAnimationView
 import com.example.guestify.data.model.Event
 import com.example.guestify.R
 import com.example.guestify.databinding.ChooseTemplateBinding
@@ -24,6 +26,10 @@ import com.example.guestify.databinding.InviteTemplate1Binding
 import com.example.guestify.databinding.InviteTemplate2Binding
 import com.example.guestify.databinding.InviteTemplate3Binding
 import com.example.guestify.ui.viewModels.EventsViewModel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import nl.dionsegijn.konfetti.core.models.Shape
+import nl.dionsegijn.konfetti.xml.KonfettiView
 import java.io.IOException
 
 // Fragment that allows the user to choose a pre-made or custom invitation template.
@@ -41,6 +47,12 @@ class ChooseTemplateFragment : Fragment() {
 
     // Holds the current event ID if updating an existing event.
     private var eventId: Int? = null
+
+    // Confetti View
+    private lateinit var lottieConfetti: LottieAnimationView
+
+    // Lottie Animation View for loading
+    private lateinit var lottieLoading: LottieAnimationView
 
     // Registers a launcher to pick an image from the device’s storage.
     val pickImageLauncher: ActivityResultLauncher<Array<String>> =
@@ -69,6 +81,22 @@ class ChooseTemplateFragment : Fragment() {
     // Sets up the fragment once the view is created: generates previews, sets up click listeners, etc.
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        lottieLoading = binding.lottieLoading
+        lottieConfetti = binding.lottieConfetti
+        // Show loading animation
+        showLoading(true)
+
+        // Launch a coroutine to handle the delay and UI updates
+        viewLifecycleOwner.lifecycleScope.launch {
+            // Wait for 2 seconds (2000 milliseconds)
+            delay(3500)
+
+            // Hide loading animation and show content
+            showLoading(false)
+            delay(4000)
+            binding.lottieConfetti.visibility = View.GONE
+        }
 
         val invitationData = getInvitationData()
 
@@ -100,6 +128,7 @@ class ChooseTemplateFragment : Fragment() {
         // Allows the user to confirm their custom image selection.
         binding.customImg.setOnClickListener {
             showConfirmationDialog(customImageBitmap, invitationData)
+            binding.customImgFrame.visibility = View.VISIBLE
         }
 
         // Initiates the process of picking a custom image from storage.
@@ -107,6 +136,23 @@ class ChooseTemplateFragment : Fragment() {
             pickImageLauncher.launch(arrayOf("image/*"))
         }
     }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.lottieLoading.visibility = View.VISIBLE
+            binding.loadingText.visibility = View.VISIBLE
+            binding.scrollView.visibility = View.GONE
+            binding.root.isEnabled = false // Disable interactions
+        } else {
+            binding.lottieLoading.visibility = View.GONE
+            binding.loadingText.visibility = View.GONE
+
+            binding.lottieConfetti.visibility = View.VISIBLE
+            binding.scrollView.visibility = View.VISIBLE
+            binding.root.isEnabled = true // Re-enable interactions
+        }
+    }
+
 
     // Fetches and prepares data needed to populate the invitation templates,
     // either from an existing event or from arguments passed to the fragment.

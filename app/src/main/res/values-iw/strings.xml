@@ -4,7 +4,7 @@
     <string name="app_name">Guestify</string>
 
     <!-- מסך בחירת תבנית -->
-    <string name="choose_a_template">בחרו תבנית</string>
+    <string name="choose_a_template">בחרו הזמנה דיגיטלית</string>
     <string name="we_ve_prepared_templates_for_you_to_choose_from_take_a_look">הכנו לכם כמה תבניות לבחירה, מוזמנים להציץ!</string>
     <string name="template">תבנית</string>
     <string name="already_got_your_own_invitation">כבר יש לכם הזמנה משלכם?</string>
@@ -140,5 +140,6 @@
     <string name="happy_and_excited_to_invite_you_to_celebrate_with_us_the_happiest_day_of_our_lives">אנחנו שמחים ומתרגשים להזמינכם לחגוג איתנו את היום הכי מאושר בחיינו.</string>
     <string name="love_phrase">מים רבים לא יוכלו לכבות את האהבה...</string>
     <string name="love_phrase_2">“שְׁמַעְתִּי אֶת קוֹלֵךְ... נֶפֶשִׁי אָהֲבָה אֹתָךְ...”</string>
+    <string name="generating_templates">מייצר הזמנות דיגטליות</string>
 
 </resources>
