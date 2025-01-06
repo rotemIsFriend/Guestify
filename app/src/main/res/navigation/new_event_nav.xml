@@ -102,11 +102,12 @@
         <action
             android:id="@+id/action_guestsFragment_to_eventDetailsFragment"
             app:destination="@id/eventDetailsFragment"
-            app:popUpTo="@id/new_event_nav"
             app:enterAnim="@anim/from_left"
             app:exitAnim="@anim/to_right"
             app:popEnterAnim="@anim/from_right"
-            app:popExitAnim="@anim/to_left"/>
+            app:popExitAnim="@anim/to_left"
+            app:popUpTo="@id/new_event_nav"
+            app:popUpToInclusive="false" />
     </fragment>
 
     <fragment
@@ -121,7 +122,7 @@
             app:exitAnim="@anim/to_right"
             app:popEnterAnim="@anim/from_right"
             app:popExitAnim="@anim/to_left"
-            app:popUpTo="@id/new_event_nav" />
+            app:popUpTo="@id/dashboardFragment" />
         <action
             android:id="@+id/action_chooseTemplateFragment_to_eventDetailsFragment"
             app:destination="@id/eventDetailsFragment"
