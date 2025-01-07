@@ -14,15 +14,15 @@
     android:gravity="top|center"
     android:paddingBottom="40dp"
     android:paddingHorizontal="16dp"
-    android:paddingTop="50dp">
+    android:paddingTop="45dp">
 
     <!-- App Logo -->
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:scaleX="0.7"
-        android:scaleY="0.7"
-        android:background="@drawable/guestify_logo"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/logo"
+        android:scaleType="centerInside"
         android:adjustViewBounds="true"
         android:layout_gravity="center" />
 
