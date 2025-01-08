@@ -59,16 +59,6 @@ class EventDetailsFragment : Fragment() {
             return
         }
 
-        // Handle back button press to navigate to the dashboard fragment.
-        requireActivity().onBackPressedDispatcher.addCallback(
-            viewLifecycleOwner,
-            object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    findNavController().navigate(R.id.action_eventDetailsFragment_to_dashboardFragment)
-                }
-            }
-        )
-
         // Observe changes in the events list and populate the UI with event details.
         eventsViewModel.events?.observe(viewLifecycleOwner) {
             populateFields(event)
