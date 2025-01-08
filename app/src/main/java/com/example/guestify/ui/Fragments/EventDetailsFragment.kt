@@ -2,14 +2,15 @@ package com.example.guestify.ui.Fragments
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.example.guestify.R
 import com.example.guestify.data.model.Event
 import com.example.guestify.databinding.EventDetailsBinding
@@ -126,7 +127,9 @@ class EventDetailsFragment : Fragment() {
         binding.eventVenue.setText(data.venueName)
         binding.description.setText(data.invitationText)
         binding.amount.setText(data.numOfGuests.toString())
-        binding.chooseTemplate.setImageBitmap(data.imageBitmap)
+        Glide.with(this)
+            .load(Uri.parse(data.inviteImageUri))
+            .into(binding.chooseTemplate)
     }
 
     // Toggles the fragment between editing and viewing modes.

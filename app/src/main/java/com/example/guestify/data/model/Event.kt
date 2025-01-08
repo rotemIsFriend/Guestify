@@ -14,7 +14,7 @@ data class Event(
     @ColumnInfo(name = "location")
     var location: String = "",
     @ColumnInfo(name = "image")
-    var imageBitmap: Bitmap,
+    var inviteImageUri: String = "",
     @ColumnInfo(name = "groom_name")
     var groomName: String = "",
     @ColumnInfo(name = "bride_name")

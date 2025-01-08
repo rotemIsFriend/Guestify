@@ -9,7 +9,6 @@ import com.example.guestify.data.model.Event
 import com.example.guestify.data.model.Guest
 
 @Database(entities = arrayOf(Event::class, Guest::class), version = 1, exportSchema = false)
-@TypeConverters(BitmapConverter::class)
 abstract class EventDataBase : RoomDatabase() {
 
     abstract fun eventDao() : EventDao

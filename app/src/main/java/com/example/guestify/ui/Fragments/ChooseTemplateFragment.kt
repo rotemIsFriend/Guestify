@@ -19,6 +19,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.airbnb.lottie.LottieAnimationView
+import com.bumptech.glide.Glide
 import com.example.guestify.data.model.Event
 import com.example.guestify.R
 import com.example.guestify.databinding.ChooseTemplateBinding
@@ -30,6 +31,8 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import nl.dionsegijn.konfetti.core.models.Shape
 import nl.dionsegijn.konfetti.xml.KonfettiView
+import java.io.File
+import java.io.FileOutputStream
 import java.io.IOException
 
 // Fragment that allows the user to choose a pre-made or custom invitation template.
@@ -43,7 +46,7 @@ class ChooseTemplateFragment : Fragment() {
     private val eventsViewModel: EventsViewModel by activityViewModels()
 
     // Holds the custom image selected by the user (if applicable).
-    lateinit var customImageBitmap: Bitmap
+    lateinit var customImageUri: Uri
 
     // Holds the current event ID if updating an existing event.
     private var eventId: Int? = null
@@ -58,11 +61,11 @@ class ChooseTemplateFragment : Fragment() {
     val pickImageLauncher: ActivityResultLauncher<Array<String>> =
         registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
             if (uri != null) {
-                val bitmapConverterResult = uriToBitmap(uri, requireContext().contentResolver)
-                if (bitmapConverterResult != null) {
-                    customImageBitmap = bitmapConverterResult
-                    binding.customImg.isEnabled = true
-                    binding.customImg.setImageBitmap(customImageBitmap)
+                binding.customImg.isEnabled = true
+                customImageUri = uri
+                Glide.with(this)
+                    .load(uri)
+                    .into(binding.customImg)
                 }else {
                     AlertDialog.Builder(requireContext())
                         .setMessage("failed to load image")
@@ -70,7 +73,6 @@ class ChooseTemplateFragment : Fragment() {
                         .show()
                 }
             }
-        }
 
     // Inflates the layout for this fragment and retrieves the event ID (if any) from arguments.
     override fun onCreateView(
@@ -110,29 +112,37 @@ class ChooseTemplateFragment : Fragment() {
         val bindingT3 = InviteTemplate3Binding.inflate(LayoutInflater.from(requireContext()), null, false)
 
         // Generate preview bitmaps for each available template.
-        val previewBitmap = generateInvitationPreview(invitationData, bindingT1, bindingT2, bindingT3)
+        val templateUriList = generateInvitationPreview(invitationData, bindingT1, bindingT2, bindingT3)
 
         // Set the preview images on the respective template buttons.
-        binding.ibtnTemplate1.setImageBitmap(previewBitmap[0])
-        binding.ibtnTemplate2.setImageBitmap(previewBitmap[1])
-        binding.ibtnTemplate3.setImageBitmap(previewBitmap[2])
+        Glide.with(this)
+            .load(templateUriList[0])
+            .into(binding.ibtnTemplate1)
+
+        Glide.with(this)
+            .load(templateUriList[1])
+            .into(binding.ibtnTemplate2)
+
+        Glide.with(this)
+            .load(templateUriList[2])
+            .into(binding.ibtnTemplate3)
 
         // Handle clicks on each template button to confirm selection.
         binding.ibtnTemplate1.setOnClickListener {
-            showConfirmationDialog(previewBitmap[0], invitationData)
+            showConfirmationDialog(templateUriList[0], invitationData)
         }
 
         binding.ibtnTemplate2.setOnClickListener {
-            showConfirmationDialog(previewBitmap[1], invitationData)
+            showConfirmationDialog(templateUriList[1], invitationData)
         }
 
         binding.ibtnTemplate3.setOnClickListener {
-            showConfirmationDialog(previewBitmap[2], invitationData)
+            showConfirmationDialog(templateUriList[2], invitationData)
         }
 
         // Allows the user to confirm their custom image selection.
         binding.customImg.setOnClickListener {
-            showConfirmationDialog(customImageBitmap, invitationData)
+            showConfirmationDialog(customImageUri, invitationData)
         }
 
         // Initiates the process of picking a custom image from storage.
@@ -204,7 +214,7 @@ class ChooseTemplateFragment : Fragment() {
         bindingT1: InviteTemplate1Binding,
         bindingT2: InviteTemplate2Binding,
         bindingT3: InviteTemplate3Binding
-    ): List<Bitmap> {
+    ): List<Uri?> {
 
         // Inflate the views for each template.
         val invitationView1 = bindingT1.root
@@ -254,14 +264,15 @@ class ChooseTemplateFragment : Fragment() {
 
         // Convert each populated view into a Bitmap for preview.
         return listOf(
-            generateBitmap(invitationView1),
-            generateBitmap(invitationView2),
-            generateBitmap(invitationView3)
+            generateInvitationUri(invitationView1),
+            generateInvitationUri(invitationView2),
+            generateInvitationUri(invitationView3)
         )
     }
 
-    // Converts a given invitation layout into a Bitmap by measuring and drawing it on a Canvas.
-    private fun generateBitmap(invitationView: ConstraintLayout): Bitmap {
+    // Converts a given invitation layout into a Uri by measuring and drawing it on a Canvas and saving it to internal storage.
+    private fun generateInvitationUri(invitationView: ConstraintLayout): Uri? {
+        // Measure and layout the view
         invitationView.measure(
             View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
             View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
@@ -273,24 +284,41 @@ class ChooseTemplateFragment : Fragment() {
             invitationView.measuredHeight
         )
 
+        // Create bitmap
         val bitmap = Bitmap.createBitmap(
             invitationView.measuredWidth,
             invitationView.measuredHeight,
             Bitmap.Config.ARGB_8888
         )
-
         val canvas = Canvas(bitmap)
         invitationView.draw(canvas)
-        return bitmap
+
+        // Save bitmap to cache directory and get Uri
+        return try {
+            // Create a unique file name using timestamp
+            val fileName = "invitation_${System.currentTimeMillis()}.png"
+            val file = File(requireContext().cacheDir, fileName)
+
+            // Write the bitmap to the file
+            FileOutputStream(file).use { fos ->
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos)
+            }
+
+            // Return the Uri of the saved file
+            Uri.fromFile(file)
+        } catch (e: IOException) {
+            e.printStackTrace()
+            null
+        }
     }
 
     // Updates the chosen template for an existing or new event, then navigates to the next screen.
-    private fun updateTemplateAndNavigate(template: Bitmap, invitationData: Map<String, Any>) {
+    private fun updateTemplateAndNavigate(template: Uri?, invitationData: Map<String, Any>) {
         if (eventId != null && eventId != 0) {
             // Update an existing event in the ViewModel.
             val existingEvent = eventsViewModel.getEventByID(eventId!!)
             if (existingEvent != null) {
-                existingEvent.imageBitmap = template
+                existingEvent.inviteImageUri = template.toString()
                 eventsViewModel.updateEvent(existingEvent)
 
                 val bundle = Bundle().apply {
@@ -328,7 +356,7 @@ class ChooseTemplateFragment : Fragment() {
                 eventName,
                 eventDate,
                 eventLocation,
-                template,
+                template.toString(),
                 groomName,
                 brideName,
                 groomParents,
@@ -353,7 +381,7 @@ class ChooseTemplateFragment : Fragment() {
     }
 
     // Displays a confirmation dialog before proceeding with the selected invitation template.
-    private fun showConfirmationDialog(template: Bitmap, invitationData: Map<String, Any>) {
+    private fun showConfirmationDialog(template: Uri?, invitationData: Map<String, Any>) {
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle(getString(R.string.confirm_template))
         builder.setMessage(getString(R.string.do_you_want_to_proceed_with_the_selected_template))
