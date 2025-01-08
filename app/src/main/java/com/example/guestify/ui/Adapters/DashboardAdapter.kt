@@ -1,5 +1,6 @@
 package com.example.guestify.ui.Adapters
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +8,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.guestify.R
 import com.example.guestify.data.model.Event
 
@@ -55,8 +57,12 @@ class EventAdapter(
         val event = events[position]
         holder.eventName.text = event.name
         holder.eventDate.text = event.date
-        holder.eventImage.setImageBitmap(event.imageBitmap)
         holder.guestCount.text = event.numOfGuests.toString()
+
+        // load image with Glide
+        Glide.with(holder.itemView.context).
+        load(Uri.parse(event.inviteImageUri)).
+        into(holder.eventImage)
 
         // Triggers event deletion when the delete button is clicked.
         holder.deleteButton.setOnClickListener {
