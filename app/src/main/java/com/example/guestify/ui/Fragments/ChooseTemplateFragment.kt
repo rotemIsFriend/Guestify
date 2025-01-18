@@ -16,6 +16,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.airbnb.lottie.LottieAnimationView
@@ -48,8 +49,13 @@ class ChooseTemplateFragment : Fragment() {
     // Holds the custom image selected by the user (if applicable).
     lateinit var customImageUri: Uri
 
+    // Holds the invitation data of an existing or new event
+    lateinit var invitationData: Map<String, Any>
+
     // Holds the current event ID if updating an existing event.
     private var eventId: Int? = null
+
+    private var event: LiveData<Event>? = null
 
     // Confetti View
     private lateinit var lottieConfetti: LottieAnimationView
@@ -66,13 +72,13 @@ class ChooseTemplateFragment : Fragment() {
                 Glide.with(this)
                     .load(uri)
                     .into(binding.customImg)
-                }else {
-                    AlertDialog.Builder(requireContext())
-                        .setMessage("failed to load image")
-                        .setPositiveButton(getString(R.string.ok)) { dialog, _ -> dialog.dismiss() }
-                        .show()
-                }
+            }else {
+                AlertDialog.Builder(requireContext())
+                    .setMessage("failed to load image")
+                    .setPositiveButton(getString(R.string.ok)) { dialog, _ -> dialog.dismiss() }
+                    .show()
             }
+        }
 
     // Inflates the layout for this fragment and retrieves the event ID (if any) from arguments.
     override fun onCreateView(
@@ -105,14 +111,29 @@ class ChooseTemplateFragment : Fragment() {
             binding.lottieConfetti.visibility = View.GONE
         }
 
-        val invitationData = getInvitationData()
+        if(eventId !== null) {
+            event = eventsViewModel.getEventByID(eventId!!)
+        }
 
+        event?.observe(viewLifecycleOwner){
+            invitationData = fetchInvitationData()
+            setupTemplatePreviewsAndListeners(invitationData)
+        }
+
+        // Initiates the process of picking a custom image from storage.
+        binding.btnCustom.setOnClickListener {
+            pickImageLauncher.launch(arrayOf("image/*"))
+            binding.customImgFrame.visibility = View.VISIBLE
+        }
+    }
+
+    private fun setupTemplatePreviewsAndListeners(invData: Map<String, Any>) {
         val bindingT1 = InviteTemplate1Binding.inflate(LayoutInflater.from(requireContext()), null, false)
         val bindingT2 = InviteTemplate2Binding.inflate(LayoutInflater.from(requireContext()), null, false)
         val bindingT3 = InviteTemplate3Binding.inflate(LayoutInflater.from(requireContext()), null, false)
 
         // Generate preview bitmaps for each available template.
-        val templateUriList = generateInvitationPreview(invitationData, bindingT1, bindingT2, bindingT3)
+        val templateUriList = generateInvitationPreview(invData, bindingT1, bindingT2, bindingT3)
 
         // Set the preview images on the respective template buttons.
         Glide.with(this)
@@ -129,28 +150,23 @@ class ChooseTemplateFragment : Fragment() {
 
         // Handle clicks on each template button to confirm selection.
         binding.ibtnTemplate1.setOnClickListener {
-            showConfirmationDialog(templateUriList[0], invitationData)
+            showConfirmationDialog(templateUriList[0], invData)
         }
-
         binding.ibtnTemplate2.setOnClickListener {
-            showConfirmationDialog(templateUriList[1], invitationData)
+            showConfirmationDialog(templateUriList[1], invData)
         }
-
         binding.ibtnTemplate3.setOnClickListener {
-            showConfirmationDialog(templateUriList[2], invitationData)
+            showConfirmationDialog(templateUriList[2], invData)
         }
 
         // Allows the user to confirm their custom image selection.
         binding.customImg.setOnClickListener {
-            showConfirmationDialog(customImageUri, invitationData)
-        }
-
-        // Initiates the process of picking a custom image from storage.
-        binding.btnCustom.setOnClickListener {
-            pickImageLauncher.launch(arrayOf("image/*"))
-            binding.customImgFrame.visibility = View.VISIBLE
+            // If user selected a custom image from the launcher,
+            // show that in the dialog for final confirmation
+            showConfirmationDialog(customImageUri, invData)
         }
     }
+
 
     private fun showLoading(isLoading: Boolean) {
         if (isLoading) {
@@ -171,23 +187,20 @@ class ChooseTemplateFragment : Fragment() {
 
     // Fetches and prepares data needed to populate the invitation templates,
     // either from an existing event or from arguments passed to the fragment.
-    private fun getInvitationData(): Map<String, Any> {
-        Log.d("ChooseTemplateFragment", "Event ID: $eventId")
-
+    private fun fetchInvitationData(): Map<String, Any> {
         val data = if (eventId != null && eventId != 0) {
             // Retrieve existing event data if we're editing an event.
-            val existingEvent = eventsViewModel.getEventByID(eventId!!)
             mapOf(
-                "groomName" to (existingEvent?.groomName ?: ""),
-                "brideName" to (existingEvent?.brideName ?: ""),
-                "groomParents" to (existingEvent?.groomParents ?: ""),
-                "brideParents" to (existingEvent?.brideParents ?: ""),
-                "eventDate" to (existingEvent?.date ?: ""),
-                "eventTime" to (existingEvent?.eventTime ?: ""),
-                "eventLocation" to (existingEvent?.location ?: ""),
-                "venueName" to (existingEvent?.venueName ?: ""),
-                "invitationText" to (existingEvent?.invitationText ?: ""),
-                "numOfGuests" to (existingEvent?.numOfGuests ?: 0)
+                "groomName" to (event?.value?.groomName ?: ""),
+                "brideName" to (event?.value?.brideName ?: ""),
+                "groomParents" to (event?.value?.groomParents ?: ""),
+                "brideParents" to (event?.value?.brideParents ?: ""),
+                "eventDate" to (event?.value?.date ?: ""),
+                "eventTime" to (event?.value?.eventTime ?: ""),
+                "eventLocation" to (event?.value?.location ?: ""),
+                "venueName" to (event?.value?.venueName ?: ""),
+                "invitationText" to (event?.value?.invitationText ?: ""),
+                "numOfGuests" to (event?.value?.numOfGuests ?: 0)
             )
         } else {
             // Otherwise, collect data from fragment arguments for a new event.
@@ -314,31 +327,22 @@ class ChooseTemplateFragment : Fragment() {
 
     // Updates the chosen template for an existing or new event, then navigates to the next screen.
     private fun updateTemplateAndNavigate(template: Uri?, invitationData: Map<String, Any>) {
-        if (eventId != null && eventId != 0) {
+        Log.d("ChooseTemplateFragment", "Event ID2: $eventId")
+        Log.d("ChooseTemplateFragment", "Event2: ${event?.value}")
+        if (event?.value !== null) {
             // Update an existing event in the ViewModel.
-            val existingEvent = eventsViewModel.getEventByID(eventId!!)
-            if (existingEvent != null) {
-                existingEvent.inviteImageUri = template.toString()
-                eventsViewModel.updateEvent(existingEvent)
+            event?.value?.inviteImageUri = template.toString()
+            eventsViewModel.updateEvent(event?.value!!)
 
-                val bundle = Bundle().apply {
-                    putInt("eventId", eventId!!)
-                }
-                findNavController().navigate(
-                    R.id.action_chooseTemplateFragment_to_eventDetailsFragment,
-                    bundle
-                )
-            } else {
-                // Show an error if the event is not found.
-                AlertDialog.Builder(requireContext())
-                    .setTitle(getString(R.string.error))
-                    .setMessage(getString(R.string.event_not_found))
-                    .setPositiveButton(getString(R.string.ok)) { dialog, _ ->
-                        dialog.dismiss()
-                    }
-                    .show()
+            val bundle = Bundle().apply {
+                putInt("eventId", eventId!!)
             }
-        } else {
+            findNavController().navigate(
+                R.id.action_chooseTemplateFragment_to_eventDetailsFragment,
+                bundle
+            )
+        }
+        else{
             // Create a new event and add it to the ViewModel if no existing event ID is present.
             val groomName = invitationData["groomName"] as? String ?: ""
             val brideName = invitationData["brideName"] as? String ?: ""

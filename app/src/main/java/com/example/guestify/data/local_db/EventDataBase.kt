@@ -21,7 +21,7 @@ abstract class EventDataBase : RoomDatabase() {
 
         fun getDatabase(context: Context) = instance ?: synchronized(this) {
             Room.databaseBuilder(context.applicationContext,EventDataBase::class.java, "events_db")
-                .allowMainThreadQueries().build()
+                .build()
         }
     }
 

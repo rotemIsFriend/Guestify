@@ -16,17 +16,17 @@ class EventRepository(application: Application) {
 
     fun getEvents() = eventDao?.getEvents()
 
-    fun addEvent(event: Event): Long{
+    suspend fun addEvent(event: Event): Long{
         return eventDao!!.addEvent(event)
     }
 
-    fun deleteEvent(event: Event){
+    suspend fun deleteEvent(event: Event){
         eventDao?.deleteEvent(event)
     }
 
     fun getEvent(id: Int) =  eventDao?.getEvent(id)
 
-    fun updateEvent(event: Event) {
+    suspend fun updateEvent(event: Event) {
         eventDao?.updateEvent(event)
     }
 }

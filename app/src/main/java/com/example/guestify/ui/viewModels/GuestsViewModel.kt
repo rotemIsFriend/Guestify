@@ -3,8 +3,12 @@ package com.example.guestify.ui.viewModels
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.viewModelScope
 import com.example.guestify.data.model.Guest
 import com.example.guestify.data.repository.GuestRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 
 // ViewModel responsible for managing and providing guest-related data to the UI.
 // It interacts with the GuestRepository to perform CRUD operations on Guest objects.
@@ -22,7 +26,9 @@ class GuestsViewModel(application: Application) : AndroidViewModel(application) 
      * @param guest The Guest object to be added.
      */
     fun addGuest(guest: Guest) {
-        repository.addGuest(guest)
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.addGuest(guest)
+        }
     }
 
     /**
@@ -31,7 +37,9 @@ class GuestsViewModel(application: Application) : AndroidViewModel(application) 
      * @param guest The Guest object with updated information.
      */
     fun updateGuest(guest: Guest) {
-        repository.updateGuest(guest)
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateGuest(guest)
+        }
     }
 
     /**
@@ -40,16 +48,16 @@ class GuestsViewModel(application: Application) : AndroidViewModel(application) 
      * @param guest The Guest object to be deleted.
      */
     fun removeGuest(guest: Guest) {
-        repository.deleteGuest(guest)
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteGuest(guest)
+        }
     }
 
     /**
      * Retrieves a specific guest by their ID.
      *
      * @param id The unique identifier of the guest.
-     * @return The Guest object corresponding to the provided ID, or null if not found.
+     * @return The Live Data Guest object corresponding to the provided ID, or null if not found.
      */
-    fun getGuest(id: Int): Guest? {
-        return repository.getGuest(id)
-    }
+    fun getGuest(id: Int) =  repository.getGuest(id)
 }
