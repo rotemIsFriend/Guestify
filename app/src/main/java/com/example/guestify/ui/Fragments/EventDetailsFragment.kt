@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -61,8 +62,8 @@ class EventDetailsFragment : Fragment() {
         }
 
         // Observe changes in the events list and populate the UI with event details.
-        eventsViewModel.events?.observe(viewLifecycleOwner) {
-            populateFields(event)
+        event.observe(viewLifecycleOwner) {
+            populateFields(event.value)
         }
 
         // Set up click listener to navigate to the guests editing screen.
@@ -91,7 +92,7 @@ class EventDetailsFragment : Fragment() {
         binding.btnEditEvent.setOnClickListener {
             if (isEditing) {
                 if (validateFields()) {
-                    saveEventDetails(event)
+                    saveEventDetails(event.value!!)
                     toggleEditMode()
                 }
             } else {
@@ -115,22 +116,24 @@ class EventDetailsFragment : Fragment() {
     }
 
     // Populates the UI fields with the data from the provided event.
-    private fun populateFields(data: Event) {
-        binding.eventName.setText(data.name)
-        binding.groomsName.setText(data.groomName)
-        binding.bridessName.setText(data.brideName)
-        binding.groomsParents.setText(data.groomParents)
-        binding.bridesParents.setText(data.brideParents)
-        binding.eventDate.setText(data.date)
-        binding.eventTime.setText(data.eventTime)
-        binding.location.setText(data.location)
-        binding.eventVenue.setText(data.venueName)
-        binding.description.setText(data.invitationText)
-        binding.amount.setText(data.numOfGuests.toString())
-        Glide.with(this)
-            .load(Uri.parse(data.inviteImageUri))
-            .into(binding.chooseTemplate)
-    }
+    private fun populateFields(data: Event?) {
+        if(data !== null) {
+            binding.eventName.setText(data.name)
+            binding.groomsName.setText(data.groomName)
+            binding.bridessName.setText(data.brideName)
+            binding.groomsParents.setText(data.groomParents)
+            binding.bridesParents.setText(data.brideParents)
+            binding.eventDate.setText(data.date)
+            binding.eventTime.setText(data.eventTime)
+            binding.location.setText(data.location)
+            binding.eventVenue.setText(data.venueName)
+            binding.description.setText(data.invitationText)
+            binding.amount.setText(data.numOfGuests.toString())
+            Glide.with(this)
+                .load(Uri.parse(data.inviteImageUri))
+                .into(binding.chooseTemplate)
+        }
+        }
 
     // Toggles the fragment between editing and viewing modes.
     private fun toggleEditMode() {

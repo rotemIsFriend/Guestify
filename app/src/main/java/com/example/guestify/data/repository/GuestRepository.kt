@@ -16,17 +16,17 @@ class GuestRepository(application: Application) {
 
     fun getGuests() = guestDao?.getGuests()
 
-    fun addGuest(guest: Guest){
+    suspend fun addGuest(guest: Guest){
         guestDao?.addGuest(guest)
     }
 
-    fun deleteGuest(guest: Guest){
+    suspend fun deleteGuest(guest: Guest){
         guestDao?.deleteGuest(guest)
     }
 
     fun getGuest(id: Int) =  guestDao?.getGuest(id)
 
-    fun updateGuest(guest: Guest) {
+    suspend fun updateGuest(guest: Guest) {
         guestDao?.updateGuest(guest)
     }
 }

@@ -1,6 +1,7 @@
 package com.example.guestify.ui.viewModels
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
@@ -43,7 +44,9 @@ class EventsViewModel(application: Application) : AndroidViewModel(application) 
      * @param event The Event object to be deleted.
      */
     fun deleteEvent(event: Event) {
-        repository.deleteEvent(event)
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteEvent(event)
+        }
     }
 
     /**
