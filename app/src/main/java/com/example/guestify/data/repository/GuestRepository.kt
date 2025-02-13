@@ -1,32 +1,26 @@
 package com.example.guestify.data.repository
 
-import android.app.Application
-import com.example.guestify.data.local_db.EventDataBase
 import com.example.guestify.data.local_db.GuestDao
 import com.example.guestify.data.model.Guest
+import javax.inject.Inject
 
-class GuestRepository(application: Application) {
+class GuestRepository @Inject constructor(
+    private val guestDao: GuestDao
+) {
 
-    private var guestDao : GuestDao?
+    fun getGuests() = guestDao.getGuests()
 
-    init {
-        val db = EventDataBase.getDatabase(application.applicationContext)
-        guestDao = db.guestDao()
+    suspend fun addGuest(guest: Guest) {
+        guestDao.addGuest(guest)
     }
-
-    fun getGuests() = guestDao?.getGuests()
-
-    suspend fun addGuest(guest: Guest){
-        guestDao?.addGuest(guest)
-    }
-
-    suspend fun deleteGuest(guest: Guest){
-        guestDao?.deleteGuest(guest)
-    }
-
-    fun getGuest(id: Int) =  guestDao?.getGuest(id)
 
     suspend fun updateGuest(guest: Guest) {
-        guestDao?.updateGuest(guest)
+        guestDao.updateGuest(guest)
     }
+
+    suspend fun deleteGuest(guest: Guest) {
+        guestDao.deleteGuest(guest)
+    }
+
+    fun getGuest(id: Int) = guestDao.getGuest(id)
 }

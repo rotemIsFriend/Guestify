@@ -35,8 +35,10 @@ import nl.dionsegijn.konfetti.xml.KonfettiView
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
+import dagger.hilt.android.AndroidEntryPoint
 
 // Fragment that allows the user to choose a pre-made or custom invitation template.
+@AndroidEntryPoint
 class ChooseTemplateFragment : Fragment() {
 
     // ViewBinding for the fragment layout.
