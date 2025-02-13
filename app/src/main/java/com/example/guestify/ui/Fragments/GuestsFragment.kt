@@ -18,8 +18,10 @@ import com.example.guestify.ui.Adapters.GuestAdapter
 import com.example.guestify.data.model.Guest
 import com.example.guestify.databinding.GuestsBinding
 import com.example.guestify.ui.viewModels.GuestsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
 // Fragment responsible for managing and displaying the list of guests for a specific event.
+@AndroidEntryPoint
 class GuestsFragment : Fragment() {
 
     // ViewBinding for accessing UI components in the fragment's layout.

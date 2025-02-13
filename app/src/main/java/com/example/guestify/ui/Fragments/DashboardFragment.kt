@@ -17,8 +17,11 @@ import com.example.guestify.data.model.Event
 import com.example.guestify.ui.Adapters.EventAdapter
 import com.example.guestify.databinding.DashboardBinding
 import com.example.guestify.ui.viewModels.EventsViewModel
+import dagger.hilt.android.AndroidEntryPoint
+
 
 // Fragment that displays the dashboard with a list of events and allows navigation to create new events or view event details.
+@AndroidEntryPoint
 class DashboardFragment : Fragment() {
 
     // ViewBinding for accessing the views in the fragment's layout.

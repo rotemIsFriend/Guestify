@@ -17,8 +17,10 @@ import com.example.guestify.data.model.Event
 import com.example.guestify.databinding.EventDetailsBinding
 import com.example.guestify.ui.viewModels.EventsViewModel
 import java.util.Calendar
+import dagger.hilt.android.AndroidEntryPoint
 
 // Fragment responsible for displaying and editing the details of a specific event.
+@AndroidEntryPoint
 class EventDetailsFragment : Fragment() {
 
     // View binding for accessing UI elements in the fragment's layout.

@@ -1,32 +1,33 @@
 package com.example.guestify.data.repository
 
-import android.app.Application
-import com.example.guestify.data.local_db.EventDataBase
 import com.example.guestify.data.local_db.EventDao
 import com.example.guestify.data.model.Event
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class EventRepository(application: Application) {
+class EventRepository @Inject constructor(
+    private val eventDao: EventDao
+) {
+    fun getEvents() = eventDao.getEvents()
 
-    private var eventDao : EventDao?
-
-    init {
-        val db = EventDataBase.getDatabase(application.applicationContext)
-        eventDao = db.eventDao()
+    suspend fun addEvent(event: Event): Long {
+        return withContext(Dispatchers.IO) {
+            eventDao.addEvent(event)
+        }
     }
 
-    fun getEvents() = eventDao?.getEvents()
-
-    suspend fun addEvent(event: Event): Long{
-        return eventDao!!.addEvent(event)
+    suspend fun deleteEvent(event: Event) {
+        withContext(Dispatchers.IO) {
+            eventDao.deleteEvent(event)
+        }
     }
 
-    suspend fun deleteEvent(event: Event){
-        eventDao?.deleteEvent(event)
-    }
-
-    fun getEvent(id: Int) =  eventDao?.getEvent(id)
+    fun getEvent(id: Int) = eventDao.getEvent(id)
 
     suspend fun updateEvent(event: Event) {
-        eventDao?.updateEvent(event)
+        withContext(Dispatchers.IO) {
+            eventDao.updateEvent(event)
+        }
     }
 }

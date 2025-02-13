@@ -16,8 +16,10 @@ import androidx.navigation.fragment.findNavController
 import com.example.guestify.R
 import com.example.guestify.databinding.InvitationBinding
 import com.example.guestify.ui.viewModels.EventsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
 // Fragment responsible for creating and validating event invitations.
+@AndroidEntryPoint
 class InvitationFragment : Fragment() {
 
     // ViewBinding for accessing UI elements in the fragment's layout.
