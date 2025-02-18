@@ -40,4 +40,14 @@ class EventsViewModel @Inject constructor(
             repository.updateEvent(event)
         }
     }
+
+    val favoriteEvents: LiveData<List<Event>> = repository.getFavoriteEvents()
+
+    fun toggleFavorite(event: Event) {
+        viewModelScope.launch(Dispatchers.IO) {
+            event.isFavorite = !event.isFavorite
+            repository.updateEvent(event)
+        }
+    }
+
 }

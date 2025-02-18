@@ -22,8 +22,14 @@ interface EventDao {
     suspend fun deleteEvent(event: Event)
 
     @Query("SELECT * FROM events_table ORDER BY date ASC")
-    fun getEvents() : LiveData<List<Event>>
+    fun getEvents(): LiveData<List<Event>>
 
-    @Query("SELECT * FROM events_table WHERE id LIKE :id" )
+    @Query("SELECT * FROM events_table WHERE id LIKE :id")
     fun getEvent(id: Int): LiveData<Event>
+
+    @Query("SELECT * FROM events_table WHERE is_favorite = 1 ORDER BY date ASC")
+    fun getFavoriteEvents(): LiveData<List<Event>>
+
+    @Query("UPDATE events_table SET is_favorite = :isFavorite WHERE id = :eventId")
+    suspend fun updateFavoriteStatus(eventId: Int, isFavorite: Boolean)
 }

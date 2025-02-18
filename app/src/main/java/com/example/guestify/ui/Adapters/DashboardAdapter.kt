@@ -11,11 +11,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.guestify.R
 import com.example.guestify.data.model.Event
+import com.example.guestify.ui.viewModels.EventsViewModel
 
 // Adapter that displays a list of events in a RecyclerView.
 class EventAdapter(
-    private val events: List<Event>,
+    private var events: List<Event>,
+    private val viewModel: EventsViewModel,
     private val callback: EventListener
+
 ) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
 
     // Allows communication from the Adapter to the hosting Activity/Fragment for handling clicks/deletions.
@@ -37,6 +40,7 @@ class EventAdapter(
         val eventDate: TextView = view.findViewById(R.id.eventDate)
         val guestCount: TextView = view.findViewById(R.id.guest_count)
         val deleteButton: ImageButton = view.findViewById(R.id.deleteButton)
+        val favoriteButton: ImageButton = view.findViewById(R.id.btn_favorite)
 
         // Invokes the callback method to handle click events on the item.
         override fun onClick(v: View?) {
@@ -59,6 +63,19 @@ class EventAdapter(
         holder.eventDate.text = event.date
         holder.guestCount.text = event.numOfGuests.toString()
 
+        holder.favoriteButton.setImageResource(
+            if (event.isFavorite) R.drawable.ic_heart_filled else R.drawable.ic_heart_outline
+        )
+
+        holder.favoriteButton.setOnClickListener {
+            val newFavoriteState = !event.isFavorite
+            event.isFavorite = newFavoriteState
+            holder.favoriteButton.setImageResource(
+                if (newFavoriteState) R.drawable.ic_heart_filled else R.drawable.ic_heart_outline
+            )
+            viewModel.updateEvent(event)
+        }
+
         // load image with Glide
         Glide.with(holder.itemView.context).
         load(Uri.parse(event.inviteImageUri)).
@@ -72,4 +89,9 @@ class EventAdapter(
 
     // Returns the total number of items to display in the RecyclerView.
     override fun getItemCount(): Int = events.size
+
+    fun updateEvents(newEvents: List<Event>) {
+        events = newEvents
+        notifyDataSetChanged()
+    }
 }

@@ -30,4 +30,15 @@ class EventRepository @Inject constructor(
             eventDao.updateEvent(event)
         }
     }
+
+    fun getFavoriteEvents() = eventDao.getFavoriteEvents()
+
+    suspend fun toggleFavorite(event: Event) {
+        withContext(Dispatchers.IO) {
+            val newStatus = !event.isFavorite
+            eventDao.updateFavoriteStatus(event.id, newStatus)
+        }
+    }
+
+
 }

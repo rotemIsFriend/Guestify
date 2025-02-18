@@ -31,6 +31,8 @@ data class Event(
     var invitationText: String = "",
     @ColumnInfo(name = "number_of_guests")
     var numOfGuests: Int = 0,
+    @ColumnInfo(name = "is_favorite")
+    var isFavorite: Boolean = false
 
 ) {
     @PrimaryKey(autoGenerate = true)

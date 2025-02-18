@@ -2,6 +2,7 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
@@ -9,21 +10,17 @@
     app:cardCornerRadius="8dp"
     app:cardElevation="8dp">
 
-    <!-- Parent layout containing content & bottom line -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
-        <!-- Main content with padding -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:layout_margin="4dp">
+            android:layout_margin="4dp"
+            android:padding="8dp">
 
-            <!-- Event Image -->
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/eventImage"
                 android:layout_width="90dp"
@@ -31,23 +28,38 @@
                 android:layout_marginEnd="10dp"
                 android:contentDescription="@string/event_image"
                 android:scaleType="centerCrop"
-                app:shapeAppearanceOverlay="@style/RoundedCorners"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" />
+                app:shapeAppearanceOverlay="@style/RoundedCorners" />
 
-            <!-- Delete Button -->
+            <ImageButton
+                android:id="@+id/btn_favorite"
+                android:layout_width="36dp"
+                android:layout_height="38dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/favorite_button"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_heart_outline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TouchTargetSizeCheck" />
+
             <ImageButton
                 android:id="@+id/deleteButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="23dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="4dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="@string/delete_event"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.384"
+                app:layout_constraintStart_toStartOf="@id/btn_favorite"
+                app:layout_constraintTop_toBottomOf="@id/btn_favorite"
                 app:srcCompat="@drawable/delete_icon"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                tools:ignore="TouchTargetSizeCheck" />
 
-            <!-- Event Name -->
             <TextView
                 android:id="@+id/eventName"
                 android:layout_width="wrap_content"
@@ -56,14 +68,13 @@
                 android:layout_marginTop="16dp"
                 android:paddingTop="16dp"
                 android:text="@string/event_name"
-                android:textSize="18sp"
                 android:textFontWeight="600"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@+id/btn_favorite"
+                app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toEndOf="@+id/eventImage"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/deleteButton"
-                app:layout_constraintHorizontal_bias="0" />
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- Event Date -->
             <TextView
                 android:id="@+id/eventDate"
                 android:layout_width="0dp"
@@ -73,11 +84,10 @@
                 android:textColor="@color/text_secondary"
                 android:textFontWeight="600"
                 android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/eventName"
                 app:layout_constraintStart_toStartOf="@+id/eventName"
-                app:layout_constraintTop_toBottomOf="@+id/eventName"
-                app:layout_constraintEnd_toEndOf="@+id/eventName" />
+                app:layout_constraintTop_toBottomOf="@+id/eventName" />
 
-            <!-- Contacts Layout (icon + text) -->
             <LinearLayout
                 android:id="@+id/contactsLayout"
                 android:layout_width="wrap_content"
@@ -89,9 +99,9 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/contact_icon"
                     android:scaleX="0.8"
-                    android:scaleY="0.8"
-                    android:background="@drawable/contact_icon" />
+                    android:scaleY="0.8" />
 
                 <TextView
                     android:id="@+id/guest_count"
@@ -105,7 +115,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!-- Thin line at the bottom, outside the padding -->
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
