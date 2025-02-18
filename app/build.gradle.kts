@@ -45,7 +45,7 @@ dependencies {
     implementation(libs.konfetti)
 // Lottie for advanced loading animations
     implementation(libs.lottie)
-
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

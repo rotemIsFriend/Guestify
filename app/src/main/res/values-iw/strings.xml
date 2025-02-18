@@ -141,5 +141,7 @@
     <string name="love_phrase">מים רבים לא יוכלו לכבות את האהבה...</string>
     <string name="love_phrase_2">“שְׁמַעְתִּי אֶת קוֹלֵךְ... נֶפֶשִׁי אָהֲבָה אֹתָךְ...”</string>
     <string name="generating_templates">מייצר הזמנות דיגטליות</string>
+    <string name="favorite_button">מועדפים</string>
+    <string name="favorite_events">אירועים מועדפים</string>
 
 </resources>

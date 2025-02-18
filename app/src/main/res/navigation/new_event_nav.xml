@@ -46,6 +46,9 @@
             app:popExitAnim="@anim/to_left"
             app:popUpTo="@id/dashboardFragment"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_favoritesFragment"
+            app:destination="@id/favoritesFragment" />
 
     </fragment>
 
@@ -134,4 +137,21 @@
             app:popUpTo="@id/dashboardFragment"
             app:popUpToInclusive="false" />
     </fragment>
+
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.example.guestify.ui.Fragments.FavoritesFragment"
+        android:label="Favorite_events"
+        tools:layout="@layout/fragment_favorites">
+        <action
+            android:id="@+id/action_favoritesFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+        <action
+            android:id="@+id/action_favoritesFragment_to_eventDetailsFragment"
+            app:destination="@id/eventDetailsFragment" />
+    </fragment>
+
+
+
+
 </navigation>

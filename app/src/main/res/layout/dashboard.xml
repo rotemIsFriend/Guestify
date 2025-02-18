@@ -76,6 +76,17 @@
             android:layout_marginTop="16dp"
             android:gravity="center"
             app:cornerRadius="5dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/fav_event_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/favorite_events"
+            android:backgroundTint="@color/primary"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:gravity="center"
+            app:cornerRadius="5dp"/>
     </LinearLayout>
 
 </LinearLayout>
