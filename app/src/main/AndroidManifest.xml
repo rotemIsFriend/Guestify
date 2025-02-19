@@ -5,7 +5,7 @@
 
 
     <application
-        android:name=".GuestifyApplication"
+        android:name=".di.GuestifyApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -17,7 +17,7 @@
         tools:targetApi="31">
 
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.Fragments.MainActivity"
             android:exported="true"
             android:launchMode="singleTop">
             <intent-filter>

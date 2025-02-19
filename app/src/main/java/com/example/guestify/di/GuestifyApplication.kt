@@ -1,4 +1,4 @@
-package com.example.guestify
+package com.example.guestify.di
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
