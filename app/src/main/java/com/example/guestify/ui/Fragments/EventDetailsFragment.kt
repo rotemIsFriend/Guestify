@@ -16,6 +16,7 @@ import com.example.guestify.R
 import com.example.guestify.data.model.Event
 import com.example.guestify.databinding.EventDetailsBinding
 import com.example.guestify.ui.viewModels.EventsViewModel
+import com.example.guestify.viewmodel.QuoteViewModel
 import java.util.Calendar
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -29,6 +30,8 @@ class EventDetailsFragment : Fragment() {
 
     // Shared ViewModel for managing event data across fragments.
     private val eventsViewModel: EventsViewModel by activityViewModels()
+    private val quoteViewModel: QuoteViewModel by activityViewModels()
+
 
     // Flag indicating whether the fragment is in editing mode.
     private var isEditing = false
@@ -53,6 +56,12 @@ class EventDetailsFragment : Fragment() {
             // Navigate back if no valid event ID is provided.
             findNavController().navigateUp()
             return
+        }
+
+        quoteViewModel.fetchLoveQuote()
+
+        quoteViewModel.quote.observe(viewLifecycleOwner) { quoteText ->
+            binding.tvQuote.text = quoteText
         }
 
         // Fetch the event data from the ViewModel.

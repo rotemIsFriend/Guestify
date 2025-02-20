@@ -56,6 +56,7 @@ dependencies {
     implementation(libs.roomRuntime)
     implementation("androidx.room:room-ktx:2.5.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
     kapt(libs.roomCompiler)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -64,4 +65,6 @@ dependencies {
     annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
     implementation("com.google.dagger:hilt-android:2.48")
     kapt("com.google.dagger:hilt-compiler:2.48")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 }
