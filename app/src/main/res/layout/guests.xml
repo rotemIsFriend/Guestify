@@ -150,7 +150,7 @@
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:backgroundTint="@color/black"
+                    android:backgroundTint="@color/purple_500"
                     android:text="@string/finish"
                     android:textColor="@color/white"/>
             </LinearLayout>

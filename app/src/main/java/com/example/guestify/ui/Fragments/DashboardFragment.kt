@@ -18,6 +18,8 @@ import com.example.guestify.ui.Adapters.EventAdapter
 import com.example.guestify.databinding.DashboardBinding
 import com.example.guestify.ui.viewModels.EventsViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import android.content.SharedPreferences
+import androidx.appcompat.app.AppCompatDelegate
 
 
 // Fragment that displays the dashboard with a list of events and allows navigation to create new events or view event details.
@@ -31,6 +33,9 @@ class DashboardFragment : Fragment() {
     // Shared ViewModel to manage and observe event data.
     private val eventsViewModel: EventsViewModel by activityViewModels()
 
+    // SharedPreferences to store dark mode state
+    private lateinit var sharedPreferences: SharedPreferences
+
     // Inflates the fragment's layout and sets up initial UI components.
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,6 +43,28 @@ class DashboardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = DashboardBinding.inflate(inflater, container, false)
+
+        // Initialize SharedPreferences
+        sharedPreferences = requireContext().getSharedPreferences("settings", 0)
+
+        // Check if dark mode was previously enabled
+        val isDarkMode = sharedPreferences.getBoolean("dark_mode", false)
+
+        // Apply the correct theme and button icon
+        updateTheme(isDarkMode)
+
+        // Dark mode toggle button click listener
+        binding.themeToggleButton.setOnClickListener {
+            val newMode = !sharedPreferences.getBoolean("dark_mode", false) // Toggle current mode
+            val editor = sharedPreferences.edit()
+            editor.putBoolean("dark_mode", newMode)
+            editor.apply()
+
+            // Apply theme and refresh activity
+            updateTheme(newMode)
+            requireActivity().recreate() // Refresh the activity to apply changes
+        }
+
 
         // Sets up the "New Event" button to navigate to the InvitationFragment when clicked.
         binding.newEventBtn.setOnClickListener {
@@ -70,6 +97,17 @@ class DashboardFragment : Fragment() {
         return binding.root
     }
 
+    //Updates the app's theme and button icon based on the dark mode state.
+    private fun updateTheme(isDarkMode: Boolean) {
+        if (isDarkMode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            binding.themeToggleButton.setImageResource(R.drawable.icons8_sun__1_) // Sun icon
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            binding.themeToggleButton.setImageResource(R.drawable.noun_moon_7177219) // Moon icon
+        }
+    }
+
     // Displays a confirmation dialog before deleting an event to prevent accidental deletions.
     private fun showConfirmationDialog(events: List<Event>, index: Int) {
         val builder = AlertDialog.Builder(requireContext())
@@ -96,4 +134,6 @@ class DashboardFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+
 }

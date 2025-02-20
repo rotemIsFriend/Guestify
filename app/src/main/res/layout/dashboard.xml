@@ -1,92 +1,116 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
-    Layout for the DashboardFragment, displaying the app logo, title, subtitle,
-    a list of events using RecyclerView, and a button to create a new event.
--->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.Fragments.DashboardFragment"
-    android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="top|center"
-    android:paddingBottom="40dp"
-    android:paddingHorizontal="16dp"
-    android:paddingTop="45dp">
+    android:layout_height="match_parent">
 
-    <!-- App Logo -->
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:src="@drawable/logo"
-        android:scaleType="centerInside"
-        android:adjustViewBounds="true"
-        android:layout_gravity="center" />
-
-    <!-- Dashboard Title -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/dashboard"
-        android:textSize="27sp"
-        android:textStyle="bold"
-        android:layout_gravity="start"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="10dp" />
-
-    <!-- Dashboard Subtitle -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/monitor_and_manage_your_events"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        android:textColor="@color/text_secondary"
-        android:layout_gravity="start"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="10dp" />
-
-    <!-- Container for RecyclerView and New Event Button -->
+    <!-- Main Layout -->
     <LinearLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_weight="1">
+        android:gravity="top|center"
+        android:paddingBottom="40dp"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="45dp">
 
-        <!-- RecyclerView to Display List of Events -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+        <!-- Container for App Logo -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+            <!-- App Logo -->
+            <ImageView
+                android:id="@+id/logoImage"
+                android:layout_width="204dp"
+                android:layout_height="93dp"
+                android:layout_centerHorizontal="true"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
+                android:src="@drawable/logo" />
+        </RelativeLayout>
+
+        <!-- Dashboard Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dashboard"
+            android:textSize="27sp"
+            android:textStyle="bold"
+            android:layout_gravity="start"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="10dp" />
+
+        <!-- Dashboard Subtitle -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/monitor_and_manage_your_events"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_secondary"
+            android:layout_gravity="start"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp" />
+
+        <!-- Container for RecyclerView and New Event Button -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:paddingBottom="30dp" />
+            android:orientation="vertical"
+            android:layout_weight="1">
 
-        <!-- Button to Create a New Event -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/new_event_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/new_event"
-            android:backgroundTint="@color/primary"
-            android:textColor="@color/white"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:gravity="center"
-            app:cornerRadius="5dp"/>
+            <!-- RecyclerView to Display List of Events -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:paddingBottom="30dp" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/fav_event_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/favorite_events"
-            android:backgroundTint="@color/primary"
-            android:textColor="@color/white"
-            android:layout_gravity="center"
-            android:gravity="center"
-            app:cornerRadius="5dp"/>
+            <!-- Button to Create a New Event -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/new_event_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/new_event"
+                android:backgroundTint="@color/primary"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                app:cornerRadius="5dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/fav_event_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/favorite_events"
+                android:backgroundTint="@color/primary"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:gravity="center"
+                app:cornerRadius="5dp"/>
+        </LinearLayout>
+
     </LinearLayout>
 
-</LinearLayout>
+    <!-- Dark Mode Toggle Button -->
+    <ImageButton
+        android:id="@+id/themeToggleButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:padding="6dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/noun_moon_7177219"
+        android:layout_gravity="top|end"/>
+
+</FrameLayout>
