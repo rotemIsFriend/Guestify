@@ -1,21 +1,30 @@
 package com.example.guestify.ui.Fragments
 
+import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Intent
 import android.icu.util.Calendar
 import android.os.Bundle
+import android.util.Log
 import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ScrollView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.guestify.R
 import com.example.guestify.databinding.InvitationBinding
 import com.example.guestify.ui.viewModels.EventsViewModel
+import com.google.android.libraries.places.api.model.Place
+import com.google.android.libraries.places.widget.AutocompleteSupportFragment
+import com.google.android.libraries.places.widget.Autocomplete
+import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
+import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
 import dagger.hilt.android.AndroidEntryPoint
 
 // Fragment responsible for creating and validating event invitations.
@@ -30,6 +39,23 @@ class InvitationFragment : Fragment() {
     private var eventTime = ""
     private var eventDate = ""
 
+    private val startAutocomplete =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            try {
+                if (result.resultCode == Activity.RESULT_OK) {
+                    val place = Autocomplete.getPlaceFromIntent(result.data!!)
+                    binding.etEventLocation.setText(place.address)
+
+                } else if (result.resultCode == Activity.RESULT_CANCELED) {
+                    Toast.makeText(requireContext(),getString(R.string.Autocomplete_error_cancel), Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(requireContext(), getString(R.string.Autocomplete_error_place_selection), Toast.LENGTH_SHORT).show()
+                }
+            } catch (e: Exception) {
+                Toast.makeText(requireContext(), getString(R.string.Autocomplete_error_Unexpected_error), Toast.LENGTH_SHORT).show()
+            }
+        }
+
     // Inflates the fragment's layout and initializes view binding.
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,6 +69,10 @@ class InvitationFragment : Fragment() {
     // Sets up UI components and event listeners after the view is created.
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.etEventLocation.setOnClickListener {
+            openPlaceAutocomplete()
+        }
 
         // Sets up the date and time picker dialog when the select date button is clicked.
         binding.btnSelectDate.setOnClickListener {
@@ -101,6 +131,19 @@ class InvitationFragment : Fragment() {
                     Toast.LENGTH_SHORT
                 ).show()
             }
+        }
+    }
+
+    private fun openPlaceAutocomplete() {
+        try {
+            val fields = listOf(Place.Field.ID, Place.Field.NAME, Place.Field.ADDRESS, Place.Field.ADDRESS_COMPONENTS)
+            val intent = Autocomplete.IntentBuilder(AutocompleteActivityMode.FULLSCREEN, fields)
+                .setCountries(listOf("IL"))
+                .build(requireContext())
+
+            startAutocomplete.launch(intent)
+        } catch (e: Exception) {
+            Toast.makeText(requireContext(), getString(R.string.Autocomplete_error_launch), Toast.LENGTH_SHORT).show()
         }
     }
 
