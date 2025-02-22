@@ -7,7 +7,7 @@
         <item name="android:textColor">@color/text_primary</item>
         <item name="hintTextColor">@color/primary</item>
         <item name="boxStrokeColor">@color/primary</item>
-        <item name="android:windowBackground">@color/background</item>
+        <item name="android:windowBackground">#0D0C0C</item>
     </style>
 
     <style name="CornerCut" parent="">

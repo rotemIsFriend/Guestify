@@ -24,7 +24,7 @@
 
 
         <activity
-            android:name=".ui.Fragments.MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true"
             android:launchMode="singleTop">
             <intent-filter>

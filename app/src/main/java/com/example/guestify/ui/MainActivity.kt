@@ -1,4 +1,4 @@
-package com.example.guestify.ui.Fragments
+package com.example.guestify.ui
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
