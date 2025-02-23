@@ -18,7 +18,7 @@ interface EventRepositoryInterface {
 
     suspend  fun  getEvent(id: Int): Resource<Event>
 
-    fun getFavoriteEvents(): Resource<List<Event>>
+    fun getFavoriteEventsLiveData(data : MutableLiveData<Resource<List<Event>>>)
 
     suspend fun updateFavoriteStatus(eventId: Int, isFavorite: Boolean) : Resource<Void>
 

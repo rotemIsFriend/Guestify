@@ -36,6 +36,8 @@ class DashboardFragment : Fragment() {
     // SharedPreferences to store dark mode state
     private lateinit var sharedPreferences: SharedPreferences
 
+    private lateinit var eventAdapter: EventAdapter
+
     // Inflates the fragment's layout and sets up initial UI components.
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -65,6 +67,9 @@ class DashboardFragment : Fragment() {
             requireActivity().recreate() // Refresh the activity to apply changes
         }
 
+        setupRecyclerView()
+        observeEvents()
+
 
         // Sets up the "New Event" button to navigate to the InvitationFragment when clicked.
         binding.newEventBtn.setOnClickListener {
@@ -80,25 +85,10 @@ class DashboardFragment : Fragment() {
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         // Observes changes in the list of events from the ViewModel and updates the RecyclerView accordingly.
-        eventsViewModel.eventsLiveData.observe(viewLifecycleOwner) { eventsList ->
-            binding.recyclerView.adapter = eventsList?.let {
-                EventAdapter(it, object : EventAdapter.EventListener {
-                    // Handles the event click to navigate to the EventDetailsFragment with the selected event ID.
-                    override fun onEventClicked(index: Int) {
-                        val bundle = bundleOf("eventId" to eventsList[index].id)
-                        findNavController().navigate(R.id.action_dashboardFragment_to_eventDetailsFragment, bundle)
-                    }
-
-                    // Handles the event deletion by showing a confirmation dialog.
-                    override fun onEventDeleted(index: Int) {
-                        showConfirmationDialog(eventsList, index)
-                    }
-                })
-            }
-        }
 
         return binding.root
     }
+
 
     //Updates the app's theme and button icon based on the dark mode state.
     private fun updateTheme(isDarkMode: Boolean) {
@@ -132,7 +122,40 @@ class DashboardFragment : Fragment() {
         dialog.show()
     }
 
-    // Cleans up the binding when the fragment's view is destroyed to prevent memory leaks.
+    private fun setupRecyclerView() {
+        eventAdapter = EventAdapter(emptyList(), eventsViewModel, object : EventAdapter.EventListener {
+            override fun onEventClicked(index: Int) {
+                val event = eventAdapter.getEventAt(index)
+                val bundle = bundleOf("eventId" to event.id)
+                findNavController().navigate(R.id.action_dashboardFragment_to_eventDetailsFragment, bundle)
+            }
+
+            override fun onEventDeleted(index: Int) {
+                val event = eventAdapter.getEventAt(index) // ✅ Get event from adapter
+                showConfirmationDialog(listOf(event), index) // ✅ Pass the correct event list
+            }
+        })
+
+        binding.recyclerView.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = eventAdapter
+        }
+    }
+
+
+
+    private fun observeEvents() {
+        eventsViewModel.eventsLiveData.observe(viewLifecycleOwner) { eventsList ->
+            Log.d("FirestoreDebug", "Received ${eventsList.size} events from Firestore")
+            eventAdapter.updateEvents(eventsList) // ✅ Update adapter dynamically
+        }
+    }
+
+
+
+
+
+            // Cleans up the binding when the fragment's view is destroyed to prevent memory leaks.
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

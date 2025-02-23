@@ -1,6 +1,7 @@
 package com.example.guestify.ui.Fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,19 +34,11 @@ class FavoritesFragment : Fragment() {
 
         binding.recyclerViewFavorites.layoutManager = LinearLayoutManager(requireContext())
 
-        eventsViewModel.favoriteEvents.observe(viewLifecycleOwner) { favoriteEvents ->
-            binding.recyclerViewFavorites.adapter = EventAdapter(favoriteEvents, eventsViewModel, object :
-                EventAdapter.EventListener {
-                override fun onEventClicked(index: Int) {
-                    val bundle = bundleOf("eventId" to favoriteEvents[index].id)
-                    findNavController().navigate(R.id.action_favoritesFragment_to_eventDetailsFragment, bundle)
-                }
+        eventsViewModel.observeFavoriteEvents()
+        observeFavorites()
 
-                override fun onEventDeleted(index: Int) {
-                    showConfirmationDialog(favoriteEvents[index])
-                }
-            })
-        }
+
+
 
         return binding.root
     }
@@ -65,6 +58,26 @@ class FavoritesFragment : Fragment() {
 
         val dialog: AlertDialog = builder.create()
         dialog.show()
+    }
+
+    private fun observeFavorites() {
+        eventsViewModel.favoriteEventsLiveData.observe(viewLifecycleOwner) { eventsList ->
+            binding.recyclerViewFavorites.adapter =
+                EventAdapter(eventsList, eventsViewModel, object :
+                    EventAdapter.EventListener {
+                    override fun onEventClicked(index: Int) {
+                        val bundle = bundleOf("eventId" to eventsList[index].id)
+                        findNavController().navigate(
+                            R.id.action_favoritesFragment_to_eventDetailsFragment,
+                            bundle
+                        )
+                    }
+
+                    override fun onEventDeleted(index: Int) {
+                        showConfirmationDialog(eventsList[index])
+                    }
+                })
+        }
     }
 
     override fun onDestroyView() {
