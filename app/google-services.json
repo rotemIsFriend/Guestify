@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "626155140350",
+    "project_id": "guestify-82ad0",
+    "storage_bucket": "guestify-82ad0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:626155140350:android:c55d26319014ff675da1af",
+        "android_client_info": {
+          "package_name": "com.example.guestify"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDk8I0fDngUZvKWiclNL7e2VDLaZO2DE7o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

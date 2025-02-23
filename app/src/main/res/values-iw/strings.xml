@@ -142,4 +142,16 @@
     <string name="love_phrase_2">“שְׁמַעְתִּי אֶת קוֹלֵךְ... נֶפֶשִׁי אָהֲבָה אֹתָךְ...”</string>
     <string name="generating_templates">מייצר הזמנות דיגטליות</string>
 
+
+    <string name="login">התחבר</string>
+    <string name="username">שם משתמש</string>
+    <string name="password">סיסמה</string>
+    <string name="welcome_to_guestify">ברוך הבא ל- Guestify</string>
+    <string name="signup">הרשמה</string>
+    <string name="login_btn">התחברות</string>
+    <string name="email">מייל</string>
+    <string name="confrim_password">אישור סיסמה</string>
+    <string name="confirm">אישור</string>
+
+
 </resources>

@@ -130,5 +130,18 @@
     <string name="love_phrase">Many waters cannot quench love…</string>
     <string name="love_phrase_2">“Together is a wonderful place to be.”</string>
     <string name="generating_templates">Generating Templates...</string>
+    <string name="login">Login</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="welcome_to_guestify">Welcome to Guestify</string>
+    <string name="signup">Signup</string>
+    <string name="login_btn">Login</string>
+    <string name="email">Email</string>
+    <string name="confrim_password">Confrim password</string>
+    <string name="confirm">Confirm</string>
+    <string name="Autocomplete_error_launch">Error loading search, please try again</string>
+    <string name="Autocomplete_error_cancel">Search cancelled, please try again</string>
+    <string name="Autocomplete_error_place_selection">Error while location was chose, please try again</string>
+    <string name="Autocomplete_error_Unexpected_error">Unexpected error, please try again</string>
 
 </resources>

@@ -48,19 +48,21 @@ class DashboardFragment : Fragment() {
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         // Observes changes in the list of events from the ViewModel and updates the RecyclerView accordingly.
-        eventsViewModel.events?.observe(viewLifecycleOwner) { eventsList ->
-            binding.recyclerView.adapter = EventAdapter(eventsList, object : EventAdapter.EventListener {
-                // Handles the event click to navigate to the EventDetailsFragment with the selected event ID.
-                override fun onEventClicked(index: Int) {
-                    val bundle = bundleOf("eventId" to eventsList[index].id)
-                    findNavController().navigate(R.id.action_dashboardFragment_to_eventDetailsFragment, bundle)
-                }
+        eventsViewModel.eventsLiveData.observe(viewLifecycleOwner) { eventsList ->
+            binding.recyclerView.adapter = eventsList?.let {
+                EventAdapter(it, object : EventAdapter.EventListener {
+                    // Handles the event click to navigate to the EventDetailsFragment with the selected event ID.
+                    override fun onEventClicked(index: Int) {
+                        val bundle = bundleOf("eventId" to eventsList[index].id)
+                        findNavController().navigate(R.id.action_dashboardFragment_to_eventDetailsFragment, bundle)
+                    }
 
-                // Handles the event deletion by showing a confirmation dialog.
-                override fun onEventDeleted(index: Int) {
-                    showConfirmationDialog(eventsList, index)
-                }
-            })
+                    // Handles the event deletion by showing a confirmation dialog.
+                    override fun onEventDeleted(index: Int) {
+                        showConfirmationDialog(eventsList, index)
+                    }
+                })
+            }
         }
 
         return binding.root
