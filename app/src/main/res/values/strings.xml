@@ -145,5 +145,14 @@
     <string name="Autocomplete_error_cancel">Search cancelled, please try again</string>
     <string name="Autocomplete_error_place_selection">Error while location was chose, please try again</string>
     <string name="Autocomplete_error_Unexpected_error">Unexpected error, please try again</string>
+    <string name="email_is_required">Email is required</string>
+    <string name="password_must_be_at_least_6_characters">Password must be at least 6 characters</string>
+    <string name="error_saving_user">Error saving user : %1$s</string>
+    <string name="sign_up_successful">Sign-up successful!</string>
+    <string name="please_confirm_your_password">Please confirm your password</string>
+    <string name="passwords_do_not_match">Passwords do not match</string>
+    <string name="email_password_required"><![CDATA[Email & Password required!]]></string>
+    <string name="login_successful">Login successful!</string>
+    <string name="login_failed">Login failed : %1$s</string>
 
 </resources>

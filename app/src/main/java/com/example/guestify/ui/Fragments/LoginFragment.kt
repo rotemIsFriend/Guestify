@@ -49,7 +49,8 @@ class LoginFragment : Fragment() {
 
         if(email.isEmpty() || password.isEmpty())
         {
-            Toast.makeText(requireContext(), "Email & Password required!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(),
+                getString(R.string.email_password_required), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -57,12 +58,14 @@ class LoginFragment : Fragment() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful)
                 {
-                    Toast.makeText(requireContext(), "Login successful!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(),
+                        getString(R.string.login_successful), Toast.LENGTH_SHORT).show()
                     findNavController().navigate(R.id.action_loginFragment_to_dashboardFragment)
                 }
                 else
                 {
-                    Toast.makeText(requireContext(), "Login failed : ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(),
+                        getString(R.string.login_failed, task.exception?.message), Toast.LENGTH_SHORT).show()
                 }
             }
     }

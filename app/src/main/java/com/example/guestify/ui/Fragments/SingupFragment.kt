@@ -48,7 +48,7 @@ class SingupFragment : Fragment(){
         val confirmpassword = binding.editTextConfrimpassword.text.toString().trim()
 
         if(email.isEmpty()){
-            binding.emailInputLayout.error = "Email is required"
+            binding.emailInputLayout.error = getString(R.string.email_is_required)
             return
         }
         else{
@@ -56,7 +56,8 @@ class SingupFragment : Fragment(){
         }
 
         if(password.isEmpty() || password.length < 6){
-            binding.passwordTextInputLayout.error = "Password must be at least 6 characters"
+            binding.passwordTextInputLayout.error =
+                getString(R.string.password_must_be_at_least_6_characters)
             return
         }
         else{
@@ -65,13 +66,13 @@ class SingupFragment : Fragment(){
 
         if(confirmpassword.isEmpty())
         {
-            binding.confirmpasswordTextInputLayout.error = "Please confirm your password"
+            getString(R.string.please_confirm_your_password).also { binding.confirmpasswordTextInputLayout.error = it }
             return
         }
 
         if(confirmpassword != password)
         {
-            binding.confirmpasswordTextInputLayout.error = "Passwords do not match"
+            getString(R.string.passwords_do_not_match).also { binding.confirmpasswordTextInputLayout.error = it }
             return
         }
         else{
@@ -103,11 +104,13 @@ class SingupFragment : Fragment(){
             db.collection("users").document(userId)
                 .set(userMap)
                 .addOnSuccessListener {
-                    Toast.makeText(requireContext(), "Sign-up successful!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(),
+                        getString(R.string.sign_up_successful), Toast.LENGTH_SHORT).show()
                     findNavController().navigate(R.id.action_singupFragment_to_loginFragment)
                 }
                 .addOnFailureListener{ e ->
-                    Toast.makeText(requireContext(), "Error saving user : ${e.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(),
+                        getString(R.string.error_saving_user, e.message), Toast.LENGTH_SHORT).show()
                 }
 
 

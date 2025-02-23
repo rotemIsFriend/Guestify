@@ -143,13 +143,10 @@
     <string name="generating_templates">מייצר הזמנות דיגטליות</string>
     <string name="favorite_button">מועדפים</string>
     <string name="favorite_events">אירועים מועדפים</string>
-
     <string name="Autocomplete_error_launch">שגיאה בטעינת החיפוש, בבקשה נסו שנית</string>
     <string name="Autocomplete_error_cancel">חיפוש בוטל, בבקשה נסו שנית</string>
     <string name="Autocomplete_error_place_selection">שגיאה בעת טעינת המיקום, בבקשה נסו שניתת</string>
     <string name="Autocomplete_error_Unexpected_error">שגיאה בלתי צפויה, בבקשה נסו שנית</string>
-
-
     <string name="login">התחבר</string>
     <string name="username">שם משתמש</string>
     <string name="password">סיסמה</string>
@@ -159,6 +156,15 @@
     <string name="email">מייל</string>
     <string name="confrim_password">אישור סיסמה</string>
     <string name="confirm">אישור</string>
+    <string name="email_is_required">דרוש אימייל</string>
+    <string name="password_must_be_at_least_6_characters">סיסמה צריכה להיות 6 תווים לפחות</string>
+    <string name="error_saving_user">שגיאה בשמירת משתמש</string>
+    <string name="sign_up_successful">נרשמת בהצלחה</string>
+    <string name="please_confirm_your_password">תאשר את סיסמתך</string>
+    <string name="passwords_do_not_match">הסיסמה לא תואמת</string>
+    <string name="email_password_required">נדרש אימייל וסיסמא</string>
+    <string name="login_successful">התחברת בהצלחה!</string>
+    <string name="login_failed">התחברות נכשלה!</string>
     >
 
 
