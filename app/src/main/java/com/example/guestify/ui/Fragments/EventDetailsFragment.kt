@@ -10,15 +10,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.guestify.R
 import com.example.guestify.data.model.Event
 import com.example.guestify.databinding.EventDetailsBinding
 import com.example.guestify.ui.viewModels.EventsViewModel
+import com.example.guestify.util.Resource
 import com.example.guestify.viewmodel.QuoteViewModel
 import java.util.Calendar
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 // Fragment responsible for displaying and editing the details of a specific event.
 @AndroidEntryPoint
@@ -27,10 +30,13 @@ class EventDetailsFragment : Fragment() {
     // View binding for accessing UI elements in the fragment's layout.
     private var _binding: EventDetailsBinding? = null
     private val binding get() = _binding!!
+    private var event : Event? = null
 
     // Shared ViewModel for managing event data across fragments.
     private val eventsViewModel: EventsViewModel by activityViewModels()
     private val quoteViewModel: QuoteViewModel by activityViewModels()
+
+
 
 
     // Flag indicating whether the fragment is in editing mode.
@@ -65,16 +71,26 @@ class EventDetailsFragment : Fragment() {
         }
 
         // Fetch the event data from the ViewModel.
-        val event = eventsViewModel.getEventByID(eventId)
-        if (event == null) {
-            // Navigate back if the event is not found.
-            findNavController().navigateUp()
-            return
-        }
 
-        // Observe changes in the events list and populate the UI with event details.
-        event.observe(viewLifecycleOwner) {
-            populateFields(event.value)
+
+        lifecycleScope.launch {
+            when (val result = eventsViewModel.getEventByIDFirebase(eventId)) {
+                is Resource.Success -> {
+                    event = result.data
+                    if (event != null) {
+                        populateFields(event)
+
+                    } else {
+                        findNavController().navigateUp()
+                    }
+                }
+                is Resource.Error -> {
+                    findNavController().navigateUp()
+                }
+                is Resource.Loading -> {
+
+                }
+            }
         }
 
         // Set up click listener to navigate to the guests editing screen.
@@ -103,7 +119,7 @@ class EventDetailsFragment : Fragment() {
         binding.btnEditEvent.setOnClickListener {
             if (isEditing) {
                 if (validateFields()) {
-                    saveEventDetails(event.value!!)
+                    saveEventDetails(event)
                     toggleEditMode()
                 }
             } else {
@@ -144,7 +160,7 @@ class EventDetailsFragment : Fragment() {
                 .load(Uri.parse(data.inviteImageUri))
                 .into(binding.chooseTemplate)
         }
-        }
+    }
 
     // Toggles the fragment between editing and viewing modes.
     private fun toggleEditMode() {
@@ -174,19 +190,19 @@ class EventDetailsFragment : Fragment() {
     }
 
     // Saves the updated event details to the ViewModel and navigates back to the dashboard.
-    private fun saveEventDetails(event: Event) {
-        event.groomName = binding.groomsName.text.toString()
-        event.brideName = binding.bridessName.text.toString()
-        event.name =  "${event.groomName} & ${event.brideName}"
-        event.groomParents = binding.groomsParents.text.toString()
-        event.brideParents = binding.bridesParents.text.toString()
-        event.date = binding.eventDate.text.toString()
-        event.eventTime = binding.eventTime.text.toString()
-        event.location = binding.location.text.toString()
-        event.venueName = binding.eventVenue.text.toString()
-        event.invitationText = binding.description.text.toString()
-        event.numOfGuests = binding.amount.text.toString().toInt()
-        eventsViewModel.updateEvent(event)
+    private fun saveEventDetails(event: Event?) {
+        event?.groomName = binding.groomsName.text.toString()
+        event?.brideName = binding.bridessName.text.toString()
+        event?.name =  "${event?.groomName} & ${event?.brideName}"
+        event?.groomParents = binding.groomsParents.text.toString()
+        event?.brideParents = binding.bridesParents.text.toString()
+        event?.date = binding.eventDate.text.toString()
+        event?.eventTime = binding.eventTime.text.toString()
+        event?.location = binding.location.text.toString()
+        event?.venueName = binding.eventVenue.text.toString()
+        event?.invitationText = binding.description.text.toString()
+        event?.numOfGuests = binding.amount.text.toString().toInt()
+        eventsViewModel.updateEvent(event!!)
 
         // Navigate back to the dashboard after saving.
         findNavController().navigate(R.id.action_eventDetailsFragment_to_dashboardFragment)

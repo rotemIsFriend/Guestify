@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/new_event_nav"
-    app:startDestination="@id/dashboardFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/invitationFragment"
@@ -141,7 +141,26 @@
             app:popUpTo="@id/dashboardFragment"
             app:popUpToInclusive="false" />
     </fragment>
-
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.guestify.ui.Fragments.LoginFragment"
+        android:label="login"
+        tools:layout="@layout/login" >
+        <action
+            android:id="@+id/action_loginFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_singupFragment"
+            app:destination="@id/singupFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/singupFragment"
+        android:name="com.example.guestify.ui.Fragments.SingupFragment"
+        android:label="SingupFragment" >
+        <action
+            android:id="@+id/action_singupFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
         android:name="com.example.guestify.ui.Fragments.FavoritesFragment"
@@ -162,8 +181,5 @@
             app:popEnterAnim="@anim/from_right"
             app:popExitAnim="@anim/to_left" />
     </fragment>
-
-
-
 
 </navigation>
