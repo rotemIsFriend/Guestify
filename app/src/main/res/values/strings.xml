@@ -139,6 +139,8 @@
     <string name="email">Email</string>
     <string name="confrim_password">Confrim password</string>
     <string name="confirm">Confirm</string>
+    <string name="favorite_button">Favorite button</string>
+    <string name="favorite_events">Favorite Events</string>
     <string name="Autocomplete_error_launch">Error loading search, please try again</string>
     <string name="Autocomplete_error_cancel">Search cancelled, please try again</string>
     <string name="Autocomplete_error_place_selection">Error while location was chose, please try again</string>
