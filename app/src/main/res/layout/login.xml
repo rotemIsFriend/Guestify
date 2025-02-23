@@ -11,49 +11,57 @@
     android:paddingTop="50dp"
     android:paddingBottom="60dp">
 
-    <!-- Headline: Create Your Digital Invitation -->
-    <TextView
+    <!-- App Logo -->
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/welcome_to_guestify"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:textSize="20sp"
-        android:textColor="@color/text_primary"/>
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
 
+        <ImageView
+            android:id="@+id/logoImage"
+            android:layout_width="204dp"
+            android:layout_height="93dp"
+            android:layout_centerHorizontal="true"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/logo" />
+    </RelativeLayout>
+
+    <!-- Page Title -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/login"
         android:textStyle="bold"
         android:gravity="center"
-        android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:textSize="20sp"
         android:textColor="@color/text_primary"/>
 
+    <!-- Email Input Field -->
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/email_input_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/email"
-        app:counterEnabled="true"
-        app:counterMaxLength="20"
         app:boxStrokeColor="@color/input_border_color"
         app:hintTextColor="@color/primary"
         app:placeholderTextColor="@color/primary"
-        >
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp">
 
-        <com.google.android.material.textfield.TextInputEditText
+
+    <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            />
+            android:inputType="textEmailAddress"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- Password Input Field -->
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/password_text_input_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/password"
@@ -61,49 +69,50 @@
         app:counterMaxLength="20"
         app:boxStrokeColor="@color/input_border_color"
         app:hintTextColor="@color/primary"
-
         app:placeholderTextColor="@color/primary"
-        >
+        app:endIconMode="password_toggle">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            />
+            android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- Buttons: Login and Signup side by side -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:layout_marginTop="12dp"
         android:orientation="horizontal">
 
-        <!-- Save Guest Button -->
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_login"
-            android:layout_width="150dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:textColor="@color/white"
+            android:text="@string/login_btn"
             android:backgroundTint="@color/primary"
-            android:text="@string/login_btn" />
+            android:textColor="@color/white"
+            android:gravity="center"
+            app:cornerRadius="5dp"/>
 
         <!-- Spacer Between Buttons -->
         <Space
             android:layout_width="20dp"
             android:layout_height="wrap_content" />
 
-        <!-- Finish Button -->
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_signup"
-            android:layout_width="150dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:backgroundTint="@color/primary"
             android:text="@string/signup"
-            android:textColor="@color/white"/>
+            android:backgroundTint="@color/primary"
+            android:textColor="@color/white"
+            android:gravity="center"
+            app:cornerRadius="5dp"/>
     </LinearLayout>
-
 
 </LinearLayout>

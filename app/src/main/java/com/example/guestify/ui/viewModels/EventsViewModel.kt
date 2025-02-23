@@ -66,6 +66,7 @@ class EventsViewModel @Inject constructor(
 
         viewModelScope.launch(Dispatchers.IO) {
             val newEventId = repository.addEvent(event)
+            event.id= newEventId.toInt()
             fireStoreRepo.addEvent(event)
             withContext(Dispatchers.Main) {
                 onResult(newEventId)

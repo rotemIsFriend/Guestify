@@ -7,23 +7,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingHorizontal="18dp"
-    android:paddingTop="60dp"
-    android:paddingBottom="60dp"
-    android:layout_margin="20dp">
+    android:paddingHorizontal="16dp"
+    android:paddingTop="50dp"
+    android:paddingBottom="60dp">
 
-    <!-- Headline: Create Your Digital Invitation -->
+    <!-- App Logo -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+
+        <ImageView
+            android:id="@+id/logoImage"
+            android:layout_width="204dp"
+            android:layout_height="93dp"
+            android:layout_centerHorizontal="true"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/logo" />
+    </RelativeLayout>
+
+    <!-- Page Title -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Signup"
         android:textStyle="bold"
         android:gravity="center"
-        android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:textSize="20sp"
         android:textColor="@color/text_primary"/>
 
+    <!-- Email Input Field -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/email_input_layout"
         android:layout_width="match_parent"
@@ -32,17 +48,16 @@
         app:boxStrokeColor="@color/input_border_color"
         app:hintTextColor="@color/primary"
         app:placeholderTextColor="@color/primary"
-        android:paddingTop="50dp"
-        >
+        android:layout_marginTop="16dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            />
+            android:inputType="textEmailAddress"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- Password Input Field -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/password_text_input_layout"
         android:layout_width="match_parent"
@@ -53,19 +68,17 @@
         android:layout_marginTop="16dp"
         app:boxStrokeColor="@color/input_border_color"
         app:hintTextColor="@color/primary"
-        app:endIconMode="password_toggle"
-
         app:placeholderTextColor="@color/primary"
-        >
+        app:endIconMode="password_toggle">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            />
+            android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- Confirm Password Input Field -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/confirmpassword_text_input_layout"
         android:layout_width="match_parent"
@@ -73,40 +86,37 @@
         android:hint="@string/confrim_password"
         app:counterEnabled="true"
         app:counterMaxLength="20"
+        android:layout_marginTop="16dp"
         app:boxStrokeColor="@color/input_border_color"
         app:hintTextColor="@color/primary"
-        app:endIconMode="password_toggle"
-
         app:placeholderTextColor="@color/primary"
-        >
+        app:endIconMode="password_toggle">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_confrimpassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            />
+            android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- Confirm Button replaced with MaterialButton -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:paddingTop="60dp"
+        android:layout_marginTop="16dp"
         android:orientation="horizontal">
 
-        <!-- Save Guest Button -->
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_Confirm"
-            android:layout_width="150dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:textColor="@color/white"
+            android:text="@string/confirm"
             android:backgroundTint="@color/primary"
-            android:text="@string/confirm" />
-
-
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:gravity="center"
+            app:cornerRadius="5dp"/>
     </LinearLayout>
-
 
 </LinearLayout>
