@@ -16,7 +16,6 @@ class EventRepositoryFirebase @Inject constructor(
     private val auth: FirebaseAuth // Inject FirebaseAuth to get current user
 ) : EventRepositoryInterface {
 
-    // 🔥 Get current user's event collection
     private fun getUserEventRef() = firestore.collection("users")
         .document(auth.currentUser?.uid ?: throw Exception("User not logged in"))
         .collection("events")
@@ -63,8 +62,23 @@ class EventRepositoryFirebase @Inject constructor(
         }
     }
 
-    override fun getFavoriteEvents(): Resource<List<Event>> {
-        TODO("Not yet implemented")
+    override fun getFavoriteEventsLiveData(data: MutableLiveData<Resource<List<Event>>>) {
+        data.postValue(Resource.Loading()) // ✅ Show loading state
+
+        getUserEventRef().whereEqualTo("favorite", true)
+            .addSnapshotListener { snapshot, e ->
+                if (e != null) {
+                    data.postValue(Resource.Error(e.localizedMessage))
+                    return@addSnapshotListener
+                }
+
+                if (snapshot != null && !snapshot.isEmpty) {
+                    val favoriteEvents = snapshot.toObjects(Event::class.java)
+                    data.postValue(Resource.Success(favoriteEvents))
+                } else {
+                    data.postValue(Resource.Success(emptyList())) // ✅ Return empty list if no favorites exist
+                }
+            }
     }
 
     override suspend fun updateFavoriteStatus(eventId: Int, isFavorite: Boolean) = withContext(Dispatchers.IO) {

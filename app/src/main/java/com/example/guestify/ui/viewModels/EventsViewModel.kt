@@ -27,6 +27,12 @@ class EventsViewModel @Inject constructor(
 
     private val _eventsLiveData = MutableLiveData<List<Event>>()
     val eventsLiveData: MutableLiveData<List<Event>> get() = _eventsLiveData
+    private val _favoriteEventsLiveData = MutableLiveData<List<Event>>()
+    val favoriteEventsLiveData: LiveData<List<Event>> get() = _favoriteEventsLiveData
+
+    private var _favoriteResourceLiveData = MutableLiveData<Resource<List<Event>>>()
+    private val _resourceLiveData = MutableLiveData<Resource<List<Event>>>()
+
 
 
 
@@ -40,26 +46,21 @@ class EventsViewModel @Inject constructor(
 
 
     private fun observeFirestoreEvents() {
-        val resourceLiveData = MutableLiveData<Resource<List<Event>>>()
-        fireStoreRepo.getEventsLiveData(resourceLiveData) // ✅ Fetch Firestore events
+        fireStoreRepo.getEventsLiveData(_resourceLiveData)
 
-        resourceLiveData.observeForever { resource -> // ✅ Observe Resource<List<Event>>
+        _resourceLiveData.observeForever { resource ->
             when (resource) {
-                is Resource.Success -> _eventsLiveData.postValue(resource.data!!)
-                is Resource.Error -> _eventsLiveData.postValue(emptyList()) // Handle errors
+                is Resource.Success -> {
+                    resource.data?.let { _eventsLiveData.postValue(it) }
+                }
+                is Resource.Error -> {
+                    _eventsLiveData.postValue(emptyList()) // ✅ Ensure UI updates on failure
+                }
                 is Resource.Loading -> {} // Optional: Show loading state
             }
         }
     }
 
-    private fun fetchFirestoreEvents() {
-        viewModelScope.launch(Dispatchers.IO) {
-            val result = fireStoreRepo.getEvents()
-            if (result is Resource.Success) {
-                _eventsLiveData.postValue(result.data!!)
-            }
-        }
-    }
 
     fun addEvent(event: Event, onResult: (Long) -> Unit) {
 
@@ -68,6 +69,18 @@ class EventsViewModel @Inject constructor(
             fireStoreRepo.addEvent(event)
             withContext(Dispatchers.Main) {
                 onResult(newEventId)
+            }
+        }
+    }
+
+   fun observeFavoriteEvents() {
+        fireStoreRepo.getFavoriteEventsLiveData(_favoriteResourceLiveData)
+
+        _favoriteResourceLiveData.observeForever { resource ->
+            when (resource) {
+                is Resource.Success -> resource.data?.let { _favoriteEventsLiveData.postValue(it) }
+                is Resource.Error -> _favoriteEventsLiveData.postValue(emptyList())
+                is Resource.Loading -> {}
             }
         }
     }
@@ -91,12 +104,11 @@ class EventsViewModel @Inject constructor(
         }
     }
 
-    val favoriteEvents: LiveData<List<Event>> = repository.getFavoriteEvents()
 
     fun toggleFavorite(event: Event) {
         viewModelScope.launch(Dispatchers.IO) {
             event.isFavorite = !event.isFavorite
-            repository.updateEvent(event)
+            fireStoreRepo.updateEvent(event)
         }
     }
 }

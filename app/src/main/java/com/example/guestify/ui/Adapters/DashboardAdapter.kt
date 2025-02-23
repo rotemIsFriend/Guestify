@@ -69,11 +69,10 @@ class EventAdapter(
 
         holder.favoriteButton.setOnClickListener {
             val newFavoriteState = !event.isFavorite
-            event.isFavorite = newFavoriteState
             holder.favoriteButton.setImageResource(
                 if (newFavoriteState) R.drawable.ic_heart_filled else R.drawable.ic_heart_outline
             )
-            viewModel.updateEvent(event)
+            viewModel.toggleFavorite(event)
         }
 
         // load image with Glide
@@ -94,4 +93,6 @@ class EventAdapter(
         events = newEvents
         notifyDataSetChanged()
     }
+
+    fun getEventAt(index: Int): Event = events[index]
 }
