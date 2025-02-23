@@ -18,6 +18,7 @@ import com.example.guestify.data.model.Event
 import com.example.guestify.databinding.EventDetailsBinding
 import com.example.guestify.ui.viewModels.EventsViewModel
 import com.example.guestify.util.Resource
+import com.example.guestify.viewmodel.QuoteViewModel
 import java.util.Calendar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -33,6 +34,8 @@ class EventDetailsFragment : Fragment() {
 
     // Shared ViewModel for managing event data across fragments.
     private val eventsViewModel: EventsViewModel by activityViewModels()
+    private val quoteViewModel: QuoteViewModel by activityViewModels()
+
 
 
 
@@ -61,7 +64,11 @@ class EventDetailsFragment : Fragment() {
             return
         }
 
+        quoteViewModel.fetchLoveQuote()
 
+        quoteViewModel.quote.observe(viewLifecycleOwner) { quoteText ->
+            binding.tvQuote.text = quoteText
+        }
 
         // Fetch the event data from the ViewModel.
 

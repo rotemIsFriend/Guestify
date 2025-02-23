@@ -52,7 +52,7 @@
     <string name="invitation_text">Invitation Text:</string>
     <string name="this_is_the_main_text_of_your_invitation">This is the main text of your invitation.</string>
     <string name="pick_a_template">Pick A Template</string>
-    <string name="jessica_amp_michael"><![CDATA[Jessica & Michael]]></string>
+    <string name="jessica_amp_michael" translatable="false"><![CDATA[Jessica & Michael]]></string>
     <string name="the_wedding">The Wedding</string>
     <string name="we_are_excited_to_invite_you_to_celebrate_with_us_on_our_happiest_day">We are excited to invite you to celebrate with us on our happiest day.</string>
     <string name="august_15_2024" translatable="false">August 15, 2024</string>
@@ -63,7 +63,7 @@
     <string name="ceremony">Ceremony</string>
     <string name="we_look_forward_to_celebrating_with_you">We look forward to celebrating with you!</string>
     <string name="bride_s_parents">Bride\'s Parents</string>
-    <string name="mary_amp_john_johnson"><![CDATA[Mary & John Johnson]]></string>
+    <string name="mary_amp_john_johnson" translatable="false"><![CDATA[Mary & John Johnson]]></string>
     <string name="groom_s_parents">Groom\'s Parents</string>
     <string name="hila_amp_noam"><![CDATA[HILA & NOAM]]></string>
     <string name="neta_amp_barak"><![CDATA[Neta & Barak]]></string>

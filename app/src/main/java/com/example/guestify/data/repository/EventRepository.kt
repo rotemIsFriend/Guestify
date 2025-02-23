@@ -39,6 +39,4 @@ class EventRepository @Inject constructor(
             eventDao.updateFavoriteStatus(event.id, newStatus)
         }
     }
-
-
 }

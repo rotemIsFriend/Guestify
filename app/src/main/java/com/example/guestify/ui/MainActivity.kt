@@ -1,8 +1,9 @@
-package com.example.guestify
+package com.example.guestify.ui
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.example.guestify.R
 import com.example.guestify.databinding.MainActivityBinding
 import dagger.hilt.android.AndroidEntryPoint
 

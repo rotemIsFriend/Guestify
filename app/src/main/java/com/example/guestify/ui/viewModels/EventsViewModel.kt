@@ -99,5 +99,5 @@ class EventsViewModel @Inject constructor(
             repository.updateEvent(event)
         }
     }
-
 }
+

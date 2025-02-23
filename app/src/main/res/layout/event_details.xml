@@ -19,6 +19,16 @@
         android:orientation="vertical"
         android:layout_marginTop="30dp">
 
+        <TextView
+            android:id="@+id/tv_quote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Loading quote..."
+            android:textSize="18sp"
+            android:textStyle="italic"
+            android:gravity="center"
+            android:padding="16dp" />
+
         <!-- Header Texts -->
         <TextView
             android:id="@+id/event_name"

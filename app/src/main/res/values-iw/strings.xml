@@ -141,6 +141,13 @@
     <string name="love_phrase">מים רבים לא יוכלו לכבות את האהבה...</string>
     <string name="love_phrase_2">“שְׁמַעְתִּי אֶת קוֹלֵךְ... נֶפֶשִׁי אָהֲבָה אֹתָךְ...”</string>
     <string name="generating_templates">מייצר הזמנות דיגטליות</string>
+    <string name="favorite_button">מועדפים</string>
+    <string name="favorite_events">אירועים מועדפים</string>
+
+    <string name="Autocomplete_error_launch">שגיאה בטעינת החיפוש, בבקשה נסו שנית</string>
+    <string name="Autocomplete_error_cancel">חיפוש בוטל, בבקשה נסו שנית</string>
+    <string name="Autocomplete_error_place_selection">שגיאה בעת טעינת המיקום, בבקשה נסו שניתת</string>
+    <string name="Autocomplete_error_Unexpected_error">שגיאה בלתי צפויה, בבקשה נסו שנית</string>
 
 
     <string name="login">התחבר</string>
